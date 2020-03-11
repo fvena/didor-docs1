@@ -1,0 +1,52 @@
+.docs {
+  &__header {
+    height: $header-height;
+    background-color: white;
+    border-bottom: 1px solid color(gray7);
+  }
+
+  &__main {
+    display: flex;
+    height: calc(100vh - #{$header-height});
+  }
+
+  &__sidebar {
+    flex: 1 0 $sidebar-width;
+    height: 100%;
+    overflow-y: scroll;
+    // background: linear-gradient(to left top, #e56590, #ffb88c);
+    // background: linear-gradient(to left top, color(brand), color(brand-light));
+    background-color: color(white);
+    transition: 0.5s cubic-bezier(0.91, 0.06, 0.47, 1.05) all;
+  }
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    background: linear-gradient(to left top, color(gray6), color(gray7));
+    transition: 0.5s cubic-bezier(0.91, 0.06, 0.47, 1.05) all;
+  }
+
+  &__wrapper {
+    width: 100%;
+    max-width: $wrapper-width;
+    margin: 0 auto;
+  }
+}
+
+@include media(screen) {
+  .docs {
+    &__sidebar {
+      flex: 1 0 $sidebar-width-large;
+    }
+  }
+}
+
+@include media(portrait) {
+  .docs {
+    &__sidebar {
+      transform: translateX(-100%);
+    }
+  }
+}

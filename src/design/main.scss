@@ -1,3 +1,9 @@
+// Import custom var
+@import 'var';
+
 // Import didor framework
 @import '@didor/framework/src/_didor-share.scss';
 @import '@didor/framework/src/_didor-global.scss';
+
+// Import views
+@import 'views/docs.view';
