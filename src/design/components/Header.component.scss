@@ -1,0 +1,101 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  /**
+   * Botón para mostrar/ocultar el menú
+   */
+  &__toggle-sidebar {
+    display: none;
+    min-width: double();
+    height: $header-height-media;
+  }
+
+  /**
+   * Logotipo
+   */
+  &__logo {
+    display: flex;
+    justify-content: center;
+    min-width: $sidebar-width;
+    font-size: 2.8rem;
+    transition: $transition;
+
+    @include hover {
+      text-decoration: none;
+    }
+  }
+
+  /**
+   * Buscador
+   */
+  &__search {
+    display: flex;
+    flex-grow: 2;
+    align-items: center;
+    width: 100%;
+    margin-left: half();
+    transition: $transition;
+  }
+
+  /**
+   * Botones de las redes sociales
+   */
+  &__social {
+    display: flex;
+    margin-right: quarter();
+  }
+
+  /**
+   * Botones con iconos
+   */
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: double();
+    height: $header-height;
+    cursor: pointer;
+
+    svg {
+      fill: color(gray2);
+    }
+
+    @include hover {
+      svg {
+        fill: color(brand);
+      }
+    }
+  }
+}
+
+@include media(screen) {
+  .header {
+    &__logo {
+      min-width: $sidebar-width-large;
+    }
+  }
+}
+
+@include media(portrait) {
+  .header {
+    &__logo {
+      min-width: auto;
+      font-size: 2.2rem;
+    }
+
+    &__search,
+    &__nav {
+      display: none !important;
+    }
+
+    &__toggle-sidebar {
+      display: block;
+    }
+
+    &__button {
+      height: $header-height-media;
+    }
+  }
+}
