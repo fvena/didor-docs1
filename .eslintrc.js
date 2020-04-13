@@ -3,6 +3,7 @@ module.exports = {
   env: {
     node: true,
     browser: true,
+    jest: true,
   },
   extends: ['plugin:vue/essential', '@vue/airbnb', 'prettier/vue', 'plugin:prettier/recommended'],
   parserOptions: {

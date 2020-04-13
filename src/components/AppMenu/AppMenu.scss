@@ -1,0 +1,52 @@
+.appMenu {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    list-style: none;
+    user-select: none;
+
+    a {
+      padding: 0 half();
+      color: color(gray1);
+      white-space: nowrap;
+      cursor: pointer;
+      border: none;
+      transition: 0.15s;
+
+      &.router-link-active {
+        color: color(brand);
+      }
+    }
+  }
+
+  &::v-deep .dropdown {
+    .dropdown__header {
+      padding-left: half();
+      color: color(gray1);
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+    height: initial;
+
+    .appMenu__item {
+      display: block;
+      a {
+        padding: 0;
+      }
+    }
+
+    &::v-deep .dropdown {
+      .dropdown__header {
+        padding-left: 0;
+      }
+    }
+  }
+}

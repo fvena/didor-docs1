@@ -30,6 +30,9 @@ function directive(e, el, binding, vnode) {
 
 const clickOutside = {
   inserted(el, binding, vnode) {
+    const disable = vnode.data.attrs['disable-click-outside'];
+    if (disable) return;
+
     const onClick = e => directive(e, el, binding, vnode);
 
     // Register our clickOutside handler on the click/touchstart listeners

@@ -1,12 +1,12 @@
-.docs {
+.docsLayout {
   height: 100vh;
 
   &--header-hidden {
-    .docs__header {
+    .docsLayout__header {
       transform: translate3d(0, -100%, 0);
     }
 
-    .docs__main {
+    .docsLayout__main {
       height: 100vh;
       transform: translate3d(0, -#{$header-height}, 0);
     }
@@ -25,6 +25,7 @@
   &__main {
     display: flex;
     height: calc(100vh - #{$header-height});
+    overflow-y: scroll;
     transition: $transition;
     transform: translate3d(0, 0, 0);
   }
@@ -33,9 +34,7 @@
     flex: 1 0 $sidebar-width;
     height: 100%;
     overflow-y: scroll;
-    // background: linear-gradient(to left top, #e56590, #ffb88c);
-    background: linear-gradient(to left top, color(brand), color(brand-light));
-    // background-color: color(white);
+    background: linear-gradient(to top, color(brand-dark), color(brand));
     transition: $transition;
   }
 
@@ -52,10 +51,29 @@
     max-width: $wrapper-width;
     margin: 0 auto;
   }
+
+  /**
+   * Menú para dispositivos
+   */
+  &__device-menu {
+    position: fixed;
+    right: double();
+    bottom: double();
+    z-index: 2000;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    clip-path: circle(#{simple()} at bottom right);
+    transition: all 0.3s;
+
+    &--show {
+      clip-path: circle(200% at bottom right);
+    }
+  }
 }
 
 @include media(screen) {
-  .docs {
+  .docsLayout {
     &__sidebar {
       flex: 1 0 $sidebar-width-large;
     }
@@ -63,9 +81,9 @@
 }
 
 @include media(portrait) {
-  .docs {
+  .docsLayout {
     &--header-hidden {
-      .docs__main {
+      .docsLayout__main {
         transform: translate3d(0, -#{$header-height-media}, 0);
       }
     }
@@ -75,20 +93,21 @@
     }
 
     &__main {
+      display: block;
       height: calc(100vh - #{$header-height-media});
     }
 
     &__sidebar {
-      flex: 1 0 $sidebar-width-large;
-      transform: translateX(-100%);
-
-      &--show {
-        transform: translateX(0);
-      }
+      display: none;
     }
 
     &__content {
-      margin-left: -$sidebar-width-large;
+      display: block;
+      margin-left: 0;
+    }
+
+    &__device-menu {
+      display: block;
     }
   }
 }

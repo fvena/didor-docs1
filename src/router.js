@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 // Views
-import DocsLayout from '@/views/Docs.view.vue';
+import DocsLayout from '@/views/DocsLayout';
 import NotFoundView from '@/views/NotFound.view.vue';
 
 Vue.use(VueRouter);

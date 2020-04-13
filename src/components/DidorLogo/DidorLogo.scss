@@ -1,0 +1,189 @@
+$logo-height: 1em;
+$logo-text-height-vertical: 0.5em;
+$logo-text-height-horizontal: 0.45em;
+$logo-margin-vertical: 0.15em;
+$logo-margin-horizontal: 0.23em;
+
+$logo-color-black: color(gray1);
+$logo-color-white: color(gray7);
+$logo-color: darken($brand, 5);
+$logo-color-dark: darken($brand, 15);
+$logo-color-light: lighten($brand, 10);
+
+.didor-logo {
+  cursor: pointer;
+
+  @include hover {
+    .liquid__path,
+    .liquid__drop {
+      animation-play-state: running;
+    }
+  }
+
+  &--animate {
+    .liquid__path,
+    .liquid__drop {
+      animation-play-state: running;
+    }
+  }
+
+  &--horizontal {
+    display: flex;
+    align-items: center;
+    margin-top: 0.4em;
+
+    .didor-logo__liquid {
+      margin-right: $logo-margin-horizontal;
+      margin-bottom: 0.35em;
+    }
+
+    .didor-logo__text {
+      height: $logo-text-height-horizontal;
+      margin: 0;
+    }
+
+    .didor-logo__title {
+      font-size: 0.3em;
+    }
+  }
+}
+
+.didor-logo__text {
+  display: block;
+  height: $logo-text-height-vertical;
+  margin: 0 auto;
+}
+
+.didor-logo__text--letters {
+  fill: $logo-color-black;
+}
+
+.didor-logo__title {
+  font-size: 0.25em;
+  font-weight: font-weight(bold);
+  line-height: 1.5em;
+  color: color(brand);
+  text-transform: uppercase;
+}
+
+.didor-logo__liquid {
+  display: block;
+  height: $logo-height;
+  margin: 0 auto $logo-margin-vertical;
+}
+
+// Code for liquid waves
+.liquid__path {
+  // Animation will be paused at first
+  animation: 2s linear infinite paused;
+
+  // First (top) wave
+  &--top,
+  &--top-clip {
+    fill: $logo-color-light;
+    transform: translateX(0);
+    animation-name: liquid-top;
+  }
+
+  // Second (bottom) wave
+  &--bottom,
+  &--bottom-clip {
+    fill: $logo-color;
+    transform: translate(-50px, 1px);
+    animation-name: liquid-bottom;
+    // Little phase shift respect the top wave
+    animation-duration: 2.1s;
+    animation-delay: -0.9s;
+  }
+
+  &--bottom-clip {
+    fill: $logo-color-dark;
+  }
+}
+
+// Animation for the top wave
+@keyframes liquid-top {
+  100% {
+    transform: translateX(-57px);
+  }
+}
+
+// Animation for the bottom wave
+@keyframes liquid-bottom {
+  100% {
+    transform: translate(7px, 1px);
+  }
+}
+
+// Code for drops
+.liquid__drop {
+  animation: ease-in-out infinite paused;
+
+  // First drop
+  &--1,
+  &--3 {
+    fill: $logo-color-dark;
+    transform: translate(0, 25px);
+    animation-name: drop-1;
+    animation-duration: 6s;
+  }
+
+  &--1 {
+    animation-delay: 2.5s;
+  }
+  &--3 {
+    animation-delay: 5s;
+  }
+
+  // Second drop
+  &--2,
+  &--4 {
+    fill: $logo-color;
+    transform: translate(0, 40px);
+    animation-name: drop-2;
+    animation-duration: 5.5s;
+  }
+
+  &--2 {
+    animation-delay: 0;
+  }
+  &--4 {
+    animation-delay: 3s;
+  }
+}
+
+// Animation for the first drop
+@keyframes drop-1 {
+  20% {
+    transform: translate(0, 25px);
+  }
+  40% {
+    transform: translate(4px, -10px);
+  }
+  60% {
+    transform: translate(8px, 25px);
+  }
+}
+
+// Animation for the second drop
+@keyframes drop-2 {
+  20% {
+    transform: translate(0, 40px);
+  }
+  40% {
+    transform: translate(-4px, 5px);
+  }
+  60% {
+    transform: translate(-8px, 40px);
+  }
+}
+
+.didor-logo__eye-bg {
+  fill: $logo-color-white;
+}
+
+.didor-logo__eye,
+.didor-logo__eye-bg-border,
+.didor__background {
+  fill: $logo-color-black;
+}

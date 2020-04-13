@@ -1,3 +1,28 @@
+//
+// Colores de Marca
+//
+$brand-darker: hsl(338, 100%, 25%);
+$brand-dark: hsl(344, 79%, 41%);
+$brand: hsl(346, 73%, 50%);
+$brand-light: hsl(352, 96%, 65%);
+$brand-lighter: hsl(3, 100%, 74%);
+$brand-a20: hsl(24, 100%, 84%);
+
+// Familias tipográficas
+//
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+
+$font-family-base: 'Karla', helvetica neue, arial, sans-serif;
+$font-family-heading: 'Crimson Text', helvetica neue, arial, sans-serif;
+$font-family-monospace: 'Fira Code', 'Courier New', courier, monospace;
+
+$font-families: (
+  'base': $font-family-base,
+  'heading': $font-family-heading,
+  'monospace': $font-family-monospace,
+);
+
 $sidebar-width: 240px;
 $sidebar-width-large: 300px;
 
