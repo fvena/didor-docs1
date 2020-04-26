@@ -1,10 +1,13 @@
 .sidebar {
+  padding-top: double();
+
   a,
   &::v-deep .menu {
     position: relative;
     display: block;
     padding: 0 simple() !important;
     margin-bottom: 0;
+    font-size: $menu-font-size;
     color: color(white) !important;
 
     &.router-link-active {
@@ -33,8 +36,6 @@
 
   &__list {
     &--level1 {
-      padding: double() 0;
-
       > .sidebar__item > a {
         line-height: 1.8em;
       }

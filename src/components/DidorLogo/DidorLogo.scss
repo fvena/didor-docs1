@@ -1,7 +1,7 @@
 $logo-height: 1em;
 $logo-text-height-vertical: 0.5em;
 $logo-text-height-horizontal: 0.45em;
-$logo-margin-vertical: 0.15em;
+$logo-margin-vertical: 0.2em;
 $logo-margin-horizontal: 0.23em;
 
 $logo-color-black: color(gray1);
@@ -44,6 +44,7 @@ $logo-color-light: lighten($brand, 10);
 
     .didor-logo__title {
       font-size: 0.3em;
+      text-align: left;
     }
   }
 }
@@ -51,7 +52,7 @@ $logo-color-light: lighten($brand, 10);
 .didor-logo__text {
   display: block;
   height: $logo-text-height-vertical;
-  margin: 0 auto;
+  margin: 0 auto 0.05em;
 }
 
 .didor-logo__text--letters {
@@ -63,6 +64,7 @@ $logo-color-light: lighten($brand, 10);
   font-weight: font-weight(bold);
   line-height: 1.5em;
   color: color(brand);
+  text-align: center;
   text-transform: uppercase;
 }
 

@@ -34,8 +34,8 @@
   &__nav {
     height: $header-height;
 
-    &::v-deep .menu {
-      .menu__item > a.router-link-active,
+    &::v-deep .appMenu {
+      .appMenu__item > a.router-link-active,
       .dropdown--link-active {
         &::before {
           position: absolute;
@@ -49,8 +49,11 @@
         }
       }
 
+      .appMenu__item--link,
       .dropdown__header {
         height: $header-height;
+        font-size: $menu-font-size;
+        font-weight: font-weight(bold);
         line-height: $header-height;
       }
 
@@ -68,30 +71,8 @@
    * Botones de las redes sociales
    */
   &__social {
-    display: flex;
-    margin-right: quarter();
-  }
-
-  /**
-   * Botones con iconos
-   */
-  &__button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: double();
-    height: $header-height;
-    cursor: pointer;
-
-    svg {
-      fill: color(gray2);
-    }
-
-    @include hover {
-      svg {
-        fill: color(brand);
-      }
-    }
+    height: 100%;
+    margin: 0 quarter();
   }
 }
 
@@ -107,16 +88,18 @@
   .appHeader {
     &__logo {
       min-width: auto;
+      margin: 0 auto;
       font-size: 2.2rem;
+
+      &::v-deep .didor-logo--horizontal {
+        margin-top: 0.3em;
+      }
     }
 
     &__search,
-    &__nav {
+    &__nav,
+    &__social {
       display: none !important;
-    }
-
-    &__button {
-      height: $header-height-media;
     }
   }
 }

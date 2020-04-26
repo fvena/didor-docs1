@@ -1,56 +1,195 @@
+/**
+ * APP
+ */
 .appDeviceMenu {
   position: fixed;
-  top: 0;
-  left: 0;
+  right: double();
+  bottom: double();
+  z-index: 2000;
   width: 100vw;
   height: 100vh;
-  background-color: color(brand);
+  clip-path: circle(#{simple()} at bottom right);
+  transition: all 0.3s;
 
-  .hamburguer {
-    position: absolute;
+  .didor-logo {
+    margin: simple() 0;
+    font-size: 3rem;
+  }
+
+  &::v-deep {
+    .didor-logo__title {
+      color: color(gray1);
+    }
+
+    .appMenu {
+      margin-bottom: simple();
+
+      .dropdown__header a,
+      .appMenu__item--link {
+        font-family: font-family(heading);
+        font-size: font-size(h3);
+        line-height: size(2);
+      }
+
+      .dropdown__icon {
+        top: 0.8em;
+        stroke: color(white);
+      }
+
+      .dropdown__item--separator {
+        width: calc(100% - #{double()});
+        margin: half() simple();
+        opacity: 0.2;
+      }
+
+      .dropdown__item a {
+        padding-left: size(1.5) !important;
+      }
+
+      &__item a {
+        position: relative;
+        display: block;
+        padding: 0 simple() !important;
+        margin-bottom: 0;
+        line-height: size(1.2);
+        color: color(white) !important;
+
+        &.router-link-active {
+          background-color: rgba(0, 0, 0, 0.05);
+          box-shadow: inset 3px 0 0 #f7a736, inset 6px 0 0 rgba(0, 0, 0, 0.1);
+
+          &::before {
+            position: absolute;
+            top: calc(50% - 6px);
+            right: -1px;
+            display: block;
+            width: 0;
+            height: 0;
+            content: '';
+            border-top: 6px solid transparent;
+            border-right: 6px solid color(gray6);
+            border-bottom: 6px solid transparent;
+          }
+        }
+      }
+    }
+
+    .appSocialLinks {
+      justify-content: center;
+      height: double();
+      padding-bottom: simple();
+
+      &__item {
+        svg {
+          width: size(1.1) !important;
+          height: size(1.1) !important;
+          fill: color(white);
+        }
+      }
+    }
+
+    .sidebar {
+      padding-top: simple();
+      border-top: half() solid rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  /**
+   * Estado visible
+   */
+  &--show {
+    clip-path: circle(200% at bottom right);
+
+    .appDeviceMenu__content {
+      animation: fadeInLeft 0.5s ease forwards;
+      animation-delay: 0.35s;
+    }
+
+    .appDeviceMenu__hamburguer {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  /**
+   * Contenedor del Menú
+   */
+  &__wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: color(brand);
+  }
+
+  &__content {
+    position: relative;
+    opacity: 0;
+  }
+
+  /**
+   * Botón hamburguesa
+   */
+  &__hamburguer {
+    position: fixed;
     right: simple();
     bottom: simple();
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: double();
+    height: double();
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: simple();
+
+    span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      margin: 4px 0;
+      background-color: color(white);
+      border-radius: 2px;
+      transition: $transition;
+
+      &:nth-child(1) {
+        transform: scaleX(1);
+      }
+      &:nth-child(2) {
+        margin: 3px 0;
+        transform: scaleX(0.6) translate(-6px, 0);
+      }
+      &:nth-child(3) {
+        transform: scaleX(0.8) translate(-2px, 0);
+      }
+    }
+
+    /**
+     * Botón hamburguesa estado cerrado
+     */
+    &--close {
+      span:nth-child(1) {
+        transform: scaleX(1) rotate(45deg) translate(4px, 5px);
+      }
+      span:nth-child(2) {
+        transform: scaleX(0);
+      }
+      span:nth-child(3) {
+        transform: scaleX(1) rotate(-45deg) translate(3px, -5px);
+      }
+    }
   }
 }
 
-.hamburguer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: double();
-  height: double();
-  cursor: pointer;
-
-  span {
-    display: block;
-    width: 20px;
-    height: 2px;
-    margin: 4px 0;
-    background-color: color(white);
-    border-radius: 2px;
-    transition: $transition;
-
-    &:nth-child(1) {
-      transform: scaleX(1);
-    }
-    &:nth-child(2) {
-      margin: 3px 0;
-      transform: scaleX(0.6) translate(-6px, 0);
-    }
-    &:nth-child(3) {
-      transform: scaleX(0.8) translate(-2px, 0);
-    }
+@keyframes fadeInLeft {
+  0% {
+    right: simple();
+    opacity: 0;
   }
 
-  &--close {
-    span:nth-child(1) {
-      transform: scaleX(1) rotate(45deg) translate(4px, 5px);
-    }
-    span:nth-child(2) {
-      transform: scaleX(0);
-    }
-    span:nth-child(3) {
-      transform: scaleX(1) rotate(-45deg) translate(3px, -5px);
-    }
+  100% {
+    right: 0;
+    opacity: 1;
   }
 }

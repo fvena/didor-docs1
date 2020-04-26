@@ -19,19 +19,6 @@ describe('DocsLayout', () => {
     });
   });
 
-  test('Por defecto el menú para dispositivos móviles no sera visible', () => {
-    expect(wrapper.contains('.docsLayout__device-menu--show')).toBe(false);
-  });
-
-  test('Mostramos/Ocultamos el menú para dispositivos móviles', async () => {
-    wrapper.vm.toggleDeviceMenu();
-    await wrapper.vm.$nextTick();
-    expect(wrapper.contains('.docsLayout__device-menu--show')).toBe(true);
-    wrapper.vm.toggleDeviceMenu();
-    await wrapper.vm.$nextTick();
-    expect(wrapper.contains('.docsLayout__device-menu--show')).toBe(false);
-  });
-
   test('Por defecto el header será visible', () => {
     expect(wrapper.contains('.docsLayout--header-hidden')).toBe(false);
   });

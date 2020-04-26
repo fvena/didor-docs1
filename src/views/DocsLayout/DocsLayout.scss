@@ -49,6 +49,7 @@
   &__wrapper {
     width: 100%;
     max-width: $wrapper-width;
+    padding: double() simple();
     margin: 0 auto;
   }
 
@@ -56,19 +57,7 @@
    * Menú para dispositivos
    */
   &__device-menu {
-    position: fixed;
-    right: double();
-    bottom: double();
-    z-index: 2000;
     display: none;
-    width: 100vw;
-    height: 100vh;
-    clip-path: circle(#{simple()} at bottom right);
-    transition: all 0.3s;
-
-    &--show {
-      clip-path: circle(200% at bottom right);
-    }
   }
 }
 
@@ -104,6 +93,10 @@
     &__content {
       display: block;
       margin-left: 0;
+    }
+
+    &__wrapper {
+      padding: simple();
     }
 
     &__device-menu {

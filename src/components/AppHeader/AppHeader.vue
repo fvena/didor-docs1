@@ -12,21 +12,18 @@
     slot(name="headerMenu")
 
   //- Enlaces externos
-  .appHeader__social
-    a.appHeader__button(href="https://twitter.com/fvena" target="_blank")
-      dd-icon(name="twitter" scale="0.9")
-
-    a.appHeader__button(href="https://github.com/fvena/didor-docs" target="_blank")
-      dd-icon(name="github" scale="0.9")
+  AppSocialLinks.appHeader__social
 </template>
 
 <script>
 import DidorLogo from '@/components/DidorLogo';
+import AppSocialLinks from '@/components/AppSocialLinks';
 import Search from '@/components/Search.component.vue';
 
 export default {
   components: {
     DidorLogo,
+    AppSocialLinks,
     Search,
   },
 };

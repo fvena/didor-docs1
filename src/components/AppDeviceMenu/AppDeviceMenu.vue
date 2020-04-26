@@ -1,9 +1,12 @@
 <template lang="pug">
-  .appDeviceMenu
-    slot
+.appDeviceMenu(:class="{'appDeviceMenu--show': isShow}")
+  .appDeviceMenu__wrapper
+    .appDeviceMenu__content
+      slot
 
-    .hamburguer(:class="{'hamburguer--close': isClose}" @click="change")
-      .hamburguer__wrapper
+    //- Botón hamburguer para mostrar ocultar el menú
+    .appDeviceMenu__hamburguer(:class="{'appDeviceMenu__hamburguer--close': isShow}" @click="toggle")
+      .appDeviceMenu__hamburguer__wrapper
         span
         span
         span
@@ -11,16 +14,27 @@
 
 <script>
 export default {
+  name: 'AppDeviceMenu',
+
   data() {
     return {
-      isClose: false,
+      isShow: false,
     };
   },
 
   methods: {
-    change() {
-      this.isClose = !this.isClose;
-      this.$emit('isChange', this.isClose);
+    /**
+     * Muestra/Oculta el menú
+     * Lanza un evento indicando la acción realizada
+     */
+    toggle() {
+      this.isShow = !this.isShow;
+
+      if (this.isShow) {
+        this.$emit('isOpen');
+      } else {
+        this.$emit('isClose');
+      }
     },
   },
 };
