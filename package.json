@@ -18,10 +18,26 @@
     "release": "standard-version"
   },
   "dependencies": {
+    "axios": "^0.19.2",
+    "babel-plugin-prismjs": "^2.0.1",
+    "clipboard": "^2.0.6",
     "core-js": "^3.6.4",
+    "js-yaml": "^3.13.1",
+    "markdown-it": "^10.0.0",
+    "markdown-it-div": "^1.1.0",
+    "markdown-it-emoji": "^1.4.0",
+    "markdown-it-front-matter": "^0.2.1",
+    "markdown-it-task-lists": "^2.1.1",
+    "markdown-it-toc-and-anchor": "^4.2.0",
+    "markdown-it-video": "^0.6.3",
+    "prismjs": "^1.20.0",
+    "v-runtime-template": "^1.10.0",
+    "virtual-module-webpack-plugin": "^0.4.1",
     "vue": "^2.6.11",
+    "vue-loader": "^15.9.1",
     "vue-observe-visibility": "^0.4.6",
     "vue-router": "^3.1.5",
+    "vue-style-loader": "^4.1.2",
     "vue-svgicon": "^3.2.6"
   },
   "devDependencies": {

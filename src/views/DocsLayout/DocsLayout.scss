@@ -12,6 +12,12 @@
     }
   }
 
+  &--sidebar-hidden {
+    .docsLayout__sidebar {
+      display: none;
+    }
+  }
+
   &__header {
     position: relative;
     z-index: 1000;

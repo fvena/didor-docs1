@@ -49,6 +49,7 @@ export default {
 
   methods: {
     closeAllDropdown() {
+      if (!Object.keys(this.$refs).length) return;
       Object.keys(this.$refs).forEach(item => this.$refs[item][0].close());
     },
   },

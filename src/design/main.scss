@@ -2,5 +2,33 @@
 @import '@didor/framework/src/_didor-share.scss';
 @import '@didor/framework/src/_didor-global.scss';
 
+// Familias tipográficas
+//
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@600&display=swap');
+
+:root {
+  // Familias tipográficas
+  //
+  --font-family-base: 'Karla', helvetica neue, arial, sans-serif;
+  --font-family-heading: 'Crimson Text', helvetica neue, arial, sans-serif;
+  --font-family-monospace: 'Fira Code', 'Courier New', courier, monospace;
+
+  // Tamaños de fuente por tamaño de pantalla en px
+  // Importante: No poner las unidades (px)
+  //
+  --root-font-size-palm: 16;
+  --root-font-size-lap: 17;
+  --root-font-size-small: 17;
+  --root-font-size-desk: 18;
+  --root-font-size-large: 18;
+
+  // Pesos tipográficos
+  //
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-weight-heading: 600;
+}
+
 // Import custom var
 @import 'var';
