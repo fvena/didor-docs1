@@ -12,21 +12,23 @@
   .docsLayout__main
 
     //- Sidebar Area
-    .docsLayout__sidebar
-      AppSidebar(:links="sidebarLinks")
+    AppSidebar.docsLayout__sidebar(:links="sidebarLinks")
 
 
     //- Content Area
     .docsLayout__content(ref="viewBox")
       .docsLayout__wrapper
+
         //- Article Area
-        .docsLayout__article
-          AppArticle(
-            v-if="content"
-            :data="content")
+        AppArticle.docsLayout__article(
+          v-if="content"
+          :data="content")
 
         //- Footer Area
-        .docsLayout__footer Footer
+        AppFooter.docsLayout__footer(
+          v-if="article"
+          :prevArticle="article.prev"
+          :nextArticle="article.next")
 
   //- Botón para mostrar/ocultar el menú lateral
   AppDeviceMenu.docsLayout__device-menu
@@ -44,6 +46,7 @@ import AppMenu from '@/components/AppMenu';
 import AppDeviceMenu from '@/components/AppDeviceMenu';
 import AppSocialLinks from '@/components/AppSocialLinks';
 import AppArticle from '@/components/AppArticle';
+import AppFooter from '@/components/AppFooter';
 import { ObserveVisibility } from 'vue-observe-visibility';
 import DefaultConfig from '@/didor.config.js';
 import FileService from '@/services/file.service';
@@ -62,6 +65,7 @@ export default {
     AppDeviceMenu,
     AppSocialLinks,
     AppArticle,
+    AppFooter,
   },
   data() {
     return {
