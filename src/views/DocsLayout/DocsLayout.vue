@@ -48,7 +48,7 @@ import { ObserveVisibility } from 'vue-observe-visibility';
 import DefaultConfig from '@/didor.config.js';
 import FileService from '@/services/file.service';
 import ParamsUtil from '@/utils/params.utils';
-import ArrayUtil from '@/utils/array.utils';
+import ArrayUtils from '@/utils/array.utils';
 
 export default {
   directives: {
@@ -129,8 +129,8 @@ export default {
        * El listado 'this.navbarLinks' puede contener una estructura anidada
        * para asegurarme que obtengo el primer link, lo busco en una estructura plana
        */
-      if (routeTo === '/' && ArrayUtil.checkArray(this.navbarLinks)) {
-        const flatNavbarLinks = ArrayUtil.flattenList(this.navbarLinks);
+      if (routeTo === '/' && ArrayUtils.checkArray(this.navbarLinks)) {
+        const flatNavbarLinks = ArrayUtils.flattenList(this.navbarLinks);
         const firstSection = flatNavbarLinks[0].link;
         this.$router.push(firstSection);
       }
@@ -151,8 +151,8 @@ export default {
         /**
          * Si tenemos secciones, busco la sección actual
          */
-        if (ArrayUtil.checkArray(this.navbarLinks)) {
-          const section = await ArrayUtil.searchItemByLinks(this.navbarLinks, toSection);
+        if (ArrayUtils.checkArray(this.navbarLinks)) {
+          const section = await ArrayUtils.searchItemByLinks(this.navbarLinks, toSection);
           this.section = section.current;
         }
 
@@ -176,7 +176,7 @@ export default {
       this.content = '';
       this.deviceShow = false;
 
-      if (ArrayUtil.checkArray(this.sidebarLinks)) {
+      if (ArrayUtils.checkArray(this.sidebarLinks)) {
         /**
          * Cuando no se especifica ninguna ruta o la ruta es una sección,
          * redirecciono al primer artículo de la sección
@@ -184,13 +184,13 @@ export default {
          * para asegurarme que obtengo el primer link, lo busco en una estructura plana
          */
         if (routeTo === '/' || (this.section && this.section.link === routeTo)) {
-          const flatSidebarLinks = ArrayUtil.flattenList(this.sidebarLinks);
+          const flatSidebarLinks = ArrayUtils.flattenList(this.sidebarLinks);
           const firstArticle = flatSidebarLinks[0].link;
           this.$router.push(firstArticle);
           return;
         }
 
-        this.article = await ArrayUtil.searchItemByLinks(this.sidebarLinks, routeTo);
+        this.article = await ArrayUtils.searchItemByLinks(this.sidebarLinks, routeTo);
       }
 
       /**
@@ -261,7 +261,7 @@ export default {
     const sectionLink = this.section ? this.section.link : '/';
 
     if (this.sidebarLinks && routeTo.path === sectionLink) {
-      const flatSidebarLinks = ArrayUtil.flattenList(this.sidebarLinks);
+      const flatSidebarLinks = ArrayUtils.flattenList(this.sidebarLinks);
       const firstSection = flatSidebarLinks[0].link;
       if (routeFrom.path === firstSection) return;
     }
@@ -273,7 +273,7 @@ export default {
      * en cuyo caso no debo realizar la redirección.
      */
     if (!this.sidebarLinks && this.navbarLinks && routeTo.path === '/') {
-      const flatNavbarLinks = ArrayUtil.flattenList(this.navbarLinks);
+      const flatNavbarLinks = ArrayUtils.flattenList(this.navbarLinks);
       const firstArticle = flatNavbarLinks[0].link;
       if (routeFrom.path === firstArticle) return;
     }

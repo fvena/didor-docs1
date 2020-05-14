@@ -1,18 +1,18 @@
 function slugify(string) {
-  const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;';
-  const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuu,uuuuuuwxyyzzz------';
+  const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/-,:;';
+  const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuuwxyyzzz______';
   const p = new RegExp(a.split('').join('|'), 'g');
 
   return string
     .toString()
     .toLowerCase()
-    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/\s+/g, '_') // Replace spaces with _
     .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
-    .replace(/&/g, '-and-') // Replace & with 'and'
+    .replace(/&/g, '_y_') // Replace & with 'and'
     .replace(/[^\w-]+/g, '') // Remove all non-word characters
-    .replace(/--+/g, '-') // ceplace multiple - with single -
-    .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, ''); // Trim - from end of text
+    .replace(/__+/g, '_') // ceplace multiple __ with single _
+    .replace(/^_+/, '') // Trim - from start of text
+    .replace(/_+$/, ''); // Trim - from end of text
 }
 
 function getParentNode(level, jsonTree) {
@@ -21,7 +21,9 @@ function getParentNode(level, jsonTree) {
 
   while (i < level - 1) {
     const children = node.children;
-    node = children[children.length - 1];
+    if (children) {
+      node = children[children.length - 1];
+    }
     i += 1;
   }
 
@@ -32,17 +34,13 @@ function getParentNode(level, jsonTree) {
   return node;
 }
 
-function Node(title, file, link) {
-  this.title = title;
-  this.file = file || '';
-  this.link = link || '';
-}
-
 /**
- * Generate a list of links in the string
+ * GetListLinks
+ * Convierte un listado de links en Markdown en un array de objetos con los links
  *
- * @params  {String} links - String with links
- * @returns {Array} - Array of objects with name and path of the link
+ * @params  {String} markdown - Listado de links en Markdown
+ * @params  {String} section - Ruta de la sección para añadirla a los links
+ * @returns {Array} - Array de objetos con los links
  */
 // prettier-ignore
 const getListLinks = (markdown, section) => new Promise(resolve => {
@@ -56,9 +54,11 @@ const getListLinks = (markdown, section) => new Promise(resolve => {
     if (matchs) {
       const level = matchs[1].length / 2;
       const title = matchs[2];
-      const file = matchs[4] !== '/' ? matchs[4] : '';
-      const link = !file ? '' : section ? `${section}/${slugify(title)}` : `/${slugify(title)}`;
-      const node = new Node(title, file, link);
+      const file = matchs[4] && matchs[4] !== '/' ? matchs[4] : null;
+      const link = !file ? null : section ? `${section}/${slugify(title)}` : `/${slugify(title)}`;
+      const node = {title};
+      if (file) node.file = file;
+      if (link) node.link = link;
 
       if (level === 0) {
         jsonTree.push(node);
@@ -73,5 +73,7 @@ const getListLinks = (markdown, section) => new Promise(resolve => {
 });
 
 export default {
+  slugify,
+  getParentNode,
   getListLinks,
 };

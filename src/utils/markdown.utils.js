@@ -70,21 +70,21 @@ const renderMarkdown = markdown => new Promise(resolve => {
             //   }
             //   return '</Demo>\n</div>\n';
 
-            // Collapse
+          // Collapse
           case 'collapse':
             if (openTag) {
               return `<div>\n<Collapse title="${collapse[1]}">\n`;
             }
             return '</Collapse>\n</div>\n';
 
-            // Codegroup
+          // Codegroup
           case 'codegroup':
             if (openTag) {
               return '<div>\n<Codegroup>\n';
             }
             return '</Codegroup>\n</div>\n';
 
-            // Default
+          // Default
           default:
             if (openTag) {
               return `<div class="${tag}">\n`;

@@ -1,5 +1,5 @@
 - [Home](/home.md)
 - [Markdown](/markdown)
 - [Desplegable]
-  - [Home](/home.md)
-  - [Home](/home.md)
+  - [Link 1](/home.md)
+  - [Link 2](/home.md)
