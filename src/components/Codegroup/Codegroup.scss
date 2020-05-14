@@ -1,0 +1,47 @@
+.codegroup {
+  position: relative;
+
+  .file {
+    display: none !important;
+  }
+
+  &::v-deep {
+    pre[data-lang].hasFile {
+      padding-top: 1.2rem;
+      border-radius: 0;
+
+      &::after,
+      + .toolbar {
+        top: -1.5rem;
+      }
+
+      .line-numbers-rows {
+        top: 1.2rem;
+      }
+    }
+  }
+
+  &__files {
+    height: simple();
+    padding: 0 half();
+    font-family: font-family(base);
+    font-size: font-size(small2);
+    line-height: simple();
+    color: color(gray2);
+    background-color: color(gray6);
+    border-radius: $border-radius $border-radius 0 0;
+  }
+
+  &__file {
+    display: inline-block;
+    padding: 0 quarter();
+    color: color(gray3);
+    cursor: pointer;
+
+    &--select {
+      font-weight: font-weight(bold);
+      color: color(gray1);
+      border-bottom: 2px solid color(gray1);
+    }
+  }
+}

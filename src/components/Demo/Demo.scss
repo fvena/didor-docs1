@@ -1,0 +1,93 @@
+.demo {
+  @include shadow(3);
+
+  margin: double() 0;
+  border: 1px solid color(gray6);
+  border-radius: $border-radius;
+
+  &--showCodeBlock {
+    .demo__header__action {
+      color: color(brand);
+    }
+  }
+
+  &__iframe {
+    width: 100%;
+  }
+
+  &__code {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid color(gray6);
+    transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+
+    &::v-deep {
+      pre {
+        padding-top: size(1.5);
+        padding-bottom: size(1.5);
+        margin-bottom: 0;
+        border-radius: 0 0 $border-radius $border-radius;
+      }
+
+      pre.hasFile {
+        padding-top: size(2.5) !important;
+
+        .line-numbers-rows {
+          margin-top: size(1) !important;
+        }
+      }
+    }
+  }
+
+  &__content {
+    display: none;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: simple();
+    padding: 0 half();
+    background-color: color(gray6);
+    border-radius: $border-radius $border-radius 0 0;
+
+    &__button {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin: 0 3px;
+      border-radius: 4px;
+
+      &--red {
+        background-color: color(danger);
+      }
+      &--yellow {
+        background-color: color(warning);
+      }
+      &--green {
+        background-color: color(success);
+      }
+    }
+
+    &__title {
+      font-size: font-size(small1);
+      color: color(gray3);
+    }
+
+    &__action {
+      font-size: font-size(small2);
+      font-weight: font-weight(bold);
+      text-transform: uppercase;
+      cursor: pointer;
+
+      @include hover {
+        color: color(brand);
+      }
+    }
+  }
+
+  .line-numbers .line-numbers-rows {
+    top: calc(0.8rem + #{simple()}) !important;
+  }
+}
