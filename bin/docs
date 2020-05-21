@@ -1,0 +1,56 @@
+#!/usr/bin/env node
+/* eslint no-console: 0 */
+
+const program = require('commander'); // Framework para desarrollar CLI
+const chalk = require('chalk'); // Colorea las salidas del terminal
+const clear = require('clear'); // Limpia el terminal
+const figlet = require('figlet'); // Crea un título ASCII
+const updateNotifier = require('update-notifier'); // Muestra mensaje si hay una versión nueva
+const pkg = require('../package.json'); // Obtiene el archivo package.json
+
+const renderDocs = require('../lib/didor-docs'); // Levanta un senvidor para mostrar la documentación
+
+/*
+ * Limpia el terminal
+ */
+clear();
+
+/*
+ * Muestra el saludo inicial
+ */
+console.log(chalk.rgb(40, 164, 189)(figlet.textSync('DIDOR', { horizontalLayout: 'full' })));
+console.log(chalk.rgb(40, 164, 189)(figlet.textSync('DOCS', { verticalLayout: 'full' })));
+console.log('\n\n');
+
+/*
+ * Configuración del CLI
+ */
+// prettier-ignore
+program
+  .version(pkg.version, '-v, --version')
+  .arguments('[configFile]')
+  .action(configFile => {
+    renderDocs(configFile);
+  });
+
+/*
+ * Menú de ayuda
+ */
+program.on('--help', () => {
+  console.log('');
+  console.log('  Ejemplos:');
+  console.log('');
+  console.log('    $ didor-docs');
+  console.log('    $ didor-docs /didor.config.js');
+  console.log('');
+});
+
+/*
+ * Incializa el CLI
+ */
+program.parse(process.argv);
+
+/*
+ * Muestra un mensaje indicando si hay una versión nueva
+ */
+updateNotifier({ pkg }).notify();

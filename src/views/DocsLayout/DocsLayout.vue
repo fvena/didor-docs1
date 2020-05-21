@@ -48,7 +48,6 @@ import AppSocialLinks from '@/components/AppSocialLinks';
 import AppArticle from '@/components/AppArticle';
 import AppFooter from '@/components/AppFooter';
 import { ObserveVisibility } from 'vue-observe-visibility';
-import DefaultConfig from '@/didor.config.js';
 import FileService from '@/services/file.service';
 import ParamsUtil from '@/utils/params.utils';
 import ArrayUtils from '@/utils/array.utils';
@@ -215,7 +214,7 @@ export default {
     /**
      * Obtengo la configuración del proyecto
      */
-    const config = { ...DefaultConfig, ...window.$didor };
+    const config = window.$didor;
 
     this.logo = config.logo;
     this.github = config.gitRepoLink;

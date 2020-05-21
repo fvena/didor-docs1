@@ -1,4 +1,4 @@
-module.exports = {
+window.$didor = {
   logo: '',
   title: 'Didor Docs',
   description: 'Opinionated boilerplate project for an enterprise Vue frontend',
@@ -6,12 +6,6 @@ module.exports = {
   sidebar: '_sidebar.md',
   defaultPath: '/home',
   gitRepoLink: '',
-  port: 3001,
-  open: false,
-  folders: ['/docs'],
-  lib: {
-    components: '',
-    styles: '',
-    shareStyles: '',
-  },
+  jsLib: [],
+  cssLib: [],
 };
