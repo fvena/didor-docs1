@@ -1,4 +1,4 @@
 .slide-down-enter-active,
 .slide-down-leave-active {
-  transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  transition: $transition;
 }
