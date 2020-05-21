@@ -1,17 +1,6 @@
 .docsLayout {
   height: 100vh;
 
-  &--header-hidden {
-    .docsLayout__header {
-      transform: translate3d(0, -100%, 0);
-    }
-
-    .docsLayout__main {
-      height: 100vh;
-      transform: translate3d(0, -#{$header-height}, 0);
-    }
-  }
-
   &--sidebar-hidden {
     .docsLayout__sidebar {
       display: none;
@@ -48,7 +37,7 @@
     width: 100%;
     height: 100%;
     overflow-y: scroll;
-    background: linear-gradient(to left top, color(gray6), color(gray7));
+    // background: linear-gradient(to left top, color(gray7), color('white'));
     transition: $transition;
   }
 
@@ -77,12 +66,6 @@
 
 @include media(portrait) {
   .docsLayout {
-    &--header-hidden {
-      .docsLayout__main {
-        transform: translate3d(0, -#{$header-height-media}, 0);
-      }
-    }
-
     &__header {
       height: $header-height-media;
     }
@@ -107,6 +90,21 @@
 
     &__device-menu {
       display: block;
+    }
+  }
+}
+
+@include media(palm) {
+  .docsLayout {
+    &--header-hidden {
+      .docsLayout__header {
+        transform: translate3d(0, -100%, 0);
+      }
+
+      .docsLayout__main {
+        height: 100vh;
+        transform: translate3d(0, -#{$header-height-media}, 0);
+      }
     }
   }
 }
