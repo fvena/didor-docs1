@@ -4,7 +4,7 @@
       .codegroup__file(
         v-for="(file, key) in files"
         :class="{'codegroup__file--select': key === index }"
-        @click="showFile(key + 1)")
+        @click="showFile(key)")
         | {{ file }}
     slot
 </template>
@@ -18,52 +18,40 @@ export default {
     };
   },
   methods: {
-    showFile(index) {
-      this.index = index - 1;
-      const codeBlocks = this.$el.children;
-      const array = [...codeBlocks];
-
-      // eslint-disable-next-line
-      array.forEach(codeBlock => {
-        if (codeBlock.className === 'codegroup__files') return;
-        codeBlock.style.display = 'none';
-      });
-
-      codeBlocks[index].style.display = 'block';
-    },
+    /**
+     * Obtengo todos los nombres de los archivos o idiomas
+     */
     getFiles() {
-      // eslint-disable-next-line
-      return new Promise(resolve => {
-        const codeBlocks = this.$el.children;
-        const array = [...codeBlocks];
+      const codeBlocks = this.$el.querySelectorAll('.appCode');
 
-        // eslint-disable-next-line
-        array.forEach(codeBlock => {
-          const blocks = codeBlock.children;
-          const arrayBlocks = [...blocks];
+      for (let index = 0; index < codeBlocks.length; index += 1) {
+        const filename = codeBlocks[index].querySelector('.appCode__filename');
+        if (filename) {
+          this.files.push(filename.textContent);
+        } else {
+          this.files.push(codeBlocks[index].dataset.lang);
+        }
+      }
+    },
 
-          // eslint-disable-next-line
-          arrayBlocks.forEach(blocksChildren => {
-            const blockChildren = blocksChildren.children;
-            const arrayChildren = [...blockChildren];
+    /**
+     * Muestro el archivo seleccionado
+     */
+    showFile(position) {
+      this.index = position;
+      const codeBlocks = this.$el.querySelectorAll('.appCode');
 
-            // eslint-disable-next-line
-            arrayChildren.forEach(item => {
-              if (item.className !== 'file') return;
-              this.files.push(item.innerHTML);
-            });
-          });
-        });
+      for (let index = 0; index < codeBlocks.length; index += 1) {
+        codeBlocks[index].style.display = 'none';
+      }
 
-        resolve(true);
-      });
+      codeBlocks[position].style.display = 'block';
     },
   },
+
   mounted() {
-    setTimeout(async () => {
-      await this.getFiles();
-      this.showFile(1);
-    }, 50);
+    this.getFiles();
+    this.showFile(0);
   },
 };
 </script>

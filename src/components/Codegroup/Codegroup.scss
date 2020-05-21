@@ -1,47 +1,42 @@
 .codegroup {
   position: relative;
 
-  .file {
-    display: none !important;
-  }
-
   &::v-deep {
-    pre[data-lang].hasFile {
-      padding-top: 1.2rem;
-      border-radius: 0;
+    .appCode {
+      border-radius: 0 0 $border-radius $border-radius;
 
-      &::after,
-      + .toolbar {
-        top: -1.5rem;
+      .appCode__filename {
+        display: none;
       }
+    }
 
-      .line-numbers-rows {
-        top: 1.2rem;
-      }
+    .CodeMirror {
+      padding-top: half() !important;
     }
   }
 
   &__files {
-    height: simple();
-    padding: 0 half();
-    font-family: font-family(base);
-    font-size: font-size(small2);
-    line-height: simple();
-    color: color(gray2);
-    background-color: color(gray6);
+    @include shadow(3);
+
+    padding-left: half();
+    background-color: color(gray7);
+    border-bottom: 1px solid $border-color;
     border-radius: $border-radius $border-radius 0 0;
   }
 
   &__file {
     display: inline-block;
+    height: size(1.5);
     padding: 0 quarter();
+    font-size: font-size(small1);
+    line-height: size(1.5);
     color: color(gray3);
     cursor: pointer;
 
     &--select {
       font-weight: font-weight(bold);
       color: color(gray1);
-      border-bottom: 2px solid color(gray1);
+      border-bottom: 1px solid color(gray1);
     }
   }
 }
