@@ -8,7 +8,7 @@
     padding: 0 simple() !important;
     margin-bottom: 0;
     font-size: $menu-font-size;
-    color: color(white) !important;
+    color: color('white') !important;
 
     &.router-link-active {
       background-color: rgba(0, 0, 0, 0.05);
@@ -74,7 +74,7 @@
     margin: 0 simple() quarter();
     font-size: font-size(small1);
     font-weight: font-weight(bold);
-    color: color(white);
+    color: color('white');
     text-transform: uppercase;
     // opacity: 0.7;
   }

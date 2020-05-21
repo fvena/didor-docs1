@@ -33,7 +33,7 @@
 
       .dropdown__icon {
         top: 0.8em;
-        stroke: color(white);
+        stroke: color('white');
       }
 
       .dropdown__item--separator {
@@ -52,7 +52,7 @@
         padding: 0 simple() !important;
         margin-bottom: 0;
         line-height: size(1.2);
-        color: color(white) !important;
+        color: color('white') !important;
 
         &.router-link-active {
           background-color: rgba(0, 0, 0, 0.05);
@@ -83,7 +83,7 @@
         svg {
           width: size(1.1) !important;
           height: size(1.1) !important;
-          fill: color(white);
+          fill: color('white');
         }
       }
     }
@@ -149,7 +149,7 @@
       width: 20px;
       height: 2px;
       margin: 4px 0;
-      background-color: color(white);
+      background-color: color('white');
       border-radius: 2px;
       transition: $transition;
 
