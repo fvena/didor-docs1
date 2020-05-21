@@ -6,16 +6,42 @@ Los bloques de código en Markdown están envueltos dentro de 3 comillas tipogr�
 
 Para que el código se resalte según su lenguaje, debes indicarlo tras las tres comillas. Los lenguajes definidos son:
 
-- `js` `javascript`
-- `bash` `sh` `shell`
+- `javascript`
+- `sh` `shell`
 - `json`
 - `pug`
 - `scss`
 - `markdown`
 - `markup` `html`
 
+```sh
+#!/bin/bash
+
+# clone the repository
+git clone http://github.com/garden/tree
+
+# generate HTTPS credentials
+cd tree
+openssl genrsa -aes256 -out https.key 1024
+openssl req -new -nodes -key https.key -out https.csr
+openssl x509 -req -days 365 -in https.csr -signkey https.key -out https.crt
+cp https.key{,.orig}
+openssl rsa -in https.key.orig -out https.key
+```
+
+```markdown
+# Título 1
+
+## Título 2
+
+Hola Mundo
+
+[didor](http://www.didor.io)
+```
+
+
 ````markdown
-```js
+```javascript
 const http = require('http');
 const bodyParser = require('body-parser');
 
@@ -29,7 +55,7 @@ http
 ```
 ````
 
-```js
+```javascript
 const http = require('http');
 const bodyParser = require('body-parser');
 
@@ -40,6 +66,22 @@ http
     });
   })
   .listen(3000);
+```
+
+```vue
+<template>
+  <az-button type="danger">Danger {{ random }}</az-button>
+</template>
+
+<script>
+  module.exports = {
+    computed: {
+      random() {
+        return Math.random()
+      }
+    }
+  }
+</script>
 ```
 
 ## Resaltar el código
@@ -115,7 +157,48 @@ http
 
 ## Grupos de código
 
-En ocasiones puede ser útil agrupar mediante pestañas varios archivos, para ello rodearemos las pestañas con la etiqueta `codegroup`. Es importante indicar siempre el nombre del fichero, sino, no aparecerá como pestaña.
+En ocasiones puede ser útil agrupar mediante pestañas varios archivos o códigos, para ello rodearemos las pestañas con la etiqueta `codegroup`
+
+````markdown
+::: codegroup
+
+```html
+<h1>Hola Mundo</h1>
+```
+
+```js
+console.log('Hola Mundo');
+```
+
+```css
+h1 {
+  color: red;
+}
+```
+
+:::
+````
+
+::: codegroup
+
+```html
+<h1>Hola Mundo</h1>
+```
+
+```js
+console.log('Hola Mundo');
+```
+
+```css
+h1 {
+  color: red;
+}
+```
+
+:::
+
+
+También pueden crearse pestañas con nombres de ficheros o resaltar código
 
 ````markdown
 ::: codegroup
@@ -152,5 +235,4 @@ h1 {
   color: red;
 }
 ```
-
 :::

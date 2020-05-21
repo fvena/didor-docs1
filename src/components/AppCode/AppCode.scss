@@ -1,0 +1,171 @@
+.appCode {
+  @include shadow(3);
+
+  position: relative;
+  margin-bottom: double();
+  overflow: hidden;
+  background: color(gray7);
+  border-radius: $border-radius;
+
+  @include hover {
+    .appCode__button {
+      opacity: 0.8;
+    }
+  }
+
+  &--hasFilename {
+    .appCode__button {
+      background-color: transparent;
+    }
+
+    &::v-deep .CodeMirror {
+      padding-top: 0 !important;
+    }
+  }
+
+  &__buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+  &__button {
+    display: inline-block;
+    min-width: size(1.5);
+    height: size(1.5);
+    line-height: size(1.5);
+    text-align: center;
+    cursor: pointer;
+    background-color: color(gray7);
+    border-radius: $border-radius;
+    opacity: 0;
+    transition: $transition;
+
+    @include hover {
+      color: color(brand);
+    }
+
+    svg {
+      vertical-align: middle;
+    }
+  }
+
+  &__filename {
+    display: flex;
+    align-items: center;
+    height: size(2);
+    padding-left: quarter();
+    font-size: font-size(small1);
+    font-weight: font-weight(bold);
+    background-color: color(gray7);
+
+    svg {
+      margin: 0 quarter();
+      color: color(gray3) !important;
+    }
+  }
+
+  &::v-deep .CodeMirror {
+    height: auto;
+    padding: half() 0;
+    font-family: 'Source Code Pro', Menlo, Monaco, Consolas, monospace !important;
+    font-size: 0.75rem !important;
+    line-height: 1.6em !important;
+    color: color(gray1) !important;
+    letter-spacing: 0.3px;
+    background-color: transparent;
+    word-spacing: 1px;
+
+    .cm-def,
+    .cm-header,
+    .cm-link {
+      color: #bb1642;
+    }
+
+    .cm-comment {
+      color: color(gray3);
+    }
+    .cm-keyword,
+    .cm-property,
+    .cm-builtin {
+      color: #1d75b3;
+    }
+    .cm-atom,
+    .cm-number {
+      color: #75438a;
+    }
+    .cm-node,
+    .cm-tag {
+      color: #9c3328;
+    }
+    .cm-string {
+      color: #b35e14;
+    }
+    .cm-variable,
+    .cm-qualifier,
+    .cm-attribute {
+      color: #047d65;
+    }
+
+    .cm-test-highlight {
+      left: double('-');
+      background-color: color(gray6);
+    }
+
+    .CodeMirror-matchingbracket {
+      color: #2e383c;
+      background-color: lightgrey;
+    }
+
+    /* Editor styling */
+
+    pre {
+      padding: 0 quarter();
+    }
+
+    span {
+      display: inline-block;
+    }
+
+    .CodeMirror-gutters {
+      background-color: transparent;
+      border: none;
+      border-right: 10px solid transparent;
+    }
+
+    .CodeMirror-linenumber {
+      color: color(gray4);
+    }
+
+    .CodeMirror-guttermarker {
+      color: #1d75b3;
+    }
+    .CodeMirror-guttermarker-subtle {
+      color: color(gray4);
+    }
+
+    .CodeMirror-cursor {
+      border-color: rgba(155, 157, 162, 0.8);
+    }
+
+    div.CodeMirror-lint-tooltip {
+      border: 2px solid #d7df8b;
+    }
+    .CodeMirror-lint-message-error {
+      font-weight: bold;
+    }
+
+    .CodeMirror-lint-message-error,
+    .CodeMirror-lint-message-warning {
+      margin: 5px;
+      font-family: font-family(monospace);
+      font-size: 0.8em;
+      line-height: 1.6em;
+    }
+
+    .cm-matchhighlight {
+      background-color: #ccefff;
+    }
+  }
+}

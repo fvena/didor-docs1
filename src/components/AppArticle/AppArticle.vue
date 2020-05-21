@@ -8,17 +8,21 @@
 <script>
 import VRuntimeTemplate from 'v-runtime-template';
 import Alarm from '@/components/Alarm';
+import AppCode from '@/components/AppCode';
+import AppDemo from '@/components/AppDemo';
 import Codegroup from '@/components/Codegroup';
 import Collapse from '@/components/Collapse';
-import Demo from '@/components/Demo';
+import LastModified from '@/components/LastModified';
 
 export default {
   components: {
     VRuntimeTemplate,
     Alarm,
+    AppCode,
+    AppDemo,
     Codegroup,
     Collapse,
-    Demo,
+    LastModified,
   },
   props: {
     data: {

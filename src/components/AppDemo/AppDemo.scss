@@ -1,0 +1,87 @@
+.appDemo {
+  margin-bottom: double();
+
+  &--editable {
+    .appDemo__demo {
+      border-radius: $border-radius $border-radius 0 0;
+    }
+  }
+
+  &--showEditor {
+    .appDemo__showEditor svg {
+      transform: rotate(180deg);
+    }
+
+    .appDemo__code {
+      max-height: 100vh;
+      opacity: 1;
+    }
+
+    &::v-deep {
+      .appCode__button {
+        background-color: transparent;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &::v-deep {
+    .appCode {
+      margin-bottom: 0;
+      border-radius: 0 0 $border-radius $border-radius;
+      box-shadow: none;
+    }
+
+    .CodeMirror {
+      padding-top: double() !important;
+    }
+  }
+
+  &__demo {
+    @include shadow(3);
+  }
+
+  &__iframe {
+    width: 100%;
+  }
+
+  &__editor {
+    @include shadow(3);
+
+    position: relative;
+    min-height: size(1.5);
+    border: 1px solid $border-color;
+    border-top: none;
+    border-radius: 0 0 $border-radius $border-radius;
+  }
+
+  &__showEditor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: size(1.5);
+    padding-left: half();
+    font-size: font-size(small1);
+    cursor: pointer;
+    background-color: color(gray7);
+    border-bottom: 1px solid $border-color;
+
+    svg {
+      margin-right: quarter();
+      color: color(gray3) !important;
+      transition: $transition;
+      transform: rotate(90deg);
+    }
+  }
+
+  &__code {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: $transition;
+  }
+}

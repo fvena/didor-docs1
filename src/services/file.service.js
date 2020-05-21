@@ -14,7 +14,7 @@ const FileService = {
       const response = await ApiService.get(path);
       return LinksUtils.getListLinks(response.data, section);
     } catch (error) {
-      console.log(error);
+      // console.log(error); // eslint-disable-line
       return [];
     }
   },
@@ -28,10 +28,23 @@ const FileService = {
   async getArticle(path) {
     try {
       const response = await ApiService.get(path);
-      const data = MarkdownUtils.renderMarkdown(response.data);
-      return data;
+      const article = await MarkdownUtils.renderMarkdown(response.data);
+
+      /**
+       * Añade en el árticulo la fecha de la última modficación
+       */
+      const titleIndex = article.render.indexOf('</h1>');
+      const lastModified = response.headers['last-modified'];
+      if (titleIndex && lastModified) {
+        const content = article.render;
+        const lastModifiedIndex = titleIndex + 5;
+        const lastModifiedComponent = `<lastModified date="${lastModified}" />`;
+        article.render = content.slice(0, lastModifiedIndex) + lastModifiedComponent + content.slice(lastModifiedIndex);
+      }
+
+      return article;
     } catch (error) {
-      console.log(error);
+      // console.log(error); // eslint-disable
       return {};
     }
   },

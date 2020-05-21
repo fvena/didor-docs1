@@ -4,6 +4,7 @@
 
 Puedes añadir una demo mediante el tag `demo`.
 
+
 ````markdown
 ```demo
 <template>
@@ -42,15 +43,27 @@ Puedes añadir una demo mediante el tag `demo`.
 Puedes añadir una demo mediante el tag `demo`.
 
 ````markdown
-```demoCode[./button.vue]
+```demoCode
 <template>
   <az-button type="danger">Danger Button</az-button>
 </template>
 ```
 ````
 
-```demoCode[./button.vue]
+```demoCode
 <template>
   <az-button type="danger">Danger Button</az-button>
 </template>
+```
+
+Puedes añadir una demo mediante el tag `demo`.
+
+````markdown
+```demoCode
+<az-button type="danger">Danger Button</az-button>
+```
+````
+
+```demoCode
+<az-button type="danger">Danger Button</az-button>
 ```
