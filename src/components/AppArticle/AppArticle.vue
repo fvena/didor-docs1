@@ -12,6 +12,7 @@ import AppCode from '@/components/AppCode';
 import AppDemo from '@/components/AppDemo';
 import Codegroup from '@/components/Codegroup';
 import Collapse from '@/components/Collapse';
+import FileTree from '@/components/FileTree';
 import LastModified from '@/components/LastModified';
 
 export default {
@@ -22,6 +23,7 @@ export default {
     AppDemo,
     Codegroup,
     Collapse,
+    FileTree,
     LastModified,
   },
   props: {

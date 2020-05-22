@@ -17,7 +17,7 @@ const md = require('markdown-it')({
   html: true,
   xhtmlOut: true,
   breaks: true,
-  linkify: true,
+  linkify: false,
   typographer: true,
   quotes: '“”‘’',
 });
@@ -92,6 +92,15 @@ md.use(MarkdownNotes, {
           return '<div>\n<Codegroup>\n';
         }
         return '</Codegroup>\n</div>\n';
+
+      // Tree
+      case 'tree':
+      case 'tree(open)':
+        if (openTag) {
+          const open = tag === 'tree(open)' ? 'open' : '';
+          return `<div>\n<FileTree ${open}>\n`;
+        }
+        return '</FileTree>\n</div>\n';
 
       // Default
       default:

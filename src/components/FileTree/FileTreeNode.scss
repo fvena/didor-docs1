@@ -1,0 +1,49 @@
+.fileTreeNode {
+  padding: 0.1rem 0 0.1rem 1rem;
+  margin-left: half();
+  border-left: 1px solid $border-color;
+
+  &__showFolder,
+  &__icon,
+  &__title,
+  &__description {
+    display: inline-block;
+  }
+
+  &__row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: font-size(small1);
+  }
+
+  &__showFolder {
+    position: absolute;
+    left: calc(-1.1rem - 5px);
+    width: 14px;
+    height: 14px;
+    padding: 1px;
+    line-height: 14px;
+    cursor: pointer;
+    background-color: color('white');
+  }
+
+  &__icon {
+    width: simple();
+    margin-right: quarter();
+  }
+
+  &__description {
+    flex: 1;
+    overflow: hidden;
+    color: color(gray3);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &::before {
+      display: inline-block;
+      margin: 0 quarter();
+      content: '-';
+    }
+  }
+}
