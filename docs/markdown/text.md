@@ -4,9 +4,8 @@
 
 Los siguientes snippet muestran como dar formato al texto en línea.
 
-::: customDemo
+```demoCode[markdown]
 
-```markdown
 **negrita**
 _cursiva_
 **negrita con _cursiva_**
@@ -15,12 +14,3 @@ _cursiva_
 ---
 
 ```
-
-**negrita**
-_cursiva_
-**negrita con _cursiva_**
-~~tachado~~
-
----
-
-:::

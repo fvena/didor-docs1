@@ -3,10 +3,10 @@ import SvgIcon from 'vue-svgicon';
 import App from './App.vue';
 import router from './router';
 import ApiService from './services/api.service';
-// import ClickOutside from './directives/ClickOutside.directive';
 
 import './design/main.scss';
 import './assets/icons/sprite';
+import './components';
 
 ApiService.init('/');
 
@@ -16,8 +16,6 @@ Vue.use(SvgIcon, {
   tagName: 'dd-icon',
   classPrefix: 'dd-',
 });
-
-// Vue.directive('click-outside', ClickOutside);
 
 new Vue({
   router,

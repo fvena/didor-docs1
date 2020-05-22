@@ -135,8 +135,10 @@ md.renderer.rules.fence = (tokens, idx) => {
   const isDemoCode = getLanguage && getLanguage[1] === 'demoCode';
 
   if (isDemo || isDemoCode) {
+    const getDemoLanguage = /\[(.+)\]/.exec(lang);
+    const language = getDemoLanguage ? getDemoLanguage[1] : 'vue';
     const isEditable = isDemoCode ? 'editable' : '';
-    return `<AppDemo code="${code}" jsLib="${config.jsLib}" cssLib="${config.cssLib}" ${isEditable}></AppDemo>`;
+    return `<AppDemo lang="${language}" code="${code}" jsLib="${config.jsLib}" cssLib="${config.cssLib}" ${isEditable}></AppDemo>`;
   }
 
   // Obtengo el lenguaje, las lineas a resaltar y el nombre del archivo si existen

@@ -5,6 +5,6 @@ Página de Inicio
 ## Pendiente
 
 - [ ] Revisar los colores finales.
+- [ ] Añadir estado del componente debajo del título [link](https://rangle.io/our-work/retailer-design-system/).
+- [ ] Los links en las tareas no se ven bien.
 - [ ] El componente Collapse utiliza una animación similar a la utilizada en el componente dropdown, reutilizar.
-- [ ] El componente Demo no se redimensiona bien cuando oculto el código por primera vez.
-- [ ] El componente Demo pierde el botón de copiar cuando oculto y muestro el código.

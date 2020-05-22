@@ -7,23 +7,15 @@
 
 <script>
 import VRuntimeTemplate from 'v-runtime-template';
-import Alarm from '@/components/Alarm';
 import AppCode from '@/components/AppCode';
 import AppDemo from '@/components/AppDemo';
-import Codegroup from '@/components/Codegroup';
-import Collapse from '@/components/Collapse';
-import FileTree from '@/components/FileTree';
 import LastModified from '@/components/LastModified';
 
 export default {
   components: {
     VRuntimeTemplate,
-    Alarm,
     AppCode,
     AppDemo,
-    Codegroup,
-    Collapse,
-    FileTree,
     LastModified,
   },
   props: {

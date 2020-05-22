@@ -2,7 +2,9 @@
   .appDemo(:class="{'appDemo--editable': editable, 'appDemo--showEditor': showEditor}")
     //- Demo
     Resize.appDemo__demo(v-if="demoContent" lockHeight)
-      iframe.appDemo__iframe(:src="demoContent" frameborder="0")
+      //- .appDemo__markdown(v-if="lang==='markdown'" v-html="demoContent")
+      v-runtime-template.appDemo__markdown(v-if="lang==='markdown'" :template="demoContent")
+      iframe.appDemo__iframe(v-else :src="demoContent" frameborder="0")
 
     //- Contenedor Editor
     .appDemo__editor(v-if="editable")
@@ -18,17 +20,20 @@
         AppCode(
           :code="code"
           @change="refreshDemo"
-          lang="vue"
+          :lang="lang"
           editable)
 </template>
 
 <script>
+import VRuntimeTemplate from 'v-runtime-template';
 import Resize from '@/components/Resize';
 import AppCode from '@/components/AppCode';
 import SlideDownTransition from '@/components/SlideDownTransition';
+import MarkdownUtils from '@/utils/markdown.utils';
 
 export default {
   components: {
+    VRuntimeTemplate,
     Resize,
     AppCode,
     SlideDownTransition,
@@ -38,6 +43,10 @@ export default {
     code: {
       type: String,
       default: '',
+    },
+    lang: {
+      type: String,
+      default: 'vue',
     },
     jsLib: {
       type: String,
@@ -79,6 +88,11 @@ export default {
       });
 
       return libs;
+    },
+
+    async getDemoMarkdown(content) {
+      const html = await MarkdownUtils.renderMarkdown(content);
+      return `<div>${html.render}</div>`;
     },
 
     getDemoContent(content) {
@@ -191,8 +205,12 @@ export default {
     refreshDemo(code) {
       clearTimeout(this.delay);
 
-      this.delay = setTimeout(() => {
-        this.demoContent = this.getDemoContent(code);
+      this.delay = setTimeout(async () => {
+        if (this.lang === 'markdown') {
+          this.demoContent = await this.getDemoMarkdown(code);
+        } else {
+          this.demoContent = this.getDemoContent(code);
+        }
       }, 1000);
     },
 
@@ -204,9 +222,14 @@ export default {
     },
   },
 
-  mounted() {
+  async mounted() {
     this.demoLibs = this.getDemoLibs();
-    this.demoContent = this.getDemoContent(this.text);
+
+    if (this.lang === 'markdown') {
+      this.demoContent = await this.getDemoMarkdown(this.text);
+    } else {
+      this.demoContent = this.getDemoContent(this.text);
+    }
   },
 };
 </script>

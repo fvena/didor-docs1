@@ -4,15 +4,10 @@
 
 Puedes embeber videos de Youtube mediante su url y la etiqueta [video]
 
-::: customDemo
+```demoCode[markdown]
+@[youtube](https://www.youtube.com/watch?v=OmjnzCYBXJ4)
 
-```markdown
-@[youtube](https://www.youtube.com/watch?v=vrK17taonVY)
-@[youtube](http://youtu.be/dQw4w9WgXcQ)
-@[vimeo](https://vimeo.com/19706846)
-@[vimeo](https://player.vimeo.com/video/19706846)
+@[youtube](https://youtu.be/U3_uxUSeZV4)
+
+@[vimeo](https://vimeo.com/205174711)
 ```
-
-@[youtube](https://www.youtube.com/watch?v=vrK17taonVY)
-
-:::
