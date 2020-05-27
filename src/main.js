@@ -15,6 +15,7 @@ Vue.config.productionTip = false;
 Vue.use(SvgIcon, {
   tagName: 'dd-icon',
   classPrefix: 'dd-',
+  isStroke: true,
 });
 
 new Vue({

@@ -1,0 +1,35 @@
+.dd--icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+  shape-rendering: geometricPrecision;
+}
+
+.dd--fill {
+  fill: currentColor;
+  stroke: none;
+}
+
+.dd--up {
+  /* default */
+  transform: rotate(0deg);
+}
+
+.dd--right {
+  transform: rotate(90deg);
+}
+
+.dd--down {
+  transform: rotate(180deg);
+}
+
+.dd--left {
+  transform: rotate(-90deg);
+}

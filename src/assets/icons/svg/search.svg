@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-    <title>search</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M23.438,20.734 L15.7,12.996 C16.519,11.69 17,10.152 17,8.5 C17,3.813 13.188,0 8.5,0 C3.812,0 0,3.813 0,8.5 C0,13.187 3.813,17 8.5,17 C10.151,17 11.688,16.519 12.994,15.702 L20.732,23.439 C21.089,23.795 21.581,24 22.086,24 C23.143,24 24,23.141 24,22.088 C24,21.584 23.794,21.091 23.438,20.734 Z M1,8.5 C1,4.364 4.365,1 8.5,1 C12.635,1 16,4.364 16,8.5 C16,12.636 12.636,16 8.5,16 C4.364,16 1,12.636 1,8.5 Z M22.086,23.001 C21.845,23.001 21.61,22.903 21.44,22.733 L13.824,15.117 C14.3,14.734 14.733,14.301 15.116,13.825 L22.732,21.44 C22.901,21.611 23,21.847 23,22.087 C23,22.591 22.589,23.001 22.086,23.001 Z" id="search" fill="#000000" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>

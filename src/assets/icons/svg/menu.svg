@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="19px" height="15px" viewBox="0 0 19 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
-    <title>menu</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M1.5,0 L17.5,0 C18.3284271,0 19,0.671572875 19,1.5 C19,2.32842712 18.3284271,3 17.5,3 L1.5,3 C0.671572875,3 0,2.32842712 0,1.5 C0,0.671572875 0.671572875,0 1.5,0 Z M1.5,6 L10.5,6 C11.3284271,6 12,6.67157288 12,7.5 C12,8.32842712 11.3284271,9 10.5,9 L1.5,9 C0.671572875,9 0,8.32842712 0,7.5 C0,6.67157288 0.671572875,6 1.5,6 Z M1.5,12 L14.5,12 C15.3284271,12 16,12.6715729 16,13.5 C16,14.3284271 15.3284271,15 14.5,15 L1.5,15 C0.671572875,15 0,14.3284271 0,13.5 C0,12.6715729 0.671572875,12 1.5,12 Z" id="menu" fill="#000000" fill-rule="nonzero"></path>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
