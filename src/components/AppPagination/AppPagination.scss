@@ -1,0 +1,100 @@
+.appPagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: triple();
+  border-top: 1px solid color(border);
+
+  &--noPrev {
+    justify-content: flex-end;
+  }
+
+  &--noNext {
+    justify-content: flex-start;
+  }
+
+  /*
+   * Pagination Item
+   */
+  &__item {
+    /*
+     * Botón siguiente
+     */
+    &--next {
+      text-align: right;
+
+      svg {
+        left: 0;
+        margin-left: quarter();
+      }
+
+      @include hover {
+        text-decoration: none;
+        opacity: 1;
+
+        svg {
+          left: quarter();
+        }
+      }
+    }
+
+    /*
+     * Botón previo
+     */
+    &--previous {
+      opacity: 0.3;
+      transition: $transition;
+
+      svg {
+        right: 0;
+        margin-right: quarter();
+      }
+
+      @include hover {
+        text-decoration: none;
+        opacity: 1;
+
+        svg {
+          right: quarter();
+        }
+      }
+    }
+  }
+
+  /*
+   * Pagination Label
+   */
+  &__label {
+    margin-bottom: -0.2rem;
+    font-size: font-size(small1);
+    color: color(gray4);
+    opacity: 1;
+
+    > * {
+      line-height: 1;
+      vertical-align: middle;
+    }
+
+    svg {
+      position: relative;
+      width: auto;
+      height: 0.8em;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1px;
+      transition: $transition;
+    }
+  }
+
+  /*
+   * Pagination Title
+   */
+  &__title {
+    font-family: font-family(heading);
+    font-size: font-size(h3);
+    font-weight: font-weight(bold);
+    color: color(gray2);
+    opacity: 1;
+  }
+}

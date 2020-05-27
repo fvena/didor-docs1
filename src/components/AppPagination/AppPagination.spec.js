@@ -1,7 +1,7 @@
 // import { shallowMount, RouterLinkStub } from '@vue/test-utils';
-// import AppFooter from './AppFooter.vue';
+// import AppPagination from './AppPagination.vue';
 
-describe('AppFooter', () => {
+describe('AppPagination', () => {
   test('Prueba', () => {
     expect(true).toBe(true);
   });
