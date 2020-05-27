@@ -1,0 +1,41 @@
+.scrollTrackingNode {
+  position: relative;
+  padding-left: half();
+  margin-left: 0.1rem;
+  // border-left: 1px solid $border-color;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    content: '';
+    background-color: $border-color;
+  }
+
+  &__link {
+    display: block;
+    overflow: hidden;
+    font-size: font-size(small1);
+    line-height: 1.4rem;
+    color: color(gray2);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &--active {
+      color: color(brand);
+    }
+
+    @include hover {
+      color: color(gray1);
+      text-decoration: none;
+    }
+  }
+
+  &:last-child {
+    &::before {
+      height: calc(#{line-height(small1)} / 2);
+    }
+  }
+}

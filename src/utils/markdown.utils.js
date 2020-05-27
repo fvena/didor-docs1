@@ -2,9 +2,13 @@ import MarkdownToc from 'markdown-it-toc-and-anchor';
 import MarkdownFrontMatter from 'markdown-it-front-matter';
 import MarkdownEmoji from 'markdown-it-emoji';
 import MarkdownCheckbox from 'markdown-it-task-lists';
-import MarkdownVideo from 'markdown-it-video';
+import MarkdownVideo from 'markdown-it-block-embed';
 import MarkdownNotes from 'markdown-it-div';
+import MarkdownFigures from 'markdown-it-implicit-figures';
+import MarkdownExternalLinks from 'markdown-it-external-links';
+import markdownItRegex from 'markdown-it-regex';
 import yaml from 'js-yaml';
+import LinksUtils from './links.utils';
 
 let data = {};
 const tags = [];
@@ -30,7 +34,11 @@ md.use(MarkdownToc, {
   tocClassName: 'markdownToc',
   tocFirstLevel: 2,
   tocLastLevel: 2,
-  anchorLink: false,
+  anchorLink: true,
+  anchorLinkSpace: false,
+  wrapHeadingTextInAnchor: true,
+  anchorClassName: 'anchor-link',
+  slugify: string => LinksUtils.slugify(string),
 });
 
 /**
@@ -42,7 +50,18 @@ md.use(MarkdownFrontMatter, frontMatter => {
 });
 
 /**
- * Plugin Emoki
+ * Iconos
+ */
+md.use(markdownItRegex, {
+  name: 'icons',
+  regex: /:([a-zA-Z-]+):/,
+  replace: match => {
+    return `<dd-icon name="${match}" scale="0.8"></dd-icon>`;
+  },
+});
+
+/**
+ * Plugin Emoji
  */
 md.use(MarkdownEmoji);
 
@@ -50,6 +69,23 @@ md.use(MarkdownEmoji);
  * Plugin Video
  */
 md.use(MarkdownVideo);
+
+/**
+ * Plugin Figures
+ */
+md.use(MarkdownFigures, {
+  figcaption: true,
+});
+
+/**
+ * Plugin Links externos
+ */
+md.use(MarkdownExternalLinks, {
+  externalClassName: 'link link--external',
+  internalClassName: 'link link--internal',
+  externalTarget: '_blank',
+  internalTarget: '_self',
+});
 
 /**
  * Plugin Notes
@@ -63,11 +99,19 @@ md.use(MarkdownNotes, {
     const collapse = tag.match(/^collapse title="(.*)"$/);
     if (collapse) tag = 'collapse';
 
+    // Check is tab tag
+    const tab = tag.match(/^tab \((.*)\)$/);
+    if (tab) tag = 'tab';
+
     if (tag) {
       tags.push(tag);
     } else {
       tag = tags.pop();
     }
+
+    // Check is embed tag
+    const embed = tag.match(/^embed \((.*)\)$/);
+    if (embed) tag = 'embed';
 
     switch (tag) {
       // Alarms
@@ -102,6 +146,27 @@ md.use(MarkdownNotes, {
         }
         return '</FileTree>\n</div>\n';
 
+      // Tags
+      case 'tabs':
+        if (openTag) {
+          return '<div>\n<Tabs>\n';
+        }
+        return '</Tabs>\n</div>\n';
+
+      // Tab
+      case 'tab':
+        if (openTag && tab) {
+          return `<div>\n<Tab title="${tab[1]}">\n`;
+        }
+        return '</Tab>\n</div>\n';
+
+      // Collapse
+      case 'embed':
+        if (openTag && embed) {
+          return `<div>\n<Embed link="${embed[1]}">\n`;
+        }
+        return '</Embed>\n</div>\n';
+
       // Default
       default:
         if (openTag) {
@@ -118,6 +183,66 @@ md.use(MarkdownNotes, {
 md.use(MarkdownCheckbox, { label: true, labelAfter: true });
 
 /**
+ * KBD
+ */
+const MARKER_OPEN = '[';
+const MARKER_CLOSE = ']';
+const TAG = 'DDKBD';
+
+const kbdComponent = state => {
+  const start = state.pos;
+  const max = state.posMax;
+  let momChar = state.src.charAt(start);
+  let nextChar = state.src.charAt(start + 1);
+
+  // we're looking for two times the open symbol.
+  if (momChar !== MARKER_OPEN || nextChar !== MARKER_OPEN) {
+    return false;
+  }
+
+  // find the end sequence
+  let end = -1;
+  nextChar = state.src.charAt(start + 2);
+  for (let i = start + 2; i < max && end === -1; i += 1) {
+    momChar = nextChar;
+    nextChar = state.src.charAt(i + 1);
+    if (momChar === MARKER_CLOSE && nextChar === MARKER_CLOSE) {
+      // found the end!
+      end = i;
+    }
+    if (momChar === MARKER_OPEN) {
+      // found another opening sequence before the end. Thus, ignore ours!
+      return false;
+    }
+    if (momChar === '\n') {
+      // found end of line before the end sequence. Thus, ignore our start sequence!
+      return false;
+    }
+  }
+
+  // input ended before closing sequence
+  if (end === -1) {
+    return false;
+  }
+
+  // start tag
+  state.push('kbd_open', TAG, 1);
+
+  // parse inner
+  state.pos += 2;
+  state.posMax = end;
+  state.md.inline.tokenize(state);
+  state.pos = end + 2;
+  state.posMax = max;
+
+  // end tag
+  state.push('kbd_close', TAG, -1);
+  return true;
+};
+
+md.inline.ruler.before('link', 'kbd', kbdComponent);
+
+/**
  * Reescribo el renderizado del código para que se muestre como un componente
  */
 md.renderer.rules.fence = (tokens, idx) => {
@@ -131,14 +256,15 @@ md.renderer.rules.fence = (tokens, idx) => {
   const code = encodeURI(md.utils.escapeHtml(token.content));
 
   // Compruebo si es una demo,
-  const isDemo = getLanguage && getLanguage[1] === 'demo';
-  const isDemoCode = getLanguage && getLanguage[1] === 'demoCode';
+  const isDemo = getLanguage && getLanguage[1].includes('demo');
+  const isDemoCode = getLanguage && getLanguage[1].includes('demoCode');
 
   if (isDemo || isDemoCode) {
     const getDemoLanguage = /\[(.+)\]/.exec(lang);
     const language = getDemoLanguage ? getDemoLanguage[1] : 'vue';
     const isEditable = isDemoCode ? 'editable' : '';
-    return `<AppDemo lang="${language}" code="${code}" jsLib="${config.jsLib}" cssLib="${config.cssLib}" ${isEditable}></AppDemo>`;
+    const isOpen = isDemoCode && info.includes('open') ? 'open' : '';
+    return `<AppDemo lang="${language}" code="${code}" jsLib="${config.jsLib}" cssLib="${config.cssLib}" ${isEditable} ${isOpen}></AppDemo>`;
   }
 
   // Obtengo el lenguaje, las lineas a resaltar y el nombre del archivo si existen

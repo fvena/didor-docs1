@@ -1,0 +1,35 @@
+.embedContent {
+  margin: double() 0;
+
+  &__block {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    padding-top: 56.2%;
+  }
+
+  &__link {
+    display: block;
+    margin-top: quarter();
+    font-size: font-size(small1);
+    font-style: italic;
+    color: color(gray3);
+    text-align: center;
+  }
+
+  &::v-deep {
+    .resize {
+      margin: 0;
+    }
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+}

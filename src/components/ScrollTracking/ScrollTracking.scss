@@ -1,0 +1,20 @@
+.scrollTracking {
+  position: absolute;
+  top: quadruple();
+  right: simple();
+  max-width: 10rem;
+
+  &__title {
+    overflow: hidden;
+    font-size: font-size(small1);
+    font-weight: font-weight(bold);
+    color: color(gray1);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include hover {
+      color: color(gray1);
+      text-decoration: none;
+    }
+  }
+}

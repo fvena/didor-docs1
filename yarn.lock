@@ -8098,6 +8098,11 @@ markdown-escapes@^1.0.0:
   resolved "https://registry.yarnpkg.com/markdown-escapes/-/markdown-escapes-1.0.4.tgz#c95415ef451499d7602b91095f3c8e8975f78535"
   integrity sha512-8z4efJYk43E0upd0NbVXwgSTQs6cT3T06etieCMEg7dRbzCbxUCK/GHlX8mhHRDcp+OLlHkPKsvqQTCvsRl2cg==
 
+markdown-it-block-embed@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/markdown-it-block-embed/-/markdown-it-block-embed-0.0.3.tgz#5eb08253f35c37b34c07eec2b9e275ee85eea906"
+  integrity sha1-XrCCU/NcN7NMB+7CueJ17oXuqQY=
+
 markdown-it-div@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/markdown-it-div/-/markdown-it-div-1.1.0.tgz#779c07a2313a36e59afd54c39907f9bc87c1ab20"
@@ -8108,10 +8113,25 @@ markdown-it-emoji@^1.4.0:
   resolved "https://registry.yarnpkg.com/markdown-it-emoji/-/markdown-it-emoji-1.4.0.tgz#9bee0e9a990a963ba96df6980c4fddb05dfb4dcc"
   integrity sha1-m+4OmpkKljupbfaYDE/dsF37Tcw=
 
+markdown-it-external-links@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/markdown-it-external-links/-/markdown-it-external-links-0.0.6.tgz#9503258fce4c81010ea15fe71769d63a1346d801"
+  integrity sha1-lQMlj85MgQEOoV/nF2nWOhNG2AE=
+
 markdown-it-front-matter@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/markdown-it-front-matter/-/markdown-it-front-matter-0.2.1.tgz#dca49a827bb3cebb0528452c1d87dff276eb28dc"
   integrity sha512-ydUIqlKfDscRpRUTRcA3maeeUKn3Cl5EaKZSA+I/f0KOGCBurW7e+bbz59sxqkC3FA9Q2S2+t4mpkH9T0BCM6A==
+
+markdown-it-implicit-figures@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-implicit-figures/-/markdown-it-implicit-figures-0.10.0.tgz#0e75e80b846da1e3117a3fc6d6b013d0cc3f2a8c"
+  integrity sha512-1TWr6+apyoJvRa4Z7eIolZdeajZCRBcc1ckVXon7XwdL8MfydIWsHnZOS5zRrpUNX5b0/O9giWcmuItSkleK5A==
+
+markdown-it-regex@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/markdown-it-regex/-/markdown-it-regex-0.2.0.tgz#e09ad2d75209720d591d3949e1142c75c0fbecf6"
+  integrity sha512-111UnMGJSt37gy+DlgcpQNwEfS2jvscOFSztzGhuXUHk7K1J5eAEj6C3jifmKb0cWtTuxdpHgIt4PyGQ+DtDjw==
 
 markdown-it-task-lists@^2.1.1:
   version "2.1.1"
@@ -8125,11 +8145,6 @@ markdown-it-toc-and-anchor@^4.2.0:
   dependencies:
     clone "^2.1.0"
     uslug "^1.0.4"
-
-markdown-it-video@^0.6.3:
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/markdown-it-video/-/markdown-it-video-0.6.3.tgz#ee96a8fce4a262872f8aaf9706c31540d40104c2"
-  integrity sha512-T4th1kwy0OcvyWSN4u3rqPGxvbDclpucnVSSaH3ZacbGsAts964dxokx9s/I3GYsrDCJs4ogtEeEeVP18DQj0Q==
 
 markdown-it@^10.0.0:
   version "10.0.0"

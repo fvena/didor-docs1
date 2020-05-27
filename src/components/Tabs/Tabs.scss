@@ -1,0 +1,28 @@
+.tabs {
+  position: relative;
+  margin: double() 0;
+
+  &__titles {
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__title {
+    display: inline-block;
+    height: size(1.5);
+    padding: 0 quarter();
+    font-size: font-size(small1);
+    line-height: size(1.5);
+    color: color(gray3);
+    cursor: pointer;
+
+    &--select {
+      font-weight: font-weight(bold);
+      color: color(gray1);
+      border-bottom: 1px solid color(gray1);
+    }
+  }
+
+  &__content {
+    margin-top: half();
+  }
+}
