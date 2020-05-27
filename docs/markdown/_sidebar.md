@@ -1,18 +1,27 @@
-- [Cheatsheet](/markdown/cheatsheet.md)
+- [Introducción](/markdown/intro.md)
+- [Chuleta](/markdown/cheatsheet.md)
+- [Extensiones VSCode](/markdown/plugins.md)
 
-- [Markdown Style Guide]
+- [Guía básica Markdown]
 
   - [Texto](/markdown/text.md)
-  - [Blockquotes](/markdown/blockquotes.md)
-  - [Cabeceras](/markdown/headings.md)
+  - [Citas](/markdown/blockquotes.md)
   - [Listas](/markdown/list.md)
-  - [Tablas](/markdown/tables.md)
-  - [Código](/markdown/codeblocks.md)
-  - [Alertas](/markdown/alerts.md)
-  - [Tareas](/markdown/task.md)
-  - [Desplegables](/markdown/collapse.md)
-  - [Emojis](/markdown/emoji.md)
+  - [Enlaces](/markdown/links.md)
+  - [Imágenes](/markdown/images.md)
   - [Videos](/markdown/videos.md)
-  - [Tabla de Contenidos](/markdown/toc.md)
+  - [Tablas](/markdown/tables.md)
+  - [Lista de tareas](/markdown/task.md)
+  - [Emojis](/markdown/emoji.md)
+  - [Keyboard Input](/markdown/kbd.md)
+
+- [Componentes]
+  - [Código](/markdown/codeblocks.md)
   - [Demo](/markdown/demo.md)
+  - [Iconos](/markdown/icon.md)
+  - [Embed](/markdown/embed.md)
+  - [Pestañas](/markdown/tabs.md)
+  - [Alertas](/markdown/alerts.md)
+  - [Desplegables](/markdown/collapse.md)
+  - [Tabla de Contenidos](/markdown/toc.md)
   - [Árbol de Archivos](/markdown/fileTree.md)

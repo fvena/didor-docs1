@@ -1,8 +1,8 @@
-# Tareas
+# Listado de tareas
 
-Puedes añadir listas de tareas mediante [].
+Las listas de tareas te permiten crear un listado de elementos con una casilla de verificación. Para crear una lista de tareas, crea una lista no ordenada y comienza escribiendo dos corchetes con un espacio en blanco `[ ]` si es una tarea pendiente, o con una x `[x]` si es completada.
 
 ```demoCode[markdown]
-- [x] this is a complete item
-- [ ] this is an incomplete item
+- [x] Esta tarea está completada
+- [ ] Esta tarea está pendiente
 ```

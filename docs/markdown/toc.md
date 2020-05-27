@@ -1,5 +1,3 @@
-<!-- markdownlint-disable MD031-->
-
 # Tabla de contenidos
 
 Añade una tabla de contenidos. Se genera de forma automática con las cabeceras de segundo nivel `h2` `## Título`.

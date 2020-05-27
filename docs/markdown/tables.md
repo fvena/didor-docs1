@@ -1,10 +1,34 @@
 # Tablas
 
-Puedes crear tablas separando el contenido de cada columna mediante el caracter `|`. Utiliza guiones `-` después de la cabecera para separar los títulos del contendio.
+## Uso básico
+
+Puedes crear tablas utiliza el carácter [[|]] para separar cada columna y tres o más guiones [[---]] para separar la cabecera del resto de filas.
+
 
 ```demoCode[markdown]
-| First Header            | Second Header           |
-| ----------------------- | ----------------------- |
-| Content from cell 1     | Content from cell 2     |
-| Content from 1st column | Content from 2nd column |
+| Cabecera 1 | Cabecera 2 |
+| --- | ----------- |
+| Celda 1-1 | Celda 1-2 |
+| Celda 2-1 | Celda 2-2 |
+
 ```
+
+
+## Alineación
+
+Puedes alinear el texto de una columna añadiendo dos puntos a la izquierda, derecha o ambos lados de los tres guiones que separan la cabecera.
+
+
+```demoCode[markdown]
+| Cabecera 1 | Cabecera 2 | Cabecera 3 |
+| :---       | :---:      | ---:       |
+| Celda 1-1  | Celda 1-2  | Celda 1-3  |
+| Celda 2-1  | Celda 2-2  | Celda 2-3  |
+
+```
+
+## Generador de tablas
+
+Si bien markdown es muy potente para escribir de forma rápida, el tema de las tablas no es su fuerte, por eso te recomiendo que utilices un [generador](https://www.tablesgenerator.com/markdown_tables) que te ayude a escribir las tablas de forma más fácil.
+
+[![Generador Markdown](/images/markdownTableGenerator.png)](https://www.tablesgenerator.com/markdown_tables)

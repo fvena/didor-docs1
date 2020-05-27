@@ -1,5 +1,3 @@
-<!-- markdownlint-disable MD031-->
-
 # Árbol de Archivos
 
 Los siguientes snippet muestran como dar formato al texto en línea.
@@ -21,7 +19,6 @@ Los siguientes snippet muestran como dar formato al texto en línea.
 - .gitignore (texto informativo)
 
 :::
-
 
 ```markdown
 ::: tree
@@ -60,7 +57,6 @@ Los siguientes snippet muestran como dar formato al texto en línea.
 - .gitignore (texto informativo)
 
 :::
-
 
 ```markdown
 ::: tree(open)

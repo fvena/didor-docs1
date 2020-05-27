@@ -1,10 +1,7 @@
-<!-- markdownlint-disable MD031 MD033-->
-
 # Demo
 
 Puedes añadir una demo mediante el tag `demo`.
 
-
 ````markdown
 ```demo
 <template>
@@ -39,7 +36,6 @@ Puedes añadir una demo mediante el tag `demo`.
 </script>
 ```
 
-
 Puedes añadir una demo mediante el tag `demo`.
 
 ````markdown
@@ -56,14 +52,14 @@ Puedes añadir una demo mediante el tag `demo`.
 </template>
 ```
 
-Puedes añadir una demo mediante el tag `demo`.
+Solo html sin la etiqueta template y abierto por defecto
 
 ````markdown
-```demoCode
+```demoCode(open)
 <az-button type="danger">Danger Button</az-button>
 ```
 ````
 
-```demoCode
+```demoCode(open)
 <az-button type="danger">Danger Button</az-button>
 ```

@@ -1,5 +1,3 @@
-<!-- markdownlint-disable MD031-->
-
 # Alertas
 
 Las alertas ayudan a agregar diferentes tipos de notificaciones para llamar la atención del usuario. Actualmente se soportan trucos, notas y advertencias.

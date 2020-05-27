@@ -39,7 +39,6 @@ Hola Mundo
 [didor](http://www.didor.io)
 ```
 
-
 ````markdown
 ```javascript
 const http = require('http');
@@ -125,7 +124,7 @@ http
 
 También podemos añadir el nombre del fichero entre corchetes. Es un parámetro optativo, y se puede utilizar junto con el de resaltar la linea, pero el orden siempre debe ser `lenguaje` + `{lineas}` + `[fichero]`.
 
-- `[filename.js]` - Muestra una barra superios con el nombre del archivo
+- `[filename.js]` - Muestra una barra superior con el nombre del archivo
 
 ````markdown
 ```js[server.js]
@@ -197,8 +196,7 @@ h1 {
 
 :::
 
-
-También pueden crearse pestañas con nombres de ficheros o resaltar código
+También pueden crearse pestañas con nombres de ficheros o resaltar código.
 
 ````markdown
 ::: codegroup
@@ -235,4 +233,5 @@ h1 {
   color: red;
 }
 ```
+
 :::

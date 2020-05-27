@@ -1,8 +1,8 @@
-# Cheatsheet
+# Chuleta
 
 Referencia rápida de la sintaxis de Markdown.
 
-## Sintaxis basica
+## Sintaxis básica
 
 ::: table-cheatsheet
 | Elemento          | Markdown                                         |
@@ -32,6 +32,6 @@ Referencia rápida de la sintaxis de Markdown.
 | Tablas            | \| Syntax      \| Description \|<br>\| ----------- \| ----------- \|<br>\| Header      \| Title       \|<br>\| Paragraph   \| Text        \|<br> |
 | Bloque de código  | \`\`\`<br>{<br>  "firstName": "John",<br>  "lastName": "Smith",<br>  "age": 25<br>}<br>\`\`\` |
 | Tareas            | \- \[x\] this is a complete item<br>\- \[ \] this is an incomplete item |
-| Alertas           | \:\:\: tip<br>Lorem ipsum ...<br>\:\:\:<br><br>\:\:\: note<br>Lorem ipsum ...<br>\:\:\:<br><br>\:\:\: warn<br>Lorem inpsum ...<br>\:\:\:<br> |
+| Alertas           | \:\:\: tip<br>Lorem ipsum ...<br>\:\:\:<br><br>\:\:\: note<br>Lorem ipsum ...<br>\:\:\:<br><br>\:\:\: warn<br>Lorem ipsum ...<br>\:\:\:<br> |
 | Desplegables      | \:\:\: collapse title="Contact Us"<br>Lorem Ipsum ...<br>\:\:\: |
 :::

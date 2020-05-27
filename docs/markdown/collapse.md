@@ -1,8 +1,6 @@
-<!-- markdownlint-disable MD031-->
+# Ocultar contenido
 
-# Collapse
-
-Puedes añadir contenido colalpasable utilizando la etiqueta [collapse]. También puedes añadir otras etiquetas dentro.
+Puedes ocultar contenido utilizando la etiqueta [collapse]. También puedes añadir otras etiquetas dentro.
 
 ```demoCode[markdown]
 
