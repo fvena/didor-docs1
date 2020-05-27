@@ -1,7 +1,7 @@
 <template lang="pug">
 .search
   .search__icon
-    dd-icon(name="search" scale="0.8")
+    dd-icon(name="search" scale="0.7")
   input.search__input(type="text" placeholder="Buscador")
 
 </template>
@@ -19,7 +19,7 @@ export default {};
     cursor: pointer;
 
     svg {
-      fill: color(gray5);
+      stroke: color(gray5);
     }
   }
 
@@ -38,7 +38,7 @@ export default {};
     }
 
     svg {
-      fill: color(gray4);
+      stroke: color(gray4);
     }
   }
 }

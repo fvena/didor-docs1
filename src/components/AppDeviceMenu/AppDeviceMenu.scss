@@ -29,6 +29,10 @@
         font-family: font-family(heading);
         font-size: font-size(h3);
         line-height: size(2);
+
+        @include hover {
+          text-decoration: none !important;
+        }
       }
 
       .dropdown__icon {
@@ -81,9 +85,7 @@
 
       &__item {
         svg {
-          width: size(1.1) !important;
-          height: size(1.1) !important;
-          fill: color('white');
+          stroke: color('white');
         }
       }
     }

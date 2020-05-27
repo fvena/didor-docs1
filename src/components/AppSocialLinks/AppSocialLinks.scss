@@ -5,17 +5,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: double();
+    min-width: size(1.6);
     height: 100%;
     cursor: pointer;
 
     svg {
-      fill: color(gray2);
+      stroke: color(gray2);
     }
 
     @include hover {
       svg {
-        fill: color(brand);
+        stroke: color(brand);
       }
     }
   }

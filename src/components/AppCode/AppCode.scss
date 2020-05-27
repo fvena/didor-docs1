@@ -2,7 +2,7 @@
   @include shadow(3);
 
   position: relative;
-  margin-bottom: double();
+  margin: double() 0;
   overflow: hidden;
   background: color(gray7);
   border-radius: $border-radius;
@@ -26,7 +26,7 @@
   &__buttons {
     position: absolute;
     top: 0;
-    right: 0;
+    right: quarter();
     z-index: 10;
   }
 
@@ -62,7 +62,7 @@
 
     svg {
       margin: 0 quarter();
-      color: color(gray3) !important;
+      stroke: color(gray3);
     }
   }
 

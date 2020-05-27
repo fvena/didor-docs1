@@ -1,40 +1,47 @@
 .sidebar {
-  padding-top: double();
+  &__wrapper {
+    height: calc(100vh - #{$header-height});
+    padding-top: double();
+    overflow-y: scroll;
+  }
+  &__list {
+    a,
+    &::v-deep .menu {
+      position: relative;
+      display: block;
+      padding: 0 simple() !important;
+      margin-bottom: 0;
+      font-size: $menu-font-size;
+      color: color(gray2) !important;
 
-  a,
-  &::v-deep .menu {
-    position: relative;
-    display: block;
-    padding: 0 simple() !important;
-    margin-bottom: 0;
-    font-size: $menu-font-size;
-    color: color('white') !important;
+      @include hover {
+        color: color(gray1) !important;
+        text-decoration: none;
+      }
 
-    &.router-link-active {
-      background-color: rgba(0, 0, 0, 0.05);
-      box-shadow: inset 3px 0 0 #f7a736, inset 6px 0 0 rgba(0, 0, 0, 0.1);
+      &.router-link-active {
+        // font-weight: font-weight(bold);
+        color: color(brand) !important;
 
-      &::before {
-        position: absolute;
-        top: calc(50% - 6px);
-        right: -1px;
-        display: block;
-        width: 0;
-        height: 0;
-        content: '';
-        border-top: 6px solid transparent;
-        border-right: 6px solid color(gray6);
-        border-bottom: 6px solid transparent;
+        &::before {
+          position: absolute;
+          top: calc(50% - 6px);
+          right: -1px;
+          display: block;
+          width: 0;
+          height: 0;
+          content: '';
+          border-top: 6px solid transparent;
+          border-right: 6px solid color(white);
+          border-bottom: 6px solid transparent;
+        }
+
+        @include hover {
+          color: color(brand) !important;
+        }
       }
     }
-  }
 
-  &__navbar {
-    padding: double() 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  }
-
-  &__list {
     &--level1 {
       > .sidebar__item > a {
         line-height: 1.8em;
@@ -64,6 +71,11 @@
     }
   }
 
+  &__navbar {
+    padding: double() 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
   &__item {
     margin: 0;
     list-style: none;
@@ -74,28 +86,7 @@
     margin: 0 simple() quarter();
     font-size: font-size(small1);
     font-weight: font-weight(bold);
-    color: color('white');
+    color: color(gray1);
     text-transform: uppercase;
-    // opacity: 0.7;
   }
-
-  // &__nav {
-  //   &::v-deep .menu {
-  //     .menu__item {
-  //       > a.router-link-active {
-  //         color: color(brand);
-
-  //         &::before {
-  //           position: absolute;
-  //           top: 0;
-  //           display: block;
-  //           width: 100%;
-  //           height: 3px;
-  //           content: '';
-  //           background-color: color(brand);
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 }

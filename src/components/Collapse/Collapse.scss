@@ -4,7 +4,7 @@
 
 .collapse--open {
   .collapse__icon {
-    transform: rotate(180deg);
+    transform: rotate(0deg);
   }
 }
 
@@ -14,6 +14,7 @@
   height: simple();
   padding-right: simple();
   overflow: hidden;
+  font-weight: font-weight(bold);
   line-height: simple();
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -26,21 +27,24 @@
   top: 11px;
   right: quarter();
   fill: none;
-  stroke: color(brand);
+  stroke: color(gray3);
   stroke-width: 2;
   transition: all 0.4s ease-in-out;
-  transform: rotate(0deg);
+  transform: rotate(90deg);
 }
 
 .collapse__body {
   overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  background-color: color(gray7);
+  border-bottom: 1px solid color(border);
+  border-radius: 0 0 $border-radius $border-radius;
 }
 
 .collapse__content {
-  padding-top: half();
+  padding: 0 simple();
+  margin: double() 0;
 
-  p:last-child {
+  > *:last-child {
     margin-bottom: 0;
   }
 }

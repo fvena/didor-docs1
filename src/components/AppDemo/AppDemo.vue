@@ -28,7 +28,6 @@
 import VRuntimeTemplate from 'v-runtime-template';
 import Resize from '@/components/Resize';
 import AppCode from '@/components/AppCode';
-import SlideDownTransition from '@/components/SlideDownTransition';
 import MarkdownUtils from '@/utils/markdown.utils';
 
 export default {
@@ -36,7 +35,6 @@ export default {
     VRuntimeTemplate,
     Resize,
     AppCode,
-    SlideDownTransition,
   },
 
   props: {
@@ -60,6 +58,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    open: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   data() {
@@ -67,7 +69,7 @@ export default {
       demoContent: '',
       text: decodeURI(this.code),
       delay: null,
-      showEditor: false,
+      showEditor: this.open,
       demoLibs: '',
     };
   },

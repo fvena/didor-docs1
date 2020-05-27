@@ -4,15 +4,17 @@
   router-link.appHeader__logo(:to="{name: 'section'}")
     DidorLogo(title="Framework" horizontal)
 
-  //- Buscador
-  Search.appHeader__search
+  .appHeader__bar
 
-  //- Menú Principal
-  .appHeader__nav
-    slot(name="headerMenu")
+    //- Buscador
+    Search.appHeader__search
 
-  //- Enlaces externos
-  AppSocialLinks.appHeader__social
+    //- Menú Principal
+    .appHeader__nav
+      slot(name="headerMenu")
+
+    //- Enlaces externos
+    AppSocialLinks.appHeader__social
 </template>
 
 <script>

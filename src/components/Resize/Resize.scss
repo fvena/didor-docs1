@@ -1,6 +1,9 @@
 .resize {
+  @include shadow(3);
+
   position: relative;
   width: 100%;
+  margin: double() 0;
   overflow: hidden;
   border: 1px solid $border-color;
   border-radius: $border-radius;
@@ -119,6 +122,10 @@
     left: 0;
     width: 100%;
     height: 100%;
+  }
+
+  .block-embed {
+    margin: 0;
   }
 
   @include media(portrait) {

@@ -1,6 +1,10 @@
 .alarm {
+  @include shadow(3);
+
   position: relative;
-  padding: simple() simple() simple() quadruple();
+  display: flex;
+  align-items: center;
+  padding: simple();
   margin: double() 0;
   border-radius: $border-radius;
 
@@ -13,9 +17,7 @@
   }
 
   &__icon {
-    position: absolute;
-    top: 2.4rem;
-    left: 2.4rem;
+    margin-right: simple();
     font-size: 2.4rem;
   }
 

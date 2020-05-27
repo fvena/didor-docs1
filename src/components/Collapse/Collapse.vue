@@ -5,19 +5,19 @@
       svg.collapse__icon(width="16" height="9")
         polyline(points="2,8 8,2 14,8")
 
-    transition(
-      name="collapse"
-      @before-enter="start"
-      @enter="end"
-      @before-leave="end"
-      @leave="start")
-      .collapse__body(v-if="isOpen")
+    SlideDownTransition
+      .collapse__body(v-show="isOpen")
         .collapse__content
           slot
 </template>
 
 <script>
+import SlideDownTransition from '@/components/SlideDownTransition';
+
 export default {
+  components: {
+    SlideDownTransition,
+  },
   data() {
     return {
       isOpen: false,
@@ -32,12 +32,6 @@ export default {
   methods: {
     toggle() {
       this.isOpen = !this.isOpen;
-    },
-    start(el) {
-      el.style.height = '0';
-    },
-    end(el) {
-      el.style.height = `${el.scrollHeight}px`;
     },
   },
 };

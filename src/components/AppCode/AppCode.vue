@@ -3,23 +3,18 @@
 
     //- Nombre del archivo
     .appCode__filename(v-if="filename")
-      svg(viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision" style="color: currentcolor;")
-        path(d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z")
-        path(d="M13 2v7h7")
+      dd-icon(name="file" scale="0.7")
       | {{ filename }}
 
     //- Botones
     .appCode__buttons
       //- Botón reset
       .appCode__button(@click="reset" v-if="editable")
-        svg(viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision" style="color: currentcolor;")
-          path(d="M23 4v6h-6")
-          path(d="M20.49 15a9 9 0 11-2.12-9.36L23 10")
+        dd-icon(name="rotate-cw" scale="0.7")
 
       //- Botón copiar
       .appCode__button(ref="copyButton")
-        svg(viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision" style="color: currentcolor;")
-          path(d="M8 17.929H6c-1.105 0-2-.912-2-2.036V5.036C4 3.91 4.895 3 6 3h8c1.105 0 2 .911 2 2.036v1.866m-6 .17h8c1.105 0 2 .91 2 2.035v10.857C20 21.09 19.105 22 18 22h-8c-1.105 0-2-.911-2-2.036V9.107c0-1.124.895-2.036 2-2.036z")
+        dd-icon(name="copy" scale="0.7")
 
     //- Textarea que utiliza codemirror para obtener el código
     .appCode__code

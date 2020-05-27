@@ -2,33 +2,35 @@
 .docsLayout(:class="{ 'docsLayout--header-hidden': !showHeader, 'docsLayout--sidebar-hidden': !sidebarLinks.length }")
 
   //- Header Area
-  AppHeader.docsLayout__header
+  AppHeader.docsLayout__header#header
     template(slot="headerMenu")
       AppMenu(
         ref="headerMenu"
         :links="navbarLinks"
         v-observe-visibility="{callback: closeHeaderMenus, intersection: { threshold: 0.9 }}")
 
-  .docsLayout__main
-
-    //- Sidebar Area
-    AppSidebar.docsLayout__sidebar(:links="sidebarLinks")
+  //- Sidebar Area
+  AppSidebar.docsLayout__sidebar(:links="sidebarLinks")
 
 
-    //- Content Area
-    .docsLayout__content(ref="viewBox")
-      .docsLayout__wrapper
+  //- Content Area
+  .docsLayout__content(ref="viewBox")
+
+
+    //- Main Content
+    .docsLayout__main#main(ref="main")
+      .docsLayout__wrapper(v-if="content")
 
         //- Article Area
         AppArticle.docsLayout__article(
-          v-if="content"
           :data="content")
 
         //- Footer Area
-        AppFooter.docsLayout__footer(
+        AppPagination.docsLayout__pagination(
           v-if="article"
           :prevArticle="article.prev"
           :nextArticle="article.next")
+
 
   //- Botón para mostrar/ocultar el menú lateral
   AppDeviceMenu.docsLayout__device-menu
@@ -46,7 +48,7 @@ import AppMenu from '@/components/AppMenu';
 import AppDeviceMenu from '@/components/AppDeviceMenu';
 import AppSocialLinks from '@/components/AppSocialLinks';
 import AppArticle from '@/components/AppArticle';
-import AppFooter from '@/components/AppFooter';
+import AppPagination from '@/components/AppPagination';
 import { ObserveVisibility } from 'vue-observe-visibility';
 import FileService from '@/services/file.service';
 import ParamsUtil from '@/utils/params.utils';
@@ -64,7 +66,7 @@ export default {
     AppDeviceMenu,
     AppSocialLinks,
     AppArticle,
-    AppFooter,
+    AppPagination,
   },
   data() {
     return {
@@ -110,7 +112,7 @@ export default {
      * @params {String} routeTo - Ruta de destino
      * @params {String} routeFrom - Ruta de origen
      */
-    async getData(routeTo, routeFrom) {
+    async getData(routeTo, routeFrom, hash) {
       /**
        * Si la ruta viene con un "/" al final,
        * da problemas al comparar la ruta
@@ -206,7 +208,29 @@ export default {
       this.content = content && content.render ? content.render : '';
       this.deviceShow = content && content.data && content.data.device ? content.data.device : false;
 
+      /**
+       * Si existe un hash hago scroll hasta su posición
+       * tengo que esperar un poco para que se renderizo el contenido
+       * y poder hacer scroll hasta el título
+       */
+      if (hash) this.scrollToHash(hash);
+
       document.title += ` - ${title}`;
+    },
+
+    /**
+     * Hace scroll hasta el hash seleccionado.
+     */
+    scrollToHash(hash) {
+      setTimeout(() => {
+        hash = hash.replace('#', '');
+
+        const main = this.$refs.main;
+        const headerHeight = document.getElementById('header').offsetHeight;
+        const anchorTop = document.getElementById(hash).offsetTop;
+
+        main.scroll(0, anchorTop - headerHeight);
+      }, 100);
     },
   },
 
@@ -232,7 +256,7 @@ export default {
     /**
      * Obtengo los datos de la ruta
      */
-    this.getData(this.$route.path);
+    this.getData(this.$route.path, null, this.$route.hash);
   },
 
   mounted() {
@@ -246,6 +270,17 @@ export default {
   },
 
   async beforeRouteUpdate(routeTo, routeFrom, next) {
+    /**
+     * Compruebo si la ruta ha combiado para evitar que recargue la página
+     * cuando hago click sobre un enlace dentro de la misma vista (ancla).
+     *
+     */
+    if (routeTo.path === routeFrom.path) {
+      if (routeTo.hash) this.scrollToHash(routeTo.hash);
+
+      return;
+    }
+
     /**
      * Por defecto, si la ruta de destino apunta a una sección y no a un artículo
      * redirijo al primer artículo de dicha sección.
@@ -284,7 +319,7 @@ export default {
     /**
      * Obtengo los datos de la nueva ruta
      */
-    await this.getData(routeTo.path, routeFrom.path);
+    await this.getData(routeTo.path, routeFrom.path, this.$route.hash);
 
     next();
   },
