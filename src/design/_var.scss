@@ -8,13 +8,16 @@ $brand-light: hsl(352, 96%, 65%);
 $brand-lighter: hsl(3, 100%, 74%);
 $brand-a20: hsl(24, 100%, 84%);
 
-$modular-scale: 1.225;
+// $modular-scale: 1.225;
+$modular-scale: 1.15;
 
-$sidebar-width: 240px;
+$sidebar-width-touch: 240px;
+$sidebar-width: 300px;
 $sidebar-width-large: 300px;
 
 $header-height: triple();
 $header-height-media: double();
+$wrapper-width-large: 700px;
 $wrapper-width: 670px;
 
 $transition: 0.5s cubic-bezier(0.91, 0.06, 0.47, 1.05) all;

@@ -76,6 +76,7 @@
     .dropdown__content {
       @include shadow(3);
 
+      position: absolute;
       top: 100%;
       width: auto;
       max-width: 12rem;

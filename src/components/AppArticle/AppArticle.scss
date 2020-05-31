@@ -14,6 +14,10 @@
       margin: 0;
     }
 
+    .link::after {
+      display: none;
+    }
+
     figcaption {
       margin-top: quarter();
       font-size: font-size(small1);
@@ -442,8 +446,6 @@
 
 @include media(palm) {
   .article {
-    padding: half();
-
     h2 {
       padding-top: simple();
       margin-top: double();

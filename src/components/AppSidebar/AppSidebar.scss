@@ -1,9 +1,11 @@
 .sidebar {
   &__wrapper {
+    position: relative;
     height: calc(100vh - #{$header-height});
     padding-top: double();
     overflow-y: scroll;
   }
+
   &__list {
     a,
     &::v-deep .menu {

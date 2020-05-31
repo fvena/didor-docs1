@@ -12,7 +12,8 @@
         polyline(points="2,6 6,2 10,6")
 
     //- Transición
-    SlideDownTransition(:float="float")
+    //- SlideDownTransition(:float="float")
+    Animation(name="fadeDown")
 
       //- Dropdown List
       .dropdown__content(v-if="isVisible" role="menu")

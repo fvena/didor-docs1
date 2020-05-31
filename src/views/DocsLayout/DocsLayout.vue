@@ -1,8 +1,8 @@
 <template lang="pug">
-.docsLayout(:class="{ 'docsLayout--header-hidden': !showHeader, 'docsLayout--sidebar-hidden': !sidebarLinks.length }")
+.docsLayout(:class="{ 'docsLayout--header-hidden': !showHeader, 'docsLayout--sidebar-hidden': !sidebarLinks.length, 'docsLayout--device-menu-visible': showDeviceMenu }")
 
   //- Header Area
-  AppHeader.docsLayout__header#header
+  AppHeader.docsLayout__header#header(@toggleMenu="toggleMenu" :showMenu="showDeviceMenu")
     template(slot="headerMenu")
       AppMenu(
         ref="headerMenu"
@@ -14,38 +14,36 @@
 
 
   //- Content Area
-  .docsLayout__content(ref="viewBox")
+  //- .docsLayout__content(ref="viewBox")
 
 
-    //- Main Content
-    .docsLayout__main#main(ref="main")
-      .docsLayout__wrapper(v-if="content")
+  //- Main Content
+  .docsLayout__main#main(ref="main")
+    .docsLayout__wrapper(v-if="content")
 
-        //- Article Area
-        AppArticle.docsLayout__article(
-          :data="content")
+      //- Article Area
+      AppArticle.docsLayout__article(
+        :data="content")
 
-        //- Footer Area
-        AppPagination.docsLayout__pagination(
-          v-if="article"
-          :prevArticle="article.prev"
-          :nextArticle="article.next")
+      //- Footer Area
+      AppPagination.docsLayout__pagination(
+        v-if="article"
+        :prevArticle="article.prev"
+        :nextArticle="article.next")
 
 
   //- Botón para mostrar/ocultar el menú lateral
-  AppDeviceMenu.docsLayout__device-menu
-    DidorLogo(title="Framework")
-    AppMenu(:links="navbarLinks" vertical)
-    AppSocialLinks
-    AppSidebar(:links="sidebarLinks")
+  Animation(name="fadeDown")
+    .docsLayout__device-menu(v-if="showDeviceMenu")
+      AppMenu(:links="navbarLinks" vertical)
+      AppSidebar(:links="sidebarLinks" v-if="sidebarLinks.length")
+      AppSocialLinks
 </template>
 
 <script>
-import DidorLogo from '@/components/DidorLogo';
 import AppHeader from '@/components/AppHeader';
 import AppSidebar from '@/components/AppSidebar';
 import AppMenu from '@/components/AppMenu';
-import AppDeviceMenu from '@/components/AppDeviceMenu';
 import AppSocialLinks from '@/components/AppSocialLinks';
 import AppArticle from '@/components/AppArticle';
 import AppPagination from '@/components/AppPagination';
@@ -59,11 +57,9 @@ export default {
     ObserveVisibility,
   },
   components: {
-    DidorLogo,
     AppHeader,
     AppSidebar,
     AppMenu,
-    AppDeviceMenu,
     AppSocialLinks,
     AppArticle,
     AppPagination,
@@ -78,6 +74,7 @@ export default {
       section: null,
       article: null,
       showHeader: true,
+      showDeviceMenu: false,
       lastScrollPosition: 0,
       navbarLinks: [],
       sidebarLinks: [],
@@ -85,12 +82,16 @@ export default {
     };
   },
   methods: {
+    toggleMenu() {
+      this.showDeviceMenu = !this.showDeviceMenu;
+    },
+
     closeHeaderMenus() {
       this.$refs.headerMenu.closeAllDropdown();
     },
 
     onScroll() {
-      const box = this.$refs.viewBox;
+      const box = this.$refs.main;
       const currentScrollPosition = box.scrollTop;
       if (currentScrollPosition < 0) {
         return;
@@ -260,16 +261,21 @@ export default {
   },
 
   mounted() {
-    const box = this.$refs.viewBox;
+    const box = this.$refs.main;
     box.addEventListener('scroll', this.onScroll, false);
   },
 
   beforeDestroy() {
-    const box = this.$refs.viewBox;
+    const box = this.$refs.main;
     box.removeEventListener('scroll', this.onScroll);
   },
 
   async beforeRouteUpdate(routeTo, routeFrom, next) {
+    /**
+     * Siempre que haya un cambio de ruta, cierro el menú en los dispositivos móviles
+     */
+    this.showDeviceMenu = false;
+
     /**
      * Compruebo si la ruta ha combiado para evitar que recargue la página
      * cuando hago click sobre un enlace dentro de la misma vista (ancla).
@@ -280,6 +286,19 @@ export default {
 
       return;
     }
+
+    /**
+     * Al ser siempre la misma ruta, el método scroll behavior de VueRouter no sirve,
+     * así que tengo que hacerlo manualmente.
+     * Desactivo temporalmente la propiedad css scrollBeahavior,
+     * para que vaya de un salto y no con una animación al cambiar de página.
+     */
+    const main = this.$refs.main;
+    main.style.scrollBehavior = 'initial';
+    setTimeout(() => {
+      main.scroll(0, 0);
+      main.style.scrollBehavior = 'smooth';
+    }, 100);
 
     /**
      * Por defecto, si la ruta de destino apunta a una sección y no a un artículo

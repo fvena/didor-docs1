@@ -12,6 +12,9 @@ export default {};
 
 <style lang="scss" scoped>
 .search {
+  * {
+    display: none;
+  }
   &__icon {
     display: flex;
     align-items: center;

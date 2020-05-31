@@ -17,6 +17,8 @@
    * Pagination Item
    */
   &__item {
+    width: 50%;
+
     /*
      * Botón siguiente
      */
@@ -42,7 +44,7 @@
      * Botón previo
      */
     &--previous {
-      opacity: 0.3;
+      opacity: 0.6;
       transition: $transition;
 
       svg {
@@ -92,7 +94,7 @@
    */
   &__title {
     font-family: font-family(heading);
-    font-size: font-size(h3);
+    font-size: font-size(h4);
     font-weight: font-weight(bold);
     color: color(gray2);
     opacity: 1;

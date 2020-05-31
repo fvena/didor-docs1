@@ -1,7 +1,8 @@
 .docsLayout {
   display: flex;
-  height: 100vh;
-  overflow-y: scroll;
+  max-width: 1700px;
+  height: 100%;
+  margin: 0 auto;
   transition: $transition;
   transform: translate3d(0, 0, 0);
 
@@ -9,10 +10,14 @@
     .docsLayout__sidebar {
       display: none;
     }
+
+    .docsLayout__main {
+      padding-left: 10rem;
+    }
   }
 
   &__header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -23,26 +28,41 @@
   }
 
   &__main {
-    height: 100vh;
-    padding-top: 4.8rem;
+    width: 100%;
+    height: 100%;
+    padding-top: triple();
+    padding-right: 10rem;
+    padding-bottom: simple();
     overflow-y: scroll;
     scroll-behavior: smooth;
+    overscroll-behavior: contain;
   }
 
   &__sidebar {
+    position: relative;
     flex: 1 0 $sidebar-width;
     height: 100%;
     padding-top: $header-height;
-    overflow-y: scroll;
     background: color(gray7);
     transition: $transition;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 0;
+      width: 50vw;
+      height: 100%;
+      content: '';
+      background: color(gray7);
+    }
   }
 
   &__content {
     position: relative;
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     // background: linear-gradient(to left top, color(gray7), color('white'));
     transition: $transition;
   }
@@ -58,11 +78,63 @@
    * Menú para dispositivos
    */
   &__device-menu {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    padding: quadruple() 0 simple();
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: color(gray7);
+
+    &::v-deep {
+      .appMenu {
+        padding-bottom: simple();
+        border-bottom: 1px solid color(gray5);
+      }
+
+      .sidebar {
+        border-bottom: 1px solid color(gray5);
+      }
+
+      .sidebar__wrapper {
+        height: auto;
+        padding-top: simple();
+        overflow-y: initial;
+      }
+
+      .sidebar__list a,
+      .sidebar__list .menu,
+      .appMenu__item a,
+      .dropdown__header a,
+      .dropdown__item--link {
+        display: block;
+        padding: 0.3rem simple() !important;
+        font-size: font-size(base);
+      }
+
+      .sidebar__title {
+        margin-bottom: quarter();
+        font-size: font-size(base);
+      }
+
+      .appSocialLinks {
+        justify-content: center;
+        margin-top: simple();
+
+        .appSocialLinks__item {
+          width: double();
+          height: double();
+          transform: scale(1.3);
+        }
+      }
+    }
   }
 }
 
-@include media(screen) {
+@include media(large) {
   .docsLayout {
     &__sidebar {
       flex: 1 0 $sidebar-width-large;
@@ -70,16 +142,40 @@
   }
 }
 
+@include media(screen) {
+  .docsLayout {
+    &__wrapper {
+      max-width: $wrapper-width-large;
+    }
+  }
+}
+
+@include media(touch) {
+  .docsLayout {
+    &__sidebar {
+      flex: 1 0 $sidebar-width-touch;
+    }
+
+    &__main {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+
+    &::v-deep {
+      .scrollTracking {
+        display: none;
+      }
+    }
+  }
+}
+
 @include media(portrait) {
   .docsLayout {
+    transform: initial;
+
     &__header {
       height: $header-height-media;
     }
-
-    // &__main {
-    //   display: block;
-    //   height: calc(100vh - #{$header-height-media});
-    // }
 
     &__sidebar {
       display: none;
@@ -91,11 +187,7 @@
     }
 
     &__wrapper {
-      padding: simple();
-    }
-
-    &__device-menu {
-      display: block;
+      padding: 0 simple();
     }
   }
 }
@@ -108,8 +200,28 @@
       }
 
       .docsLayout__main {
-        height: 100vh;
-        transform: translate3d(0, -#{$header-height-media}, 0);
+        // height: 100vh;
+        // transform: translate3d(0, -#{$header-height-media}, 0);
+      }
+    }
+
+    &--device-menu-visible {
+      &::v-deep {
+        .appHeader {
+          &::before {
+            position: absolute;
+            z-index: -1;
+            display: block;
+            width: 100%;
+            height: 100%;
+            content: '';
+            background-color: color(gray7);
+            opacity: 0.8;
+          }
+
+          background-color: transparent;
+          box-shadow: 0 2px 3px color(gray7);
+        }
       }
     }
   }
