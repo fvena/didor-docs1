@@ -1,0 +1,34 @@
+@keyframes fadeDownIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeDownIn {
+  transition: transform 0.3s ease-out;
+  animation-name: fadeDownIn;
+  animation-timing-function: ease-out;
+}
+
+@keyframes fadeDownOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -20%, 0);
+  }
+}
+
+.fadeDownOut {
+  transition: transform 0.3s ease-out;
+  animation-name: fadeDownOut;
+  animation-timing-function: ease-out;
+}

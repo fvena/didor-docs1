@@ -1,0 +1,30 @@
+@keyframes fadeLeftIn {
+  from {
+    opacity: 0;
+    transform: translate3d(-20%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeLeftIn {
+  animation-name: fadeLeftIn;
+}
+
+@keyframes fadeLeftOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(-20%, 0, 0);
+  }
+}
+
+.fadeLeftOut {
+  animation-name: fadeLeftOut;
+}

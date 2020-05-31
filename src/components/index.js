@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Alarm from './Alarm';
+import Animation from './Animation';
 import Codegroup from './Codegroup';
 import Collapse from './Collapse';
 import Copy from './Copy';
@@ -10,6 +11,7 @@ import Tabs from './Tabs';
 import Tab from './Tabs/Tab.vue';
 
 Vue.component('Alarm', Alarm);
+Vue.component('Animation', Animation);
 Vue.component('Codegroup', Codegroup);
 Vue.component('Collapse', Collapse);
 Vue.component('FileTree', FileTree);
