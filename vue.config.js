@@ -2,7 +2,6 @@ const path = require('path');
 const config = require('./lib/build/default');
 
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/didor-docs/' : '/',
   configureWebpack: {
     devServer: {
       contentBase: [path.join(process.cwd(), './public'), path.join(process.cwd(), './docs')],
