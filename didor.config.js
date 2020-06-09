@@ -1,0 +1,1 @@
+window.$didor = {"logo":"./didorLogo.svg","title":"Didor Docs","description":"Herramienta para documentar tus proyectos","navbar":"_navbar.md","sidebar":"_sidebar.md","defaultPath":"/home","buildPath":"didor-docs/docs","gitRepoLink":"https://github.com/fvena/didor-docs","jsLib":[],"cssLib":[]}
