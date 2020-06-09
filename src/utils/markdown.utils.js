@@ -264,7 +264,6 @@ md.renderer.rules.fence = (tokens, idx) => {
     const language = getDemoLanguage ? getDemoLanguage[1] : 'vue';
     const isEditable = isDemoCode ? 'editable' : '';
     const isOpen = isDemoCode && info.includes('open') ? 'open' : '';
-    console.log(config);
     return `<AppDemo lang="${language}" code="${code}" jsLib="${config.jsLib}" cssLib="${config.cssLib}" ${isEditable} ${isOpen}></AppDemo>`;
   }
 

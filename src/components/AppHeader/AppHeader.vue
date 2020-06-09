@@ -2,8 +2,7 @@
 .appHeader
   //- Logotipo, enlaza con el home
   router-link.appHeader__logo(:to="{name: 'section'}")
-    img(:src="logo" v-if="logo")
-    img.didorLogo(src="/didorLogo.svg" v-else)
+    img(:src="logo")
 
   .appHeader__bar
 

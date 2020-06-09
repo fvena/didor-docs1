@@ -23,6 +23,7 @@
     "release": "standard-version"
   },
   "dependencies": {
+    "@didor/framework": "^0.1.0",
     "axios": "^0.19.2",
     "chalk": "^4.0.0",
     "clear": "^0.1.0",

@@ -11,7 +11,7 @@ const FileService = {
    */
   async getLinks(path, buildPath, section) {
     try {
-      const fullPath = buildPath ? `${buildPath}/${path}` : path;
+      const fullPath = buildPath ? `./${buildPath}/${path}` : path;
       const response = await ApiService.get(fullPath);
       return LinksUtils.getListLinks(response.data, section);
     } catch (error) {

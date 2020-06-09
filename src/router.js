@@ -21,6 +21,15 @@ const routes = [
     name: 'section',
     component: DocsLayout,
     pathToRegexpOptions: { strict: false },
+    beforeEnter: (to, from, next) => {
+      if (sessionStorage.getItem('redirect') !== null) {
+        const redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        next(redirect);
+      } else {
+        next();
+      }
+    },
   },
 
   // Routes not found - 404

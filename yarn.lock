@@ -832,6 +832,11 @@
     resolve-from "^5.0.0"
     resolve-global "^1.0.0"
 
+"@didor/framework@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@didor/framework/-/framework-0.1.0.tgz#6849d6d3503b748c927692ddd24d84d87be2935a"
+  integrity sha512-iN4J3pIeoTk8qSvv1KphDUrNzRcFa7x8QOhL2Ka2B79NnkMMszu8JjnGbcKSDBSAchlm28bkkofVB4/o4mgMEQ==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"

@@ -127,7 +127,7 @@ export default {
        * redirijo a dicho artículo
        */
       if (routeTo === '/' && this.defaultPath) {
-        this.$router.push(this.defaultPath);
+        this.$router.push(this.defaultPath, () => {});
       }
 
       /**
@@ -138,7 +138,7 @@ export default {
       if (routeTo === '/' && ArrayUtils.checkArray(this.navbarLinks)) {
         const flatNavbarLinks = ArrayUtils.flattenList(this.navbarLinks);
         const firstSection = flatNavbarLinks[0].link;
-        this.$router.push(firstSection);
+        this.$router.push(firstSection, () => {});
       }
 
       /**
@@ -192,7 +192,7 @@ export default {
         if (routeTo === '/' || (this.section && this.section.link === routeTo)) {
           const flatSidebarLinks = ArrayUtils.flattenList(this.sidebarLinks);
           const firstArticle = flatSidebarLinks[0].link;
-          this.$router.push(firstArticle);
+          this.$router.push(firstArticle, () => {});
           return;
         }
 
@@ -282,7 +282,7 @@ export default {
      * cuando hago click sobre un enlace dentro de la misma vista (ancla).
      *
      */
-    if (routeTo.path === routeFrom.path) {
+    if (routeTo.path === routeFrom.path || (routeTo.path === '/' && routeFrom.path === this.defaultPath)) {
       if (routeTo.hash) this.scrollToHash(routeTo.hash);
 
       return;

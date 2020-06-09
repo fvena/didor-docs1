@@ -84,5 +84,7 @@
     "first-line-h1": false,
     "no-multiple-blanks": false,
     "list-marker-space": false
-  }
+  },
+  "liveServer.settings.port": 5501,
+  "liveServer.settings.root": "/dist"
 }
