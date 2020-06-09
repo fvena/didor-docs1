@@ -1,7 +1,6 @@
 <template lang="pug">
   component(
     :is="componentType"
-    :tag="tag"
     :enter-active-class="enterClass"
     :leave-active-class="leaveClass"
     v-bind="$attrs"

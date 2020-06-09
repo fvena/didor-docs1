@@ -6,13 +6,13 @@ Para añadir una imagen, utiliza el símbolo de exclamación [[!]], seguido por 
 
 ```demo[markdown]
 
-![Pie de foto](/images/lion1.jpg)
+![Pie de foto](/img/lion1.jpg)
 
 ```
 
 ```markdown
 
-![Pie de foto](/images/lion1.jpg)
+![Pie de foto](/img/lion1.jpg)
 
 ```
 
@@ -22,13 +22,13 @@ Por defecto, al añadir un texto alternativo, este se muestra como pie de foto, 
 
 ```demo[markdown]
 
-![](/images/lion1.jpg)
+![](/img/lion1.jpg)
 
 ```
 
 ```markdown
 
-![](/images/lion1.jpg)
+![](/img/lion1.jpg)
 
 ```
 
@@ -38,12 +38,12 @@ Puede utilizar una imagen como un enlace, introduciendo todo el código de una i
 
 ```demo[markdown]
 
-[![National Geographic](/images/lion1.jpg)](https://www.nationalgeographic.com.es/animales/leones)
+[![National Geographic](/img/lion1.jpg)](https://www.nationalgeographic.com.es/animales/leones)
 
 ```
 
 ```markdown
 
-[![National Geographic](/images/lion1.jpg)](https://www.nationalgeographic.com.es/animales/leones)
+[![National Geographic](/img/lion1.jpg)](https://www.nationalgeographic.com.es/animales/leones)
 
 ```

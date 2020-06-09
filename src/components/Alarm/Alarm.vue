@@ -3,7 +3,8 @@
     .alarm__icon(v-if="tip") 😉
     .alarm__icon(v-if="note") 🤓
     .alarm__icon(v-if="warn") 😱
-    slot
+    .alarm__content
+      slot
 </template>
 
 <script>

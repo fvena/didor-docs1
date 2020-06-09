@@ -9,9 +9,10 @@ const FileService = {
    * @param {string} path - Ruta del archivo markdown
    * @return {array} - Listado de links
    */
-  async getLinks(path, section) {
+  async getLinks(path, buildPath, section) {
     try {
-      const response = await ApiService.get(path);
+      const fullPath = buildPath ? `${buildPath}/${path}` : path;
+      const response = await ApiService.get(fullPath);
       return LinksUtils.getListLinks(response.data, section);
     } catch (error) {
       // console.log(error); // eslint-disable-line
@@ -25,9 +26,10 @@ const FileService = {
    * @param {string} path - Ruta del archivo markdown
    * @return {object} - Markdown renderizado y datos contenidos en el archivo
    */
-  async getArticle(path) {
+  async getArticle(path, buildPath) {
     try {
-      const response = await ApiService.get(path);
+      const fullPath = buildPath ? buildPath + path : path;
+      const response = await ApiService.get(fullPath);
       const article = await MarkdownUtils.renderMarkdown(response.data);
 
       /**

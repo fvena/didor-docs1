@@ -1,14 +1,14 @@
 {
   "name": "@didor/docs",
   "version": "0.1.0",
-  "description": "Tool to document your own library of UI components with Vue",
+  "description": "Herramienta para documentar tus proyectos",
   "author": "Francisco Vena <fvena32@gmail.com> (http://www.fvena.com/)",
   "homepage": "https://github.com/fvena/didor-docs#readme",
   "private": false,
   "license": "MIT",
   "main": "bin/docs",
   "bin": {
-    "didor-docs": "bin/docs"
+    "didor": "bin/docs"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -30,7 +30,7 @@
     "codemirror": "^5.53.2",
     "commander": "^5.1.0",
     "core-js": "^3.6.4",
-    "figlet": "^1.4.0",
+    "fs-extra": "^9.0.1",
     "js-yaml": "^3.13.1",
     "markdown-it": "^10.0.0",
     "markdown-it-block-embed": "^0.0.3",

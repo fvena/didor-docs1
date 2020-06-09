@@ -2,13 +2,14 @@
 /* eslint no-console: 0 */
 
 const program = require('commander'); // Framework para desarrollar CLI
-const chalk = require('chalk'); // Colorea las salidas del terminal
 const clear = require('clear'); // Limpia el terminal
-const figlet = require('figlet'); // Crea un título ASCII
 const updateNotifier = require('update-notifier'); // Muestra mensaje si hay una versión nueva
 const pkg = require('../package.json'); // Obtiene el archivo package.json
+const log = require('../lib/helpers/log'); // Logs por pantalla tuneados
 
-const renderDocs = require('../lib/didor-docs'); // Levanta un senvidor para mostrar la documentación
+const initDocs = require('../lib/init'); // Genera los archivos mínimos necesarios para comenzar a documentar
+const serveDocs = require('../lib/serve'); // Levanta un senvidor local para mostrar la documentación
+const buildDocs = require('../lib/build'); // Compila y copia los archivos en una carpeta para poder publicarlos
 
 /*
  * Limpia el terminal
@@ -18,9 +19,18 @@ clear();
 /*
  * Muestra el saludo inicial
  */
-console.log(chalk.rgb(40, 164, 189)(figlet.textSync('DIDOR', { horizontalLayout: 'full' })));
-console.log(chalk.rgb(40, 164, 189)(figlet.textSync('DOCS', { verticalLayout: 'full' })));
-console.log('\n\n');
+log.brand('######################');
+log.brand(' ########################        88888b  8888  88888b  d8888b  88888b');
+log.brand('  #########################      88  88   88   88  88  88  88  88  88');
+log.brand('    ########################     88  88   88   88  88  88  88  88888<');
+log.brand('       ######################    88888P  8888  88888P  Y8888P  88  Yb');
+log.brand('');
+log.brand('       ######################    88888b  d8888b  d88888  d88888');
+log.brand('    ########################     88  88  88  88  88      Y88   ');
+log.brand('  #########################      88  88  88  88  88         88b');
+log.brand(' ########################        88888P  Y8888P  Y88888  88888P');
+log.brand('######################');
+log.brand('\n\n');
 
 /*
  * Configuración del CLI
@@ -28,9 +38,30 @@ console.log('\n\n');
 // prettier-ignore
 program
   .version(pkg.version, '-v, --version')
-  .arguments('[configFile]')
+  .addHelpCommand(false);
+
+// prettier-ignore
+program
+  .command('init [configFile]')
+  .description('Genera los archivos mínimos necesarios para comenzar a documentar')
   .action(configFile => {
-    renderDocs(configFile);
+    initDocs(configFile);
+  });
+
+// prettier-ignore
+program
+  .command('serve [configFile]')
+  .description('Levanta un servidor local para mostrar la documentación.')
+  .action(configFile => {
+    serveDocs(configFile);
+  });
+
+// prettier-ignore
+program
+  .command('build [configFile]')
+  .description('Compila y copia los archivos en una carpeta para poder publicarlos.')
+  .action(configFile => {
+    buildDocs(configFile);
   });
 
 /*
@@ -38,10 +69,9 @@ program
  */
 program.on('--help', () => {
   console.log('');
-  console.log('  Ejemplos:');
-  console.log('');
-  console.log('    $ didor-docs');
-  console.log('    $ didor-docs /didor.config.js');
+  console.log('Ejemplos:');
+  console.log('  $ didor serve');
+  console.log('  $ didor serve /didor.config.js');
   console.log('');
 });
 

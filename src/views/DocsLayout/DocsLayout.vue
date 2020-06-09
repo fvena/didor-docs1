@@ -171,7 +171,7 @@ export default {
         if (sectionIsFolder) {
           const sidebarPath = `${this.section.file}/${this.sidebarPath}`;
           const sectionLink = this.section.link;
-          this.sidebarLinks = await FileService.getLinks(sidebarPath, sectionLink);
+          this.sidebarLinks = await FileService.getLinks(sidebarPath, this.buildPath, sectionLink);
         }
       }
 
@@ -203,7 +203,7 @@ export default {
        * Obtenemos el contenido del árticulo y los datos
        */
       const file = this.article ? this.article.current.file : this.section ? this.section.file : '';
-      const content = file ? await FileService.getArticle(file) : null;
+      const content = file ? await FileService.getArticle(file, this.buildPath) : null;
       const title = this.article ? this.article.current.title : this.section ? this.section.title : '';
 
       this.content = content && content.render ? content.render : '';
@@ -244,6 +244,7 @@ export default {
     this.logo = config.logo;
     this.github = config.gitRepoLink;
     this.defaultPath = config.defaultPath;
+    this.buildPath = config.buildPath;
     this.navbarPath = config.navbar;
     this.sidebarPath = config.sidebar;
 
@@ -252,7 +253,7 @@ export default {
     /**
      * Intento obtener los links de la secciones
      */
-    this.navbarLinks = await FileService.getLinks(this.navbarPath);
+    this.navbarLinks = await FileService.getLinks(this.navbarPath, this.buildPath);
 
     /**
      * Obtengo los datos de la ruta

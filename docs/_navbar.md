@@ -1,5 +1,6 @@
 - [Home](/home.md)
-- [Markdown](/markdown)
+- [Comenzar](/getStarted)
+- [Markdown](/didorDocs)
 - [Desplegable]
   - [Link 1](/home.md)
   - [Link 2](/home.md)

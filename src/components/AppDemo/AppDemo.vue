@@ -71,10 +71,15 @@ export default {
       delay: null,
       showEditor: this.open,
       demoLibs: '',
+      baseURL: '',
     };
   },
 
   methods: {
+    isPathAbsolute(path) {
+      return /^(?:\/|[a-z]+:\/\/)/.test(path);
+    },
+
     getDemoLibs() {
       const jsLib = this.jsLib ? this.jsLib.split(',') : [];
       const cssLib = this.cssLib ? this.cssLib.split(',') : [];
@@ -82,11 +87,11 @@ export default {
 
       jsLib.forEach(lib => {
         // eslint-disable-next-line no-useless-escape
-        libs += `<script src="${lib}" rel="stylesheet"><\/script>`;
+        libs += `<script src="${lib}"><\/script>`;
       });
 
       cssLib.forEach(lib => {
-        libs += `<link href="${lib}" rel="stylesheet">`;
+        libs += `<link rel="stylesheet" href="${lib}">`;
       });
 
       return libs;
@@ -111,6 +116,7 @@ export default {
         <!DOCTYPE html>
         <html>
           <head>
+            <base href="${this.baseURL}">
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -225,6 +231,7 @@ export default {
   },
 
   async mounted() {
+    this.baseURL = window.location.origin;
     this.demoLibs = this.getDemoLibs();
 
     if (this.lang === 'markdown') {

@@ -6,17 +6,17 @@ Los Blockquotes se definen con el prefijo `>` en la línea.
 ::: tab (tab1)
 Lorem ipsum 1.
 
-![alt text](/images/lion1.jpg)
+![alt text](/img/lion1.jpg)
 :::
 ::: tab (tab2)
 Lorem ipsum 2
 
-![alt text](/images/lion2.jpg)
+![alt text](/img/lion2.jpg)
 :::
 ::: tab (tab3)
 Lorem ipsum 3
 
-![alt text](/images/lion3.jpg)
+![alt text](/img/lion3.jpg)
 :::
 :::
 
@@ -26,7 +26,7 @@ Lorem ipsum 3
 ::: tab (tab1)
 Lorem ipsum 1
 
-![alt text](./images/lion1.jpg)
+![alt text](./img/lion1.jpg)
 :::
 
 ::: tab (tab2)

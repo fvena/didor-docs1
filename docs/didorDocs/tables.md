@@ -31,4 +31,4 @@ Puedes alinear el texto de una columna añadiendo dos puntos a la izquierda, der
 
 Si bien markdown es muy potente para escribir de forma rápida, el tema de las tablas no es su fuerte, por eso te recomiendo que utilices un [generador](https://www.tablesgenerator.com/markdown_tables) que te ayude a escribir las tablas de forma más fácil.
 
-[![Generador Markdown](/images/markdownTableGenerator.png)](https://www.tablesgenerator.com/markdown_tables)
+[![Generador Markdown](/img/markdownTableGenerator.png)](https://www.tablesgenerator.com/markdown_tables)

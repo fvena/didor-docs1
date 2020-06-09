@@ -3,7 +3,7 @@
 
     //- Nombre del archivo
     .appCode__filename(v-if="filename")
-      dd-icon(name="file" scale="0.7")
+      dd-icon(name="file" scale="0.6")
       | {{ filename }}
 
     //- Botones

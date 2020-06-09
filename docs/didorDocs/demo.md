@@ -5,7 +5,7 @@ Puedes añadir una demo mediante el tag `demo`.
 ````markdown
 ```demo
 <template>
-  <az-button type="danger">Danger {{ random }}</az-button>
+  <dd-button>Danger {{ random }}</dd-button>
 </template>
 
 <script>
@@ -22,7 +22,7 @@ Puedes añadir una demo mediante el tag `demo`.
 
 ```demo
 <template>
-  <az-button type="danger">Danger {{ random }}</az-button>
+  <div class="button button--success">Danger {{ random }}</demo>
 </template>
 
 <script>
@@ -41,14 +41,14 @@ Puedes añadir una demo mediante el tag `demo`.
 ````markdown
 ```demoCode
 <template>
-  <az-button type="danger">Danger Button</az-button>
+  <div class="button button--success">Danger Button</demo>
 </template>
 ```
 ````
 
 ```demoCode
 <template>
-  <az-button type="danger">Danger Button</az-button>
+  <div class="button button--success">Danger Button</demo>
 </template>
 ```
 
@@ -56,10 +56,10 @@ Solo html sin la etiqueta template y abierto por defecto
 
 ````markdown
 ```demoCode(open)
-<az-button type="danger">Danger Button</az-button>
+<div class="button button--success">Danger Buttondemo>
 ```
 ````
 
 ```demoCode(open)
-<az-button type="danger">Danger Button</az-button>
+<div class="button button--success">Danger Buttondemo>
 ```

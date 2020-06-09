@@ -12,12 +12,12 @@ Añadimos el código que nos dá [Google maps](https://www.google.com/maps) cuan
 
 1. Ve a la web [Google maps](https://www.google.com/maps) y busca la localización que deseas añadir.
 2. En el menú desplegable con las opciones (esquina superior derecha), selecciona la opción: *compartir o insertar mapa*.
-  ![Pie de foto](/images/googleMapsTuto1.png)
+  ![Pie de foto](/img/googleMapsTuto1.png)
 3. En la ventana emergente selecciona *insertar un mapa* y luego pulsa el botón *copiar HTML*.
-  ![Pie de foto](/images/googleMapsTuto2.png)
+  ![Pie de foto](/img/googleMapsTuto2.png)
 4. Pega el código dentro del embed.
 5. Si quieres añadir el link puedes obtenerlo en la pestaña *enviar un enlace*.
-  ![Pie de foto](/images/googleMapsTuto3.png)
+  ![Pie de foto](/img/googleMapsTuto3.png)
 
 :::
 
