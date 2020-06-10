@@ -1,8 +1,8 @@
 <template lang="pug">
   .fileTreeNode
-    .fileTreeNode__row(@click="toggleOpenFolder")
+    .fileTreeNode__row(@click="toggleOpenFolder" :class="{'fileTreeNode__row--select': node.select}")
       //- Icono Abrir/Cerrar carpeta
-      .fileTreeNode__showFolder(v-if="node.type==='folder'")
+      .fileTreeNode__showFolder(v-if="node.type==='folder' && node.children && node.children.length")
         dd-icon.fileTreeNode__icon(name="minus-square" scale="0.45" v-if="openFolder")
         dd-icon.fileTreeNode__icon(name="plus-square" scale="0.45" v-else)
 
@@ -29,7 +29,7 @@ export default {
   name: 'FileTreeNode',
   data() {
     return {
-      openFolder: this.open,
+      openFolder: this.open || this.node.open,
     };
   },
   props: {
