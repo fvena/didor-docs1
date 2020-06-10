@@ -4,7 +4,8 @@
 
 * Markdown puede abrirse y editarse por casi cualquier aplicación.
 * Es independiente del sistema operativo o el entorno de desarrollo.
-* Aunque la aplicación para visualizar la documentación falle, podrá seguir leyéndola.
+* Puede leerse aunque la aplicación que la renderiza falle.
+* Puede enviarse por email, dropbox, whatsapp o cualquier otro medio.
 
 ## Escribir Markdown
 

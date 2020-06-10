@@ -1,6 +1,5 @@
-- [Introducción](/getStarted/intro.md)
 - [Inicio Rápido](/getStarted/quickStart.md)
-- [Configuración](/getStarted/quickStart.md)
+- [Configuración](/getStarted/configuration.md)
 - [Personalización](/getStarted/quickStart.md)
 - [Internacionalización](/getStarted/quickStart.md)
 - [Versionado](/getStarted/quickStart.md)

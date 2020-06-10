@@ -1,6 +1,6 @@
 # Home
 
-Página de Inicio
+**Didor docs** es un generador de documentación basado en documentos markdown. No solo permite renderizar tus archivos markdown y navegar entre ellos, también incluye muchos componentes y opciones que permitirán llevar tu documentación a otro nivel.
 
 ## Pendiente
 

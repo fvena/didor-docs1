@@ -1,3 +1,4 @@
+- [Introducción](/didorDocs/intro.md)
 - [Chuleta](/didorDocs/cheatsheet.md)
 - [Extensiones VSCode](/didorDocs/plugins.md)
 
