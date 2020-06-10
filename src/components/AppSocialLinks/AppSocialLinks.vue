@@ -1,12 +1,27 @@
 <template lang="pug">
 .appSocialLinks
-  a.appSocialLinks__item(href="https://twitter.com/fvena" target="_blank")
-    dd-icon(name="twitter" scale="0.7")
-
-  a.appSocialLinks__item(href="https://github.com/fvena/didor-docs" target="_blank")
-    dd-icon(name="github" scale="0.7")
+  a.appSocialLinks__item(
+    v-for="(link, name) in social"
+    v-if="link"
+    :key="name"
+    :href="link"
+    target="_blank"
+  )
+    dd-icon(:name="name" scale="0.7")
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      social: {},
+    };
+  },
+
+  created() {
+    this.social = window.$didor.social;
+  },
+};
+</script>
 
 <style src="./AppSocialLinks.scss" lang="scss" scoped></style>

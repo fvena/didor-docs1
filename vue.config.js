@@ -15,7 +15,7 @@ module.exports = {
             sidebar: config.sidebar,
             defaultPath: config.defaultPath,
             buildPath: config.buildPath,
-            gitRepoLink: config.gitRepoLink,
+            social: config.social,
             jsLib: config.jsLib,
             cssLib: config.cssLib,
           };

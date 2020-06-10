@@ -21,8 +21,6 @@
       span
       span
       span
-    //- .appHeader__toggle-sidebar(@click="toggleMenu")
-    //-   dd-icon(name="menu" scale="0.8")
 </template>
 
 <script>

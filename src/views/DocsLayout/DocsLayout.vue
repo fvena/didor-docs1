@@ -67,7 +67,7 @@ export default {
   data() {
     return {
       logo: '',
-      github: '',
+      social: '',
       defaultPath: '',
       navbarPath: '',
       sidebarPath: '',
@@ -204,7 +204,6 @@ export default {
        */
       const file = this.article ? this.article.current.file : this.section ? this.section.file : '';
       const content = file ? await FileService.getArticle(file, this.buildPath) : null;
-      const title = this.article ? this.article.current.title : this.section ? this.section.title : '';
 
       this.content = content && content.render ? content.render : '';
       this.deviceShow = content && content.data && content.data.device ? content.data.device : false;
@@ -216,7 +215,11 @@ export default {
        */
       if (hash) this.scrollToHash(hash);
 
-      document.title += ` - ${title}`;
+      /**
+       * Actualizo el título de la página
+       */
+      const title = this.article ? this.article.current.title : this.section ? this.section.title : '';
+      document.title = `${this.title} - ${title}`;
     },
 
     /**
@@ -241,14 +244,18 @@ export default {
      */
     const config = window.$didor;
 
+    this.title = config.title;
     this.logo = config.logo;
-    this.github = config.gitRepoLink;
+    this.social = config.social;
     this.defaultPath = config.defaultPath;
     this.buildPath = config.buildPath;
     this.navbarPath = config.navbar;
     this.sidebarPath = config.sidebar;
 
-    document.title = config.title;
+    /**
+     * Actualizo el título de la página con el nombre del proyecto
+     */
+    document.title = this.title;
 
     /**
      * Intento obtener los links de la secciones
@@ -316,7 +323,7 @@ export default {
      * compruebo si la ruta de ORIGEN coincide con el primer artículo de la sección,
      * en cuyo caso no debo realizar la redirección.
      */
-    const sectionLink = this.section ? this.section.link : '/';
+    const sectionLink = this.section && this.section.link ? this.section.link : '/';
 
     if (this.sidebarLinks && routeTo.path === sectionLink) {
       const flatSidebarLinks = ArrayUtils.flattenList(this.sidebarLinks);
