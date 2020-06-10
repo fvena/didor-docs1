@@ -6,41 +6,22 @@ set -e
 # build
 npm run build
 
-# Copiar archivos
+# Copia la documentación
 cp -R ./docs ./dist/docs
 
-# Genera el archivo de configuración
+# Actualiza el archivo de configuración
 node <<EOF
 const fs = require('fs');
 const path = require('path');
-const config = require('./lib/build/default.js');
-
-const appConfig = {
-  logo: config.logo,
-  title: config.title,
-  description: 'Herramienta para documentar tus proyectos',
-  navbar: config.navbar,
-  sidebar: config.sidebar,
-  defaultPath: config.defaultPath,
-  buildPath: 'docs',
-  social: {
-    twitter: 'https://github.com/fvena/didor-docs',
-    github: 'https://github.com/fvena/didor-docs',
-  },
-  jsLib: config.jsLib,
-  cssLib: config.cssLib,
-};
-
 const configFilePath = path.join(process.cwd(), './dist/didor.config.js');
-const configFile = 'window.\$didor = ' + JSON.stringify(appConfig);
-fs.writeFileSync(configFilePath, configFile);
+
+fs.readFile(configFilePath, 'utf8', function (err,data) {
+  if (err) return console.log(err);
+
+  const result = data.replace(/buildPath\: \'\'/g, "buildPath: '/docs'");
+
+  fs.writeFile(configFilePath, result, 'utf8', function (err) {
+     if (err) return console.log(err);
+  });
+});
 EOF
-
-# Publica el proyecto en github
-# cd dist
-
-# git init
-# git add -A
-# git commit -m 'deploy'
-
-# git push -f https://github.com/fvena/didor-docs.git master:gh-pages

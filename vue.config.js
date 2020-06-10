@@ -1,30 +1,9 @@
 const path = require('path');
-const config = require('./lib/build/default');
 
 module.exports = {
   configureWebpack: {
     devServer: {
       contentBase: [path.join(process.cwd(), './public'), path.join(process.cwd(), './docs')],
-      before: app => {
-        app.get('/didor.config.js', async (req, res) => {
-          const appConfig = {
-            logo: config.logo,
-            title: config.title,
-            description: config.description,
-            navbar: config.navbar,
-            sidebar: config.sidebar,
-            defaultPath: config.defaultPath,
-            buildPath: config.buildPath,
-            social: config.social,
-            jsLib: config.jsLib,
-            cssLib: config.cssLib,
-          };
-
-          if (config.lib.components || config.lib.styles) appConfig.jsLib.push(`http://localhost:${config.port}/lib_bundle.js`);
-
-          res.send(`window.$didor = ${JSON.stringify(appConfig)}`);
-        });
-      },
     },
   },
   runtimeCompiler: true,
