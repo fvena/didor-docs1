@@ -23,6 +23,10 @@
         color: color(gray1);
       }
     }
+
+    &--folder {
+      cursor: pointer;
+    }
   }
 
   &__showFolder {

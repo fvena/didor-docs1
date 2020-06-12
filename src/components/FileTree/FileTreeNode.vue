@@ -1,6 +1,6 @@
 <template lang="pug">
   .fileTreeNode
-    .fileTreeNode__row(@click="toggleOpenFolder" :class="{'fileTreeNode__row--select': node.select}")
+    .fileTreeNode__row(@click="toggleOpenFolder" :class="{'fileTreeNode__row--folder': node.type==='folder' && node.children && node.children.length, 'fileTreeNode__row--select': node.select}")
       //- Icono Abrir/Cerrar carpeta
       .fileTreeNode__showFolder(v-if="node.type==='folder' && node.children && node.children.length")
         dd-icon.fileTreeNode__icon(name="minus-square" scale="0.45" v-if="openFolder")
