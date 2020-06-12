@@ -56,6 +56,8 @@ export default {
         const viewport = document.getElementById('main');
         const element = document.getElementById(block.slug);
 
+        if (!element) return false;
+
         const topElement = element.offsetTop;
         const viewportBottom = viewport.scrollTop + (viewport.offsetHeight * (100 - this.percentVisible)) / 100;
 

@@ -2,7 +2,9 @@
   position: absolute;
   top: quadruple();
   right: simple();
-  max-width: 10rem;
+  width: 10rem;
+  max-height: calc(100% - #{quadruple()});
+  overflow-y: scroll;
 
   &__title {
     overflow: hidden;
@@ -15,6 +17,21 @@
     @include hover {
       color: color(gray1);
       text-decoration: none;
+    }
+  }
+
+  &__block {
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  &::v-deep {
+    .scrollTracking__block > .scrollTrackingNode {
+      padding-left: 0;
+
+      &::before {
+        display: none;
+      }
     }
   }
 }
