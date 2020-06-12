@@ -2,7 +2,8 @@
 .appHeader
   //- Logotipo, enlaza con el home
   router-link.appHeader__logo(:to="{name: 'section'}")
-    img(:src="logo")
+    img(:src="logo" v-if="logo")
+    span(v-else) {{ title }}
 
   .appHeader__bar
 
@@ -54,6 +55,7 @@ export default {
 
   created() {
     this.logo = window.$didor.logo;
+    this.title = window.$didor.title;
   },
 };
 </script>

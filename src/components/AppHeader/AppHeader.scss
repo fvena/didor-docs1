@@ -13,6 +13,10 @@
     min-width: $sidebar-width;
     height: 100%;
     padding: 0 simple();
+    font-family: font-family(heading);
+    font-size: font-size(h5);
+    font-weight: font-weight(heading);
+    color: color(gray1);
 
     img {
       max-height: 50%;
@@ -105,10 +109,12 @@
       &:nth-child(1) {
         transform: scaleX(1);
       }
+
       &:nth-child(2) {
         margin: 3px 0;
         transform: scaleX(0.6) translate(-6px, 0);
       }
+
       &:nth-child(3) {
         transform: scaleX(0.8) translate(-2px, 0);
       }
@@ -121,9 +127,11 @@
       span:nth-child(1) {
         transform: scaleX(1) rotate(45deg) translate(4px, 5.5px);
       }
+
       span:nth-child(2) {
         transform: scaleX(0);
       }
+
       span:nth-child(3) {
         transform: scaleX(1) rotate(-45deg) translate(3px, -4.5px);
       }
