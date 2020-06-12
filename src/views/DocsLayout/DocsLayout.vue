@@ -245,9 +245,13 @@ export default {
     const config = window.$didor;
 
     this.title = config.title;
+    this.description = config.description;
     this.logo = config.logo;
     this.social = config.social;
-    this.defaultPath = config.defaultPath;
+    this.defaultPath = config.defaultPath
+      .split('.')
+      .slice(0, -1)
+      .join('.');
     this.buildPath = config.buildPath;
     this.navbarPath = config.navbar;
     this.sidebarPath = config.sidebar;
@@ -256,6 +260,7 @@ export default {
      * Actualizo el título de la página con el nombre del proyecto
      */
     document.title = this.title;
+    document.querySelector('meta[name="description"]').setAttribute('content', this.description);
 
     /**
      * Intento obtener los links de la secciones
