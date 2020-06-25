@@ -86,5 +86,6 @@
     "list-marker-space": false
   },
   "liveServer.settings.port": 5501,
-  "liveServer.settings.root": "/dist"
+  "liveServer.settings.root": "/dist",
+  "cSpell.enabledLanguageIds": ["asciidoc", "c", "cpp", "csharp", "css", "go", "handlebars", "html", "jade", "javascriptreact", "json", "latex", "less", "markdown", "php", "plaintext", "pub", "python", "restructuredtext", "rust", "text", "typescript", "typescriptreact", "yml"]
 }

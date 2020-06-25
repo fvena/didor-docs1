@@ -4,8 +4,13 @@
 
 Puedes crear tablas utiliza el carácter [[|]] para separar cada columna y tres o más guiones [[---]] para separar la cabecera del resto de filas.
 
+| Cabecera 1 | Cabecera 2 |
+| --- | ----------- |
+| Celda 1-1 | Celda 1-2 |
+| Celda 2-1 | Celda 2-2 |
 
-```demoCode[markdown]
+```markdown
+
 | Cabecera 1 | Cabecera 2 |
 | --- | ----------- |
 | Celda 1-1 | Celda 1-2 |
@@ -18,8 +23,12 @@ Puedes crear tablas utiliza el carácter [[|]] para separar cada columna y tres 
 
 Puedes alinear el texto de una columna añadiendo dos puntos a la izquierda, derecha o ambos lados de los tres guiones que separan la cabecera.
 
+| Cabecera 1 | Cabecera 2 | Cabecera 3 |
+| :---       | :---:      | ---:       |
+| Celda 1-1  | Celda 1-2  | Celda 1-3  |
+| Celda 2-1  | Celda 2-2  | Celda 2-3  |
 
-```demoCode[markdown]
+```markdown
 | Cabecera 1 | Cabecera 2 | Cabecera 3 |
 | :---       | :---:      | ---:       |
 | Celda 1-1  | Celda 1-2  | Celda 1-3  |

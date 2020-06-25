@@ -2,43 +2,6 @@
 
 Los bloques de código en Markdown están envueltos dentro de 3 comillas tipográficas.
 
-## Lenguajes
-
-Para que el código se resalte según su lenguaje, debes indicarlo tras las tres comillas. Los lenguajes definidos son:
-
-- `javascript`
-- `sh` `shell`
-- `json`
-- `pug`
-- `scss`
-- `markdown`
-- `markup` `html`
-
-```sh
-#!/bin/bash
-
-# clone the repository
-git clone http://github.com/garden/tree
-
-# generate HTTPS credentials
-cd tree
-openssl genrsa -aes256 -out https.key 1024
-openssl req -new -nodes -key https.key -out https.csr
-openssl x509 -req -days 365 -in https.csr -signkey https.key -out https.crt
-cp https.key{,.orig}
-openssl rsa -in https.key.orig -out https.key
-```
-
-```markdown
-# Título 1
-
-## Título 2
-
-Hola Mundo
-
-[didor](http://www.didor.io)
-```
-
 ````markdown
 ```javascript
 const http = require('http');
@@ -53,6 +16,86 @@ http
   .listen(3000);
 ```
 ````
+
+## Lenguajes
+
+Para que el código se resalte según su lenguaje, debes indicarlo tras las tres comillas. Los lenguajes definidos son:
+
+- `html` `pug`
+- `css` `scss`
+- `js` `javascript`
+- `vue`
+- `markdown`
+- `sh`
+- `json`
+
+::: codegroup
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+  <script src="main.js"></script>
+</head>
+<body>
+  <h1>Hola Mundo</h1>
+</body>
+</html>
+```
+
+```pug
+!DOCTYPE html
+html
+head
+  meta(charset="utf-8")
+  meta(http-equiv="X-UA-Compatible" content="IE=edge")
+  title Page Title
+  meta(name="viewport" content="width=device-width, initial-scale=1")
+  link(rel="stylesheet" type="text/css" media="screen" href="main.css")
+  script(src="main.js")
+
+body
+  h1 Hola Mundo
+```
+
+```css
+:root {
+  --color-blue: #3bbfce;
+  --margin: 16px;
+}
+
+.content-navigation {
+  border-color: var(--color-blue);
+  color: var(--color-blue);
+
+  .nested {
+    padding: var(--margin) / 2;
+    margin: var(--margin) / 2;
+  }
+}
+```
+
+```scss
+@import "compass/css3";
+
+$blue: #3bbfce;
+$margin: 16px;
+
+.content-navigation {
+  border-color: $blue;
+  color: darken($blue, 9%);
+
+  .nested {
+    padding: $margin / 2;
+    margin: $margin / 2;
+  }
+}
+```
 
 ```javascript
 const http = require('http');
@@ -82,6 +125,67 @@ http
   }
 </script>
 ```
+
+```markdown
+# Título 1
+
+## Título 2
+
+Hola Mundo
+
+[didor](http://www.didor.io)
+```
+
+```sh
+#!/bin/bash
+
+# clone the repository
+git clone http://github.com/garden/tree
+
+# generate HTTPS credentials
+cd tree
+openssl genrsa -aes256 -out https.key 1024
+openssl req -new -nodes -key https.key -out https.csr
+openssl x509 -req -days 365 -in https.csr -signkey https.key -out https.crt
+cp https.key{,.orig}
+openssl rsa -in https.key.orig -out https.key
+```
+
+```json
+{
+  "port": 3001,
+  "open": true,
+  "folders": ["/docs"],
+  "navbar": "_navbar.md",
+  "sidebar": "_sidebar.md",
+  "defaultPath": "/home.md",
+  "didorDocs": false,
+  "didorFramework": false,
+  "logo": "",
+  "title": "Didor Docs",
+  "description": "",
+  "social": {
+    "twitter": "",
+    "facebook": "",
+    "linkedin": "",
+    "instagram": "",
+    "slack": "",
+    "github": "",
+    "gitlab": "",
+  },
+  "style2": [],
+  "scripts": [],
+  "demo": {
+    "jsLib": [],
+    "cssLib": [],
+    "components": "",
+    "styles": "",
+    "shareStyles": "",
+  }
+}
+```
+
+:::
 
 ## Resaltar el código
 

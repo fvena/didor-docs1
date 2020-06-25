@@ -2,7 +2,7 @@
 
 Los Keyboard Input se definen entre doble corchetes `[[` `]]`.
 
-```demoCode[markdown]
+```demoCode[markdown](open)
 
 [[a]] [[3]]
 
@@ -10,7 +10,7 @@ Los Keyboard Input se definen entre doble corchetes `[[` `]]`.
 
 Algunas teclas se sustituyen por su símbolo automáticamente.
 
-```demoCode[markdown]
+```demoCode[markdown](open)
 
 [[alt]] [[command]] [[shift]] [[ctrl]]
 
@@ -18,7 +18,7 @@ Algunas teclas se sustituyen por su símbolo automáticamente.
 
 También se pueden agrupar varias teclas
 
-```demoCode[markdown]
+```demoCode[markdown](open)
 
 [[command C]] Copiar
 [[command V]] Pegar

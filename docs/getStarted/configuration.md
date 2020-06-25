@@ -39,7 +39,7 @@ module.exports = {
 
 ```
 
-## Servidor
+## Servidor Desarrollo
 
 ### port
 
@@ -51,14 +51,16 @@ Permite configurar el puerto en el que se abrirá el servidor de desarrollo.
 ```js[didor.config.js]
 
 module.exports = {
+  devServer: {
     port: 3001,
   }
+}
 
 ```
 
 ### open
 
-Indica si al levantar el servidor de desarrollo debe abrirse una ventana en el navegador y mostrarse automaticamente.
+Indica si al levantar el servidor de desarrollo debe abrirse una ventana en el navegador y mostrarse automáticamente.
 
 - Tipo: `Boolean`
 - Defecto: `true`
@@ -66,8 +68,10 @@ Indica si al levantar el servidor de desarrollo debe abrirse una ventana en el n
 ```js[didor.config.js]
 
 module.exports = {
+  devServer: {
     open: true,
   }
+}
 
 ```
 
@@ -89,13 +93,13 @@ Especifica los directorios que contendrán la documentación. La ruta se especif
     - home.md
   - src [open]
     - components [open]
-      - componentA [close]
+      - componentA
         - componentA.vue
         - componentA.md
-      - componentB [close]
+      - componentB
         - componentB.vue
         - componentB.md
-      - componentC [close]
+      - componentC
         - componentC.vue
         - componentC.md
   - package.json
@@ -106,16 +110,20 @@ Especifica los directorios que contendrán la documentación. La ruta se especif
 ```js[didor.config.js]
 
 module.exports = {
+  devServer: {
     folders: ['/docs'],
   }
+}
 
 ```
 
 ```js[didor.config.js]
 
 module.exports = {
+  devServer: {
     folders: ['/docs', '/src/components'],
   }
+}
 
 ```
 
@@ -129,8 +137,10 @@ Permite modificar el nombre del archivo utilizado para generar la barra de naveg
 ```js[didor.config.js]
 
 module.exports = {
+  devServer: {
     navbar: 'myNavbar.md',
   }
+}
 
 ```
 
@@ -144,8 +154,10 @@ Permite modificar el nombre del archivo utilizado para generar la barra de naveg
 ```js[didor.config.js]
 
 module.exports = {
+  devServer: {
     sidebar: 'mySidebar.md',
   }
+}
 
 ```
 
@@ -159,8 +171,10 @@ Permite modificar la ruta del archivo utilizado para generar la página de inici
 ```js[didor.config.js]
 
 module.exports = {
+  devServer: {
     defaultPath: '/inicio.md',
   }
+}
 
 ```
 
@@ -174,8 +188,10 @@ Permite añadir la sección **markdown** de didorDocs en tu propia documentació
 ```js[didor.config.js]
 
 module.exports = {
+  devServer: {
     didorDocs: false,
   }
+}
 
 ```
 
@@ -196,7 +212,9 @@ Permite añadir la sección **estilos** de didor-Framework en tu propia document
 ```js[didor.config.js]
 
 module.exports = {
-  didorFramework: false,
+  devServer: {
+    didorFramework: false,
+  }
 }
 
 ```
@@ -220,7 +238,26 @@ Indica la localización del logotipo. Sino se especifica ninguno, se muestra el 
 ```js[didor.config.js]
 
 module.exports = {
-  logo: 'docs/assets/didorLogo.svg',
+  customize: {
+    logo: 'docs/assets/didorLogo.svg',
+  }
+}
+
+```
+
+### favicon
+
+Indica la localización del favicon. Sino se especifica ninguno, se muestra el de didor por defecto.
+
+- Tipo: `String`
+- Defecto: `undefined`
+
+```js[didor.config.js]
+
+module.exports = {
+  customize: {
+    favicon: 'docs/assets/favicon.ico',
+  }
 }
 
 ```
@@ -235,7 +272,9 @@ Permite modificar el título por defecto de la página.
 ```js[didor.config.js]
 
 module.exports = {
-  title: 'Didor Docs',
+  customize: {
+    title: 'Didor Docs',
+  }
 }
 
 ```
@@ -250,7 +289,9 @@ Permite modificar la descripción por defecto de la página.
 ```js[didor.config.js]
 
 module.exports = {
-  description: 'Herramienta para documentar proyectos',
+  customize: {
+    description: 'Herramienta para documentar proyectos',
+  }
 }
 
 ```
@@ -265,24 +306,26 @@ Permite añadir links con sus respectivos iconos en la barra de navegación. Act
 ```js[didor.config.js]
 
 module.exports = {
-  social: {
-    twitter: 'https://twitter.com/fvena',
-    facebook: '',
-    linkedin: '',
-    instagram: '',
-    slack: '',
-    github: 'https://github.com/fvena/didor-docs',
-    gitlab: '',
-  },
+  customize: {
+    social: {
+      twitter: 'https://twitter.com/fvena',
+      facebook: '',
+      linkedin: '',
+      instagram: '',
+      slack: '',
+      github: 'https://github.com/fvena/didor-docs',
+      gitlab: '',
+    },
+  }
 }
 
 ```
 
 ### style
 
-Permite añadir un archivo o varios css, para modificar el diseño de la página o añadir nuevos diseños. Pueden utilizar cualquier librería, indicando el link de su CDN, o poner la ruta de un archivo local.
+Permite añadir uno o varios archivos css, para modificar el diseño de la documentación. Puedes añadir una archivo local o una librería externa, con su link de CDN.
 
-Actualmente solo pueden utilizarse archivos css. No pueden utilizarse ningún preprocesador.
+Actualmente solo pueden utilizarse archivos css.
 
 - Tipo: `Array`
 - Defecto: `[]`
@@ -290,14 +333,19 @@ Actualmente solo pueden utilizarse archivos css. No pueden utilizarse ningún pr
 ```js[didor.config.js]
 
 module.exports = {
-  style: ['/docs/style/myStyle.css', 'https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css'],
+  customize: {
+    style: [
+      '/docs/style/myStyle.css',
+      'https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css'
+    ],
+  }
 }
 
 ```
 
 ### scripts
 
-Permite añadir un archivo o varios javascript, para añadir nueva funcionalidad. Pueden utilizar cualquier librería, indicando el link de su CDN, o poner la ruta de un archivo local.
+Permite añadir uno o varios archivos javascript, para añadir nueva funcionalidad. Puedes añadir una archivo local o una librería externa, con su link de CDN.
 
 - Tipo: `Array`
 - Defecto: `[]`
@@ -305,21 +353,311 @@ Permite añadir un archivo o varios javascript, para añadir nueva funcionalidad
 ```js[didor.config.js]
 
 module.exports = {
-  scripts: ['https://cdnjs.com/libraries/Chart.js'],
+  customize: {
+    scripts: ['https://cdnjs.com/libraries/Chart.js'],
+  }
 }
 
 ```
 
 ## Demo
 
-### jsLib
+Uno de los puntos fuertes de **Didor Docs** es su flexibilidad a la hora de documentar y desarrollar librerías.
+
+Las demos, se muestran en un iframe donde unicamente se cargan las librería configuradas a continuación, de forma que las demos están totalmente aisladas de la documentación, y no le afectan ni sus estilos ni su funcionalidad.
 
 ### cssLib
 
+Permite añadir una o varias librerías javascript a tus demos. Puedes añadir una archivo local o una librería externa, con su link de CDN.
+
+Actualmente solo pueden utilizarse archivos css.
+
+- Tipo: `Array`
+- Defecto: `[]`
+
+```js[didor.config.js]
+
+module.exports = {
+  demo: {
+    cssLib: ['https://cdn.jsdelivr.net/npm/@didor/framework@0.1.0/dist/didor.min.css'],
+  }
+}
+
+```
+
+### jsLib
+
+Permite añadir una o varias librerías javascript a tus demos. Puedes añadir una archivo local o una librería externa, con su link de CDN.
+
+- Tipo: `Array`
+- Defecto: `[]`
+
+```js[didor.config.js]
+
+module.exports = {
+  demo: {
+    jsLib: ['https://cdnjs.com/libraries/Chart.js'],
+  }
+}
+
+```
+
 ### components
 
+Si estás desarrollando tu propia librería de componentes, puedes importarlos directamente como un plugin, indicando el nombre del fichero donde está configurado:
+
+Ejemplo de una librería de componentes:
+
+::: tree
+
+- miProyecto [open]
+  - docs
+    - home.md
+  - packages [open]
+    - Avatar
+      - Avatar.vue
+      - Avatar.md
+      - index.js
+    - Button
+      - Button.vue
+      - Button.md
+      - index.js
+    - Popup
+      - Popup.vue
+      - Popup.md
+      - index.js
+    - Styles
+      - _base.scss
+      - _mixins.scss
+      - _var.scss
+    - index.js [select]
+    - styles.scss
+  - package.json
+  - didor.config.js
+
+:::
+
+```js[/packages/index.js]
+import Avatar from './Avatar';
+import Button from './Button';
+import Popup from './Popup';
+
+const Components = {
+  Avatar,
+  Button,
+  Popup,
+};
+
+const install = (Vue, opts = {}) => {
+  const prefix = 'dd';
+
+  Object.keys(Components).forEach(name => {
+    const componentName = `${prefix}${name}`;
+    Vue.component(componentName, Components[name]);
+  });
+};
+
+// Automatically install Didor UI if Vue is available globally
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue);
+}
+
+export default { install, ...Components };
+```
+
+Para utilizar los componentes de nuestra librería, solo tenemos que indicar la ruta a nuestro archivo de instalación.
+
+- Tipo: `String`
+- Defecto: `''`
+
+```js[didor.config.js]
+
+module.exports = {
+  demo: {
+    components: '/packages/index.js,
+  }
+}
+
+```
 
 ### styles
 
+Puede que nuestra librería cuente con unos estilos comunes, o simplemente estamos desarrollando nuestro propio framework de estilos.
+
+Podemos indicar directamente el archivo principal **scss** que importa todos nuestros archivos de estilos para que sea procesado y utilizado en las demos.
+
+::: tree
+
+- miProyecto [open]
+  - docs
+    - home.md
+  - packages [open]
+    - Avatar
+      - Avatar.vue
+      - Avatar.md
+      - index.js
+    - Button
+      - Button.vue
+      - Button.md
+      - index.js
+    - Popup
+      - Popup.vue
+      - Popup.md
+      - index.js
+    - Styles [open]
+      - _base.scss
+      - _mixins.scss
+      - _var.scss
+    - index.js
+    - styles.scss [select]
+  - package.json
+  - didor.config.js
+
+:::
+
+```js[/packages/styles.scss]
+@import '/Styles/var';
+@import '/Styles/mixins';
+@import '/Styles/base';
+```
+
+Configurando nuestros estilos por defecto:
+
+- Tipo: `String`
+- Defecto: `''`
+
+```js[didor.config.js]
+
+module.exports = {
+  demo: {
+    styles: '/packages/styles.scss,
+  }
+}
+```
+
 
 ### shareStyles
+
+En ocasiones, cuando desarrollamos una librería de componentes, y necesitamos compartir variables, mixins o funciones de scss, tenemos que importarlos en cada componente.
+
+Existe una forma de importarlos por defecto en todos los componentes mediante el archivo de configuración de vue:
+
+::: tree
+
+- miProyecto [open]
+  - docs
+    - home.md
+  - packages [open]
+    - Avatar
+      - Avatar.vue
+      - Avatar.md
+      - index.js
+    - Button
+      - Button.vue
+      - Button.md
+      - index.js
+    - Popup
+      - Popup.vue
+      - Popup.md
+      - index.js
+    - Styles [open]
+      - _base.scss
+      - _mixins.scss
+      - _var.scss
+    - index.js
+    - styles.scss
+  - package.json
+  - didor.config.js
+  - vue.config.js
+
+:::
+
+```js[vue.config.js]
+module.exports = {
+  css: {
+    sourceMap: true,
+    loaderOptions: {
+      sass: {
+        prependData: `
+          @import "./packages/Styles/_var.scss";
+          @import "./packages/Styles/_mixins.scss";
+        `,
+      },
+    },
+  },
+};
+```
+
+Si hemos aplicado esta configuración, también tenemos que configurarlos para la demo, sino los componentes cargados dentro de la demo fallarán al no encontrar las variables, mixins, funciones, ...
+
+- Tipo: `Array`
+- Defecto: `[]`
+
+```js[didor.config.js]
+
+module.exports = {
+  demo: {
+    shareStyles: [
+      '/packages/Styles/_var.scss',
+      '/packages/Styles/_mixins.scss'
+    ]
+  }
+}
+```
+
+## Publicación
+
+Cuando ejecutamos el comando `didor build`, crea una carpeta `publish` donde genera la documentación lista para ser publicada en un servidor web.
+
+por defecto se copian todos los archivos contenidos en las carpetas de la documentación (propiedad **folders**) en el directorio `/build`, y se generan los archivos necesarios para que se pueda publicar la documentación en un servidor web.
+
+### buildPath
+
+Permite modificar el directorio donde se generará la documentación.
+
+- Tipo: `String`
+- Defecto: `/publish`
+
+```js[didor.config.js]
+
+module.exports = {
+  build: {
+    path: '/publish',
+  }
+}
+```
+
+### onlyMarkdown
+
+Por defecto, **didor** copia todos los archivos contenidos en las carpetas configuradas en la propiedad `folders`. Si solo queremos que se copien los archivos markdown, podemos indicarlo con la propiedad **onlyMarkdown**.
+
+- Tipo: `Boolean`
+- Defecto: `false`
+
+```js[didor.config.js]
+
+module.exports = {
+  build: {
+    onlyMarkdown: false,
+  }
+}
+```
+
+### assets
+
+Si necesitamos copiar otras carpetas a la carpeta de publicación, podemos añadirlos con la propiedad `assets`.
+
+- Tipo: `Array`
+- Defecto: `[]`
+
+```js[didor.config.js]
+
+module.exports = {
+  build: {
+    assets: [
+      '/packages/assets',
+      '/packages/icons'
+    ],
+  }
+}
+```

@@ -1,0 +1,18 @@
+{
+  "default": true,
+
+  // Rule customizations for markdownlint go here
+  "MD013": false,
+  "MD026": { "punctuation": ".,;:。，；：" },
+  "MD033": false,
+
+  // Disable line length restrictions, because editor soft-wrapping is being
+  // used instead.
+  "line-length": false,
+
+  // ===
+  // Prettier overrides
+  // ===
+  "no-multiple-blanks": false,
+  "list-marker-space": false
+}

@@ -9,7 +9,11 @@
     .fileTree__content > .fileTreeNode {
       padding-left: 0;
       margin-left: simple();
-      border-left: none;
+
+      &::before,
+      &::after {
+        display: none;
+      }
     }
   }
 }

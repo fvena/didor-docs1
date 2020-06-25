@@ -4,11 +4,7 @@
 
 Para crear una cita, añada el símbolo [[>]] delante de un párrafo.
 
-```demo[markdown]
-
 > Primero resuelve el problema. Entonces, escribe el código.
-
-```
 
 ```markdown
 
@@ -20,13 +16,9 @@ Para crear una cita, añada el símbolo [[>]] delante de un párrafo.
 
 Una cita puede contener múltiples párrafos añadiendo el símbolo [[>]] en las líneas en blanco.
 
-```demo[markdown]
-
 > Recuerda: no eres torpe, no importa lo que digan esos libros.
 >
 > Los torpes de verdad son gente que, creyéndose expertos técnicos, no podrían diseñar hardware y software manejable por usuarios normales aunque la vida les fuera en ello.
-
-```
 
 ```markdown
 
@@ -40,15 +32,11 @@ Una cita puede contener múltiples párrafos añadiendo el símbolo [[>]] en las
 
 Las citas pueden contener otros elementos en markdown:
 
-```demo[markdown]
-
 > ### COBOL
 >
 > El uso de COBOL daña la mente. Su enseñanza debería ser considerada como un ataque criminal
 >
 > *-- E. W. Dijkstra*
-
-```
 
 ```markdown
 

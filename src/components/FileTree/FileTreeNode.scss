@@ -1,7 +1,30 @@
 .fileTreeNode {
-  padding: 0.1rem 0 0.1rem 1rem;
-  margin-left: half();
-  border-left: 1px solid $border-color;
+  position: relative;
+  margin-left: simple();
+
+  &::before {
+    position: absolute;
+    top: 0%;
+    left: calc(#{half('-')} - 4px);
+    width: 1px;
+    height: 100%;
+    content: '';
+    background-color: $border-color;
+  }
+
+  &::after {
+    position: absolute;
+    top: size(0.65);
+    left: calc(#{half('-')} - 4px);
+    width: quarter();
+    height: 1px;
+    content: '';
+    background-color: $border-color;
+  }
+
+  &:last-of-type::before {
+    height: 60%;
+  }
 
   &__showFolder,
   &__icon,
@@ -14,6 +37,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    padding: 0.1rem 0;
     font-size: font-size(small1);
 
     &--select {
@@ -31,13 +55,13 @@
 
   &__showFolder {
     position: absolute;
-    left: calc(-1.1rem - 5px);
-    width: 14px;
-    height: 14px;
-    padding: 1px;
-    line-height: 14px;
+    left: calc(#{simple('-')} + 4px);
+    z-index: 10;
+    width: 20px;
+    height: 22px;
+    line-height: 20px;
     cursor: pointer;
-    background-color: color('white');
+    background-color: color(white);
   }
 
   &__icon {
