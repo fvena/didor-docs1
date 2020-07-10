@@ -5,6 +5,11 @@
     margin: double() 0;
     border: 1px solid color(gray6);
     border-radius: $border-radius;
+
+    &.no-style {
+      border: none;
+      box-shadow: none;
+    }
   }
 
   figure {
@@ -31,7 +36,7 @@
   .lastModified + p {
     font-size: font-size(h5);
     line-height: 1.8rem;
-    color: color(gray4);
+    color: color(gray3);
   }
 
   h1 + p code {
@@ -70,6 +75,7 @@
       &::after {
         display: inline-block;
         margin-left: -0.1rem;
+        line-height: 12px;
         vertical-align: -0.45rem;
         content: url('../../assets/icons/svg/external-link.svg');
         opacity: 0.5;
@@ -81,11 +87,11 @@
   .anchor-link {
     position: relative;
     display: block;
-    color: color(color1);
+    color: color(gray1);
     cursor: pointer;
 
     @include hover {
-      color: color(color1);
+      color: color(gray1);
       text-decoration: none;
 
       &::before {
@@ -96,6 +102,55 @@
         content: '#';
       }
     }
+  }
+
+  sup {
+    font-weight: font-weight(bold);
+    color: color(brand);
+  }
+
+  .remark {
+    position: relative;
+    padding-top: quarter();
+    padding-left: half();
+    margin-bottom: double();
+    line-height: 1.4rem;
+    color: color(gray3);
+    border-top: 1px solid color(border);
+
+    p,
+    li {
+      margin-bottom: 0;
+      font-size: font-size(small1);
+    }
+
+    :not(pre) > code {
+      color: color(gray2);
+    }
+
+    &::before {
+      position: absolute;
+      left: 0;
+      font-size: font-size(small2);
+      font-weight: font-weight(bold);
+      line-height: 1.4rem;
+      color: color(brand);
+      content: attr(data-ref);
+    }
+
+    + .remark {
+      padding-top: 0;
+      margin-top: double('-');
+      border-top: none;
+    }
+  }
+
+  img + .remark,
+  figure + .remark,
+  .appCode + .remark {
+    padding-top: 0;
+    margin-top: size(-1.5);
+    border-top: none;
   }
 
   blockquote {
@@ -116,13 +171,14 @@
     th {
       font-size: font-size(small2);
       font-weight: font-weight(bold);
-      color: color(gray3);
+      color: color(gray2);
       text-transform: uppercase;
       background-color: color(gray7);
     }
 
     td {
       font-size: font-size(small1);
+      line-height: 1.4rem;
       color: color(gray2);
       border-bottom: 1px solid color(border);
 
@@ -131,7 +187,7 @@
         font-family: font-family(base);
         font-size: 0.95em;
         font-weight: 400;
-        color: color(gray3);
+        color: color(gray2);
       }
 
       &:first-of-type {

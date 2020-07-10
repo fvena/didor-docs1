@@ -1,10 +1,10 @@
 <template lang="pug">
   .scrollTrackingNode
     a.scrollTrackingNode__link(
-      :href="'#'+block.slug"
-      :class="{'scrollTrackingNode__link--active': block.slug === activeBlock }"
-      @click="selected(block.slug)")
-      | {{block.title}}
+      :href="'#'+block.anchor"
+      :class="{'scrollTrackingNode__link--active': block.anchor === activeBlock }"
+      @click="selected(block.anchor)")
+      | {{block.content}}
 
     ScrollTrackingNode(
       v-if="block.children"

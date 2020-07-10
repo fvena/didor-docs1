@@ -13,8 +13,8 @@
   AppSidebar.docsLayout__sidebar(:links="sidebarLinks")
 
 
-  //- Content Area
-  //- .docsLayout__content(ref="viewBox")
+  //- Scroll Tracking
+  ScrollTracking(:blocks="toc" v-if="content && toc && toc.length > 1")
 
 
   //- Main Content
@@ -22,14 +22,16 @@
     .docsLayout__wrapper(v-if="content")
 
       //- Article Area
-      AppArticle.docsLayout__article(
-        :data="content")
+      AppArticle.docsLayout__article(:data="content")
+
 
       //- Footer Area
       AppPagination.docsLayout__pagination(
         v-if="article"
         :prevArticle="article.prev"
         :nextArticle="article.next")
+
+    AppNotFound(:title="title" v-if="notFound")
 
 
   //- Botón para mostrar/ocultar el menú lateral
@@ -47,6 +49,8 @@ import AppMenu from '@/components/AppMenu';
 import AppSocialLinks from '@/components/AppSocialLinks';
 import AppArticle from '@/components/AppArticle';
 import AppPagination from '@/components/AppPagination';
+import AppNotFound from '@/components/AppNotFound';
+import ScrollTracking from '@/components/ScrollTracking';
 import { ObserveVisibility } from 'vue-observe-visibility';
 import FileService from '@/services/file.service';
 import ParamsUtil from '@/utils/params.utils';
@@ -63,12 +67,15 @@ export default {
     AppSocialLinks,
     AppArticle,
     AppPagination,
+    AppNotFound,
+    ScrollTracking,
   },
   data() {
     return {
       logo: '',
       social: '',
       defaultPath: '',
+      notFound: false,
       navbarPath: '',
       sidebarPath: '',
       section: null,
@@ -79,6 +86,7 @@ export default {
       navbarLinks: [],
       sidebarLinks: [],
       content: '',
+      toc: [],
     };
   },
   methods: {
@@ -91,8 +99,7 @@ export default {
     },
 
     onScroll() {
-      const box = this.$refs.main;
-      const currentScrollPosition = box.scrollTop;
+      const currentScrollPosition = window.scrollY;
       if (currentScrollPosition < 0) {
         return;
       }
@@ -128,6 +135,7 @@ export default {
        */
       if (routeTo === '/' && this.defaultPath) {
         this.$router.push(this.defaultPath, () => {});
+        return;
       }
 
       /**
@@ -139,6 +147,7 @@ export default {
         const flatNavbarLinks = ArrayUtils.flattenList(this.navbarLinks);
         const firstSection = flatNavbarLinks[0].link;
         this.$router.push(firstSection, () => {});
+        return;
       }
 
       /**
@@ -155,11 +164,12 @@ export default {
         this.sidebarLinks = [];
 
         /**
-         * Si tenemos secciones, busco la sección actual
+         * Si tenemos secciones, busco la sección actual,
+         * si no existe, es que esta página no tiene navbar
          */
         if (ArrayUtils.checkArray(this.navbarLinks)) {
           const section = await ArrayUtils.searchItemByLinks(this.navbarLinks, toSection);
-          this.section = section.current;
+          this.section = section ? section.current : null;
         }
 
         /**
@@ -169,8 +179,16 @@ export default {
         const sectionIsFolder = this.section && this.section.file.slice(-3) !== '.md';
 
         if (sectionIsFolder) {
-          const sidebarPath = `${this.section.file}/${this.sidebarPath}`;
           const sectionLink = this.section.link;
+          let sidebarPath = `${this.section.file}/${this.sidebarPath}`;
+
+          // Si el usuario modifica el nombre del archivo por defecto de la sidebar
+          // y quiere mostrar didorDocs o didorStyles, tengo que modificar su path
+          // para que coincida con el de ellos que usan el de por defecto
+          if ((this.section.file === '/didorDocs' && this.showDidorDocs) || (this.section.file === '/didorStyles' && this.showDidorStyles)) {
+            sidebarPath = `${this.section.file}/_sidebar.md`;
+          }
+
           this.sidebarLinks = await FileService.getLinks(sidebarPath, this.buildPath, sectionLink);
         }
       }
@@ -202,11 +220,22 @@ export default {
       /**
        * Obtenemos el contenido del árticulo y los datos
        */
-      const file = this.article ? this.article.current.file : this.section ? this.section.file : '';
+      let file = '';
+
+      if (this.article) file = this.article.current.file;
+      else if (this.section) file = this.section.file;
+      else if (routeTo !== '/') file = `${routeTo}.md`;
+
       const content = file ? await FileService.getArticle(file, this.buildPath) : null;
 
-      this.content = content && content.render ? content.render : '';
-      this.deviceShow = content && content.data && content.data.device ? content.data.device : false;
+      if (content) {
+        this.content = content.render ? content.render : '';
+        this.deviceShow = content.data && content.data.device ? content.data.device : false;
+        this.toc = content.data && content.data.toc ? content.data.toc : [];
+      } else {
+        // Artículo no encontrado
+        this.notFound = true;
+      }
 
       /**
        * Si existe un hash hago scroll hasta su posición
@@ -229,11 +258,10 @@ export default {
       setTimeout(() => {
         hash = hash.replace('#', '');
 
-        const main = this.$refs.main;
         const headerHeight = document.getElementById('header').offsetHeight;
         const anchorTop = document.getElementById(hash).offsetTop;
 
-        main.scroll(0, anchorTop - headerHeight);
+        window.scroll(0, anchorTop - headerHeight);
       }, 100);
     },
   },
@@ -244,17 +272,19 @@ export default {
      */
     const config = window.$didor;
 
-    this.title = config.title;
-    this.description = config.description;
-    this.logo = config.logo;
-    this.social = config.social;
-    this.defaultPath = config.defaultPath
+    this.title = config.customize.title;
+    this.description = config.customize.description;
+    this.logo = config.customize.logo;
+    this.social = config.customize.social;
+    this.navbarPath = config.content.navbar;
+    this.sidebarPath = config.content.sidebar;
+    this.defaultPath = config.content.defaultPath
       .split('.')
       .slice(0, -1)
       .join('.');
-    this.buildPath = config.buildPath;
-    this.navbarPath = config.navbar;
-    this.sidebarPath = config.sidebar;
+    this.buildPath = config.build.path;
+    this.showDidorDocs = config.content.didorDocs;
+    this.showDidorStyles = config.content.didorStyles;
 
     /**
      * Actualizo el título de la página con el nombre del proyecto
@@ -274,13 +304,11 @@ export default {
   },
 
   mounted() {
-    const box = this.$refs.main;
-    box.addEventListener('scroll', this.onScroll, false);
+    window.addEventListener('scroll', this.onScroll, false);
   },
 
   beforeDestroy() {
-    const box = this.$refs.main;
-    box.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('scroll', this.onScroll);
   },
 
   async beforeRouteUpdate(routeTo, routeFrom, next) {
@@ -288,6 +316,7 @@ export default {
      * Siempre que haya un cambio de ruta, cierro el menú en los dispositivos móviles
      */
     this.showDeviceMenu = false;
+    this.notFound = false;
 
     /**
      * Compruebo si la ruta ha combiado para evitar que recargue la página
@@ -306,7 +335,7 @@ export default {
      * Desactivo temporalmente la propiedad css scrollBeahavior,
      * para que vaya de un salto y no con una animación al cambiar de página.
      */
-    const main = this.$refs.main;
+    const main = document.body;
     main.style.scrollBehavior = 'initial';
     setTimeout(() => {
       main.scroll(0, 0);

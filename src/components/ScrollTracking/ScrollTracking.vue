@@ -1,17 +1,17 @@
 <template lang="pug">
   nav.scrollTracking
-    .scrollTracking__block(v-for="(block, key) in treeBlock" :key="key")
+    .scrollTracking__block(v-if="treeBlock")
       a.scrollTracking__title(
-        :href="'#'+block.slug"
-        :class="{'scrollTracking__title--active': block.slug === activeBlock }")
-        | {{block.title}}
+        :href="'#'+treeBlock.anchor"
+        :class="{'scrollTracking__title--active': treeBlock.anchor === activeBlock }")
+        | {{treeBlock.content}}
 
       ScrollTrackingNode(
-      v-if="block.children"
-      v-for="(node, key) in block.children"
-      :key="key"
-      :block="node"
-      :activeBlock="activeBlock")
+        v-if="treeBlock.children"
+        v-for="(node, key) in treeBlock.children"
+        :key="key"
+        :block="node"
+        :activeBlock="activeBlock")
 </template>
 
 <script>
@@ -46,6 +46,7 @@ export default {
     handleScroll() {
       // Comprueba cuando ha terminado de hacer scroll
       window.clearTimeout(this.isScrolling);
+
       this.isScrolling = setTimeout(() => {
         if (this.isEventChange) this.isEventChange = false;
       }, 66);
@@ -53,20 +54,16 @@ export default {
       if (this.isEventChange) return;
 
       const visible = this.reverseBlock.find(block => {
-        const viewport = document.getElementById('main');
-        const element = document.getElementById(block.slug);
-
+        const element = document.getElementById(block.anchor);
         if (!element) return false;
-
         const topElement = element.offsetTop;
-        const viewportBottom = viewport.scrollTop + (viewport.offsetHeight * (100 - this.percentVisible)) / 100;
-
+        const viewportBottom = window.scrollY + (window.innerHeight * (100 - this.percentVisible)) / 100;
         return topElement < viewportBottom;
       });
 
       if (!visible) return;
 
-      this.activeBlock = visible.slug;
+      this.activeBlock = visible.anchor;
     },
 
     getTree(list) {
@@ -77,14 +74,17 @@ export default {
         levels[item.level - 1].children.push(item);
         levels[item.level] = item;
       });
-      return levels[0].children;
+
+      return levels[1];
     },
   },
+
   created() {
-    document.getElementById('main').addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
   },
+
   mounted() {
-    this.activeBlock = this.blocks[0].slug;
+    this.activeBlock = this.blocks[0].anchor;
     this.reverseBlock = this.blocks.slice().reverse();
     this.treeBlock = this.getTree(this.blocks);
 
@@ -93,8 +93,9 @@ export default {
       this.activeBlock = hash;
     });
   },
+
   destroyed() {
-    document.getElementById('main').removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll);
   },
 };
 </script>

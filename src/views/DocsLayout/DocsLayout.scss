@@ -1,10 +1,7 @@
 .docsLayout {
-  display: flex;
-  max-width: 1700px;
-  height: 100%;
+  max-width: $desk;
   margin: 0 auto;
   transition: $transition;
-  transform: translate3d(0, 0, 0);
 
   &--sidebar-hidden {
     .docsLayout__sidebar {
@@ -25,28 +22,34 @@
   &__header {
     position: fixed;
     top: 0;
+    right: 0;
     left: 0;
     z-index: 1000;
     width: 100%;
+    max-width: $desk;
     height: $header-height;
+    margin: 0 auto;
     transition: $transition;
     transform: translate3d(0, 0, 0);
   }
 
   &__main {
+    position: relative;
     width: 100%;
     height: 100%;
     padding-top: triple();
     padding-right: 10rem;
     padding-bottom: simple();
+    padding-left: $sidebar-width;
     overflow-y: scroll;
     scroll-behavior: smooth;
     overscroll-behavior: contain;
   }
 
   &__sidebar {
-    position: relative;
-    flex: 1 0 $sidebar-width;
+    position: fixed;
+    z-index: 800;
+    width: $sidebar-width;
     height: 100%;
     padding-top: $header-height;
     background: color(gray7);
@@ -84,7 +87,7 @@
    * Menú para dispositivos
    */
   &__device-menu {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 10;
@@ -142,8 +145,12 @@
 
 @include media(large) {
   .docsLayout {
+    &__main {
+      padding-left: $sidebar-width-large;
+    }
+
     &__sidebar {
-      flex: 1 0 $sidebar-width-large;
+      width: $sidebar-width-large;
     }
   }
 }
@@ -159,12 +166,12 @@
 @include media(touch) {
   .docsLayout {
     &__sidebar {
-      flex: 1 0 $sidebar-width-touch;
+      width: $sidebar-width-touch;
     }
 
     &__main {
       padding-right: 0 !important;
-      padding-left: 0 !important;
+      padding-left: $sidebar-width-touch !important;
     }
 
     &::v-deep {
@@ -177,14 +184,16 @@
 
 @include media(portrait) {
   .docsLayout {
-    transform: initial;
-
     &__header {
       height: $header-height-media;
     }
 
     &__sidebar {
       display: none;
+    }
+
+    &__main {
+      padding-left: 0 !important;
     }
 
     &__content {
@@ -195,6 +204,13 @@
     &__wrapper {
       padding: 0 simple();
     }
+
+    &--device-menu-visible {
+      .docsLayout__header {
+        background-color: color(gray7);
+        box-shadow: 0 2px 3px color(gray7);
+      }
+    }
   }
 }
 
@@ -203,31 +219,6 @@
     &--header-hidden {
       .docsLayout__header {
         transform: translate3d(0, -100%, 0);
-      }
-
-      .docsLayout__main {
-        // height: 100vh;
-        // transform: translate3d(0, -#{$header-height-media}, 0);
-      }
-    }
-
-    &--device-menu-visible {
-      &::v-deep {
-        .appHeader {
-          &::before {
-            position: absolute;
-            z-index: -1;
-            display: block;
-            width: 100%;
-            height: 100%;
-            content: '';
-            background-color: color(gray7);
-            opacity: 0.8;
-          }
-
-          background-color: transparent;
-          box-shadow: 0 2px 3px color(gray7);
-        }
       }
     }
   }
