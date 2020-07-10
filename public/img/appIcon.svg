@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="178px" height="184px" viewBox="0 0 178 184" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Combined Shape Copy 30</title>
+    <defs>
+        <linearGradient x1="3.20770321%" y1="0%" x2="96.7922968%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#F2385D" offset="0%"></stop>
+            <stop stop-color="#760630" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iPhone-11-Pro-Copy-4" transform="translate(-98.000000, -303.000000)" fill="url(#linearGradient-1)">
+            <path d="M276,401 L275.973294,401.471734 C272.981484,448.85133 234.944891,486.236265 188.43062,486.987052 L188.43062,486.987052 L186.993463,486.998615 L98,487 L98.0267559,486.548012 C100.97699,439.706812 138.211325,402.549387 184.116015,401.051739 L184.116015,401.051739 L185.532785,401.016872 L187.007834,401.00472 L276,401 Z M98,303 L187.002023,303.00475 L188.426993,303.016232 C234.890897,303.765429 272.973037,341.090215 275.975284,388.515459 L275.975284,388.515459 L276,389 L187.002055,388.998586 L185.519958,388.986228 L184.127851,388.952057 C138.274012,387.463783 100.988426,350.360657 98.0277509,303.47123 L98.0277509,303.47123 L98,303 Z" id="Combined-Shape-Copy-30"></path>
+        </g>
+    </g>
+</svg>

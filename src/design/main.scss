@@ -1,6 +1,6 @@
-// Import didor framework
-@import '@didor/framework/src/_didor-share.scss';
-@import '@didor/framework/src/_didor-global.scss';
+// Import didor styles
+@import '@didor/styles/src/_didor-share.scss';
+@import '@didor/styles/src/_didor-global.scss';
 
 // Familias tipográficas
 //
@@ -77,14 +77,9 @@
 
   // Colores personalizados
   //
-  --color-content: var(--color-gray3);
-}
-
-body {
-  height: 100%;
-  overflow-y: hidden;
 }
 
 // Import custom var
 @import 'var';
 @import 'icon';
+@import 'tooltips';

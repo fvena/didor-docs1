@@ -10,6 +10,7 @@ const log = require('../lib/helpers/log'); // Logs por pantalla tuneados
 const initDocs = require('../lib/init'); // Genera los archivos mínimos necesarios para comenzar a documentar
 const serveDocs = require('../lib/serve'); // Levanta un senvidor local para mostrar la documentación
 const buildDocs = require('../lib/build'); // Compila y copia los archivos en una carpeta para poder publicarlos
+const buildPWA = require('../lib/pwa'); // Compila y copia los archivos en una carpeta para poder publicarlos
 
 /*
  * Limpia el terminal
@@ -63,6 +64,14 @@ program
   .action(configFile => {
     buildDocs(configFile);
   });
+
+// prettier-ignore
+program
+    .command('pwa [configFile]')
+    .description('Genera automáticamente un favicon, iconos y pantallas de inicio para configurar una PWA')
+    .action(configFile => {
+      buildPWA(configFile);
+    });
 
 /*
  * Menú de ayuda

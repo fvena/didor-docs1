@@ -75,7 +75,7 @@ module.exports = {
 
 ```
 
-## Contenidos
+## Contenido
 
 ### folders
 
@@ -202,9 +202,9 @@ Si lo configuras a `true` solo tendrás que añadir en el **/_navbar.md** el lin
 - [Markdown](/didorDocs)
 ```
 
-### didorFramework
+### didorStyles
 
-Permite añadir la sección **estilos** de didor-Framework en tu propia documentación para facilitar su uso si quieres utilizarlo en tu proyecto.
+Permite añadir la sección **estilos** de didor-Styles en tu propia documentación para facilitar su uso si quieres utilizarlo en tu proyecto.
 
 - Tipo: `Boolean`
 - Defecto: `false`
@@ -213,7 +213,7 @@ Permite añadir la sección **estilos** de didor-Framework en tu propia document
 
 module.exports = {
   devServer: {
-    didorFramework: false,
+    didorStyles: false,
   }
 }
 
@@ -223,14 +223,14 @@ Si lo configuras a `true` solo tendrás que añadir en el **/_navbar.md** el lin
 
 ```markdown[/docs/_navbar.md]
 
-- [Estilos](/didorFramework)
+- [Estilos](/didorStyles)
 ```
 
-## Personalización
+## Personalizar
 
 ### logo
 
-Indica la localización del logotipo. Sino se especifica ninguno, se muestra el título en su lugar.
+Indica la localización del logotipo, puedes cambiar su tamaño mediante css. Sino se especifica ninguno, se muestra el título en su lugar.
 
 - Tipo: `String`
 - Defecto: `undefined`
@@ -240,23 +240,6 @@ Indica la localización del logotipo. Sino se especifica ninguno, se muestra el 
 module.exports = {
   customize: {
     logo: 'docs/assets/didorLogo.svg',
-  }
-}
-
-```
-
-### favicon
-
-Indica la localización del favicon. Sino se especifica ninguno, se muestra el de didor por defecto.
-
-- Tipo: `String`
-- Defecto: `undefined`
-
-```js[didor.config.js]
-
-module.exports = {
-  customize: {
-    favicon: 'docs/assets/favicon.ico',
   }
 }
 
@@ -273,7 +256,7 @@ Permite modificar el título por defecto de la página.
 
 module.exports = {
   customize: {
-    title: 'Didor Docs',
+    title: 'Mi Proyecto',
   }
 }
 
@@ -293,6 +276,45 @@ module.exports = {
     description: 'Herramienta para documentar proyectos',
   }
 }
+
+```
+
+### mode
+
+Permite seleccionar el modo de visualización por defecto de la página **light** o **dark**. El modo **auto** obtiene el modo de la configuración del navegador cuando sea posible, sino la encuentra, muestra el modo **light**.
+
+- Tipo: `String`
+- Defecto: `auto`
+- Valores:
+  - `light` Modo claro
+  - `dark` Modo oscuro
+  - `auto` Modo del navegador
+
+```js[didor.config.js]
+
+module.exports = {
+  customize: {
+    mode: 'light',
+  }
+}
+
+```
+
+### toggleMode
+
+Muestra/oculta el selector de cambio de cambio de modo.
+
+- Tipo: `Boolean`
+- Defecto: `false`
+
+```js[didor.config.js]
+
+module.exports = {
+  customize: {
+    toggleMode: false,
+  }
+}
+
 
 ```
 
@@ -379,7 +401,7 @@ Actualmente solo pueden utilizarse archivos css.
 
 module.exports = {
   demo: {
-    cssLib: ['https://cdn.jsdelivr.net/npm/@didor/framework@0.1.0/dist/didor.min.css'],
+    cssLib: ['https://cdn.jsdelivr.net/npm/@didor/styles@0.1.0/dist/didor.min.css'],
   }
 }
 
@@ -605,7 +627,7 @@ module.exports = {
 }
 ```
 
-## Publicación
+## Publicar
 
 Cuando ejecutamos el comando `didor build`, crea una carpeta `publish` donde genera la documentación lista para ser publicada en un servidor web.
 

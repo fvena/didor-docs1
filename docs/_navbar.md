@@ -2,5 +2,5 @@
 - [Comenzar](/getStarted)
 - [Markdown](/didorDocs)
 - [Didor]
-  - [Didor Estilos](https://github.com/fvena/didor-framework)
+  - [Didor Estilos](https://github.com/fvena/didor-styles)
   - [Didor Componentes](https://github.com/fvena/didor-components)

@@ -19,7 +19,7 @@ module.exports = {
     loaderOptions: {
       sass: {
         prependData: `
-          @import "./node_modules/@didor/framework/src/_didor-share.scss";
+          @import "./node_modules/@didor/styles/src/_didor-share.scss";
           @import "./src/design/_var.scss";
         `,
       },
