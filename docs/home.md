@@ -4,6 +4,7 @@
 
 ## Pendiente
 
+- [ ] Colocar en su sitio el scroll TOC.
 - [ ] Añadir lightbox para una imagen o grupo de imágenes.
 - [ ] Añadir recursos embebidos (mapas, documentos drive, sketch/figma)
 - [ ] Las imágenes y el código no se cargan bien dentro de una lista.

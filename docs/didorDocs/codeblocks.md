@@ -197,7 +197,7 @@ Podemos resaltar una o varias líneas de código mediante llaves, después del l
 - `{2,5-7}` - Resalta la línea 2 y todas las líneas de la 5 a la 7
 
 ````markdown
-```js{2,5-7}
+```javascript{2,5-7}
 const http = require('http');
 const bodyParser = require('body-parser');
 
@@ -211,7 +211,7 @@ http
 ```
 ````
 
-```js{2,5-7}
+```javascript{2,5-7}
 const http = require('http');
 const bodyParser = require('body-parser');
 

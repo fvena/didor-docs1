@@ -6,7 +6,9 @@ import MarkdownVideo from 'markdown-it-block-embed';
 import MarkdownNotes from 'markdown-it-div';
 import MarkdownFigures from 'markdown-it-implicit-figures';
 import MarkdownExternalLinks from 'markdown-it-external-links';
-import markdownItRegex from 'markdown-it-regex';
+import MarkdownItRegex from 'markdown-it-regex';
+import MarkdownItAttrs from 'markdown-it-attrs';
+import MarkdownSpan from 'markdown-it-bracketed-spans';
 import yaml from 'js-yaml';
 import LinksUtils from './links.utils';
 
@@ -27,6 +29,14 @@ const md = require('markdown-it')({
 });
 
 /**
+ * Plugin FrontMatter
+ * Permite leer datos del archivo markdown
+ */
+md.use(MarkdownFrontMatter, frontMatter => {
+  data = yaml.load(frontMatter);
+});
+
+/**
  * Plugin Toc,
  * Muestra una tabla de contenidos si añadimos [toc]
  */
@@ -39,20 +49,15 @@ md.use(MarkdownToc, {
   wrapHeadingTextInAnchor: true,
   anchorClassName: 'anchor-link',
   slugify: string => LinksUtils.slugify(string),
-});
-
-/**
- * Plugin FrontMatter
- * Permite leer datos del archivo markdown
- */
-md.use(MarkdownFrontMatter, frontMatter => {
-  data = yaml.load(frontMatter);
+  tocCallback(tocMarkdown, tocArray) {
+    data.toc = tocArray;
+  },
 });
 
 /**
  * Iconos
  */
-md.use(markdownItRegex, {
+md.use(MarkdownItRegex, {
   name: 'icons',
   regex: /:([a-zA-Z-]+):/,
   replace: match => {
@@ -71,10 +76,25 @@ md.use(MarkdownEmoji);
 md.use(MarkdownVideo);
 
 /**
+ * Plugin para añadir un span con corchetes
+ */
+md.use(MarkdownSpan);
+
+/**
+ * Plugin para añadir atributos a un elemento
+ */
+md.use(MarkdownItAttrs, {
+  allowedAttributes: ['id', 'class', /^data-.*$/],
+  leftDelimiter: '{{',
+  rightDelimiter: '}}',
+});
+
+/**
  * Plugin Figures
  */
 md.use(MarkdownFigures, {
   figcaption: true,
+  copyAttrs: true,
 });
 
 /**
@@ -98,6 +118,10 @@ md.use(MarkdownNotes, {
     // Check is collapse tag
     const collapse = tag.match(/^collapse title="(.*)"$/);
     if (collapse) tag = 'collapse';
+
+    // Check is remark tag
+    const remark = tag.match(/^remark\((.*)\)$/);
+    if (remark) tag = 'remark';
 
     // Check is tab tag
     const tab = tag.match(/^tab \((.*)\)$/);
@@ -129,6 +153,14 @@ md.use(MarkdownNotes, {
           return `<div>\n<Collapse title="${collapse[1]}">\n`;
         }
         return '</Collapse>\n</div>\n';
+
+      // Collapse
+      case 'remark':
+        if (openTag) {
+          const ref = (remark && remark[1]) || '';
+          return `<div class="remark" data-ref="${ref}">\n`;
+        }
+        return '</div>\n';
 
       // Codegroup
       case 'codegroup':
@@ -250,6 +282,7 @@ md.renderer.rules.fence = (tokens, idx) => {
   const info = token.info ? md.utils.unescapeAll(token.info).trim() : '';
   const lang = info ? info.split(/\s+/g)[0] : '';
   const getLanguage = /(\w+)/.exec(lang);
+  console.log(lang);
 
   // Tengo que codificar el código para que no me dé problemas cuando tengo código Vue
   // ya que intenta interpretar el código
@@ -264,7 +297,7 @@ md.renderer.rules.fence = (tokens, idx) => {
     const language = getDemoLanguage ? getDemoLanguage[1] : 'vue';
     const isEditable = isDemoCode ? 'editable' : '';
     const isOpen = isDemoCode && info.includes('open') ? 'open' : '';
-    return `<AppDemo lang="${language}" code="${code}" jsLib="${config.jsLib}" cssLib="${config.cssLib}" ${isEditable} ${isOpen}></AppDemo>`;
+    return `<AppDemo lang="${language}" code="${code}" jsLib="${config.demo.jsLib}" cssLib="${config.demo.cssLib}" ${isEditable} ${isOpen}></AppDemo>`;
   }
 
   // Obtengo el lenguaje, las lineas a resaltar y el nombre del archivo si existen

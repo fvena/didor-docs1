@@ -14,6 +14,8 @@
   - [Lista de tareas](/didorDocs/task.md)
   - [Emojis](/didorDocs/emoji.md)
   - [Keyboard Input](/didorDocs/kbd.md)
+  - [Tooltips](/didorDocs/tooltips.md)
+  - [Añadir clases y atributos](/didorDocs/class.md)
 
 - [Componentes]
   - [Código](/didorDocs/codeblocks.md)
@@ -22,6 +24,7 @@
   - [Embed](/didorDocs/embed.md)
   - [Pestañas](/didorDocs/tabs.md)
   - [Alertas](/didorDocs/alerts.md)
+  - [Anotaciones](/didorDocs/remarks.md)
   - [Desplegables](/didorDocs/collapse.md)
   - [Tabla de Contenidos](/didorDocs/toc.md)
   - [Árbol de Archivos](/didorDocs/fileTree.md)
