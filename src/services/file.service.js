@@ -46,8 +46,10 @@ const FileService = {
 
       return article;
     } catch (error) {
-      // console.log(error); // eslint-disable
-      return {};
+      /**
+       * No ha encontrado el archivo
+       */
+      return null;
     }
   },
 };

@@ -1,0 +1,79 @@
+.appNotFound {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  margin-top: double();
+  text-align: center;
+
+  &__message {
+    margin-bottom: simple();
+  }
+
+  &__illustration {
+    position: relative;
+    margin-bottom: -50px;
+  }
+
+  &__planet {
+    &__base {
+      fill: color(gray6);
+    }
+
+    &__hover {
+      opacity: 0.8;
+      fill: color(gray5);
+    }
+  }
+
+  &__stars {
+    fill: color(gray4);
+  }
+
+  &__astronaut {
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    width: 50px;
+    animation: spin 4.5s infinite linear;
+
+    .st0 {
+      fill: none;
+    }
+    .st1 {
+      fill: color(gray1);
+    }
+    .st2 {
+      fill: color(gray2);
+    }
+    .st3 {
+      fill: color(gray6);
+    }
+    .st4 {
+      fill: color(danger);
+    }
+    .st5 {
+      opacity: 0.25;
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
+}
+
+@include media(palm) {
+  .appNotFound {
+    margin-top: 0;
+
+    &__illustration {
+      transform: scale(0.8);
+    }
+  }
+}
