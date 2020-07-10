@@ -122,6 +122,10 @@ export default {
             <meta name="viewport" content="width=device-width,initial-scale=1.0" />
             <title>Didor Demo</title>
             <script src="https://unpkg.com/vue"><\/script>
+            <script>
+              Vue.config.productionTip=false;
+              Vue.config.devtools=false;
+            <\/script>
             <script src="https://unpkg.com/http-vue-loader"><\/script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.10.7/sass.sync.min.js"><\/script>
             ${this.demoLibs}
@@ -171,10 +175,7 @@ export default {
                 });
               }
 
-              Vue.component("my-component", httpVueLoader('data:text/plain,' + decodeURIComponent('${encodeContent}')));
-              Vue.config.devtools = false;
-              Vue.config.productionTip = false;
-              Vue.config.silent = true;
+              Vue.component("my-component", httpVueLoader(decodeURIComponent('${encodeContent}')));
 
               new Vue({
                 el: '#my-app',
