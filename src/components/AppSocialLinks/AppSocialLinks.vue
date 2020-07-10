@@ -19,7 +19,7 @@ export default {
   },
 
   created() {
-    this.social = window.$didor.social;
+    this.social = window.$didor.customize.social;
   },
 };
 </script>

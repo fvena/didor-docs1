@@ -1,7 +1,13 @@
-- [Inicio Rápido](/getStarted/quickStart.md)
-- [Configuración](/getStarted/configuration.md)
-- [Personalización](/getStarted/quickStart.md)
-- [Internacionalización](/getStarted/quickStart.md)
-- [Versionado](/getStarted/quickStart.md)
+- [Instalación]
+  - [Inicio Rápido](/getStarted/quickStart.md)
+  - [Configuración](/getStarted/configuration.md)
+  - [Personalización](/getStarted/customization.md)
+  - [Generadores](/getStarted/generators.md)
+- [Contenidos]
+  - [Navegación Principal](/getStarted/quickStart.md)
+  - [Navegación Sección](/getStarted/quickStart.md)
+  - [Añadir páginas](/getStarted/quickStart.md)
+  - [Versionado](/getStarted/quickStart.md)
+  - [Internacionalización](/getStarted/quickStart.md)
 - [Publicar](/getStarted/quickStart.md)
 - [Changelog](/getStarted/quickStart.md)

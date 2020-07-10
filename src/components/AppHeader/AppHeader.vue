@@ -54,8 +54,8 @@ export default {
   },
 
   created() {
-    this.logo = window.$didor.logo;
-    this.title = window.$didor.title;
+    this.logo = window.$didor.customize.logo;
+    this.title = window.$didor.customize.title;
   },
 };
 </script>
