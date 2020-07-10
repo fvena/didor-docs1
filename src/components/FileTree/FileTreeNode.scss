@@ -9,7 +9,7 @@
     width: 1px;
     height: 100%;
     content: '';
-    background-color: $border-color;
+    background-color: color(gray5);
   }
 
   &::after {
@@ -19,11 +19,11 @@
     width: quarter();
     height: 1px;
     content: '';
-    background-color: $border-color;
+    background-color: color(gray5);
   }
 
   &:last-of-type::before {
-    height: 60%;
+    height: 1.05rem;
   }
 
   &__showFolder,
