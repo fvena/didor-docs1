@@ -15,7 +15,6 @@ const FileService = {
       const response = await ApiService.get(fullPath);
       return LinksUtils.getListLinks(response.data, section);
     } catch (error) {
-      // console.log(error); // eslint-disable-line
       return [];
     }
   },

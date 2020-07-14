@@ -23,7 +23,7 @@ clear();
 log.brand('######################');
 log.brand(' ########################        88888b  8888  88888b  d8888b  88888b');
 log.brand('  #########################      88  88   88   88  88  88  88  88  88');
-log.brand('    ########################     88  88   88   88  88  88  88  88888<');
+log.brand('    ########################     88  88   88   88  88  88  88  8888b ');
 log.brand('       ######################    88888P  8888  88888P  Y8888P  88  Yb');
 log.brand('');
 log.brand('       ######################    88888b  d8888b  d88888  d88888');
@@ -67,11 +67,11 @@ program
 
 // prettier-ignore
 program
-    .command('pwa [configFile]')
-    .description('Genera automáticamente un favicon, iconos y pantallas de inicio para configurar una PWA')
-    .action(configFile => {
-      buildPWA(configFile);
-    });
+  .command('pwa [configFile]')
+  .description('Genera automáticamente un favicon, iconos y pantallas de inicio para configurar una PWA')
+  .action(configFile => {
+    buildPWA(configFile);
+  });
 
 /*
  * Menú de ayuda

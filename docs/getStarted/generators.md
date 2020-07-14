@@ -1,6 +1,6 @@
 # Generadores
 
-**Didor Docs** cuanto con algunos generadores que te ayudarán a iniciar tu proyecto de forma más rápida.
+**Didor Docs** cuenta con algunos generadores que te ayudarán a iniciar tu documentación de forma más rápida.
 
 ## PWA
 
@@ -21,12 +21,8 @@ Recuerda que cada sistema operativo redondea las esquinas en mayor o menor medid
 ### Utilización
 
 ```sh
-npx didor pwa <source-file> <output-folder> [options]
+didor pwa <source-file> <output-folder> [options]
 ```
-
-:::remark
-Aprende más sobre npx [aquí](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner).
-:::
 
 ### Opciones
 
@@ -55,18 +51,33 @@ Aprende más sobre npx [aquí](https://blog.npmjs.org/post/162869356040/introduc
 
 :::
 
-#### Ejemplo 1
+#### Una sola imagen
 
 ![](/assets/pwa1.png){{.no-style}}
 
 - Genera todos los recursos con la misma imagen.
 - Utiliza el color de fondo y el padding por defecto.
 
-```sh
-npx didor pwa /docs/img/icon.svg /docs/img
+::: codegroup
+
+```sh[npx]
+npx didor pwa /docs/assets/icon.svg /docs/img
 ```
 
-#### Ejemplo 2
+```sh[package.json]
+"scripts": {
+  ...
+  "docs:pwa": "didor pwa /docs/assets/icon.svg /docs/img",
+}
+```
+
+:::
+
+:::remark
+Aprende más sobre npx [aquí](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner).
+:::
+
+#### Una imagen para los iconos y otra para los splash
 
 ![](/assets/pwa2.png){{.no-style}}
 
@@ -74,11 +85,26 @@ npx didor pwa /docs/img/icon.svg /docs/img
 - Genera los splash screen con otra imagen.
 - Define un fondo personalizado para los iconos y las splash screen.
 
-```sh
-npx didor pwa /docs/img/icon.svg /docs/img --splashIcon /docs/img/splashIcon.svg -b "#E6E6E6"
+::: codegroup
+
+```sh[npx]
+npx didor pwa /docs/assets/icon.svg /docs/img --splashIcon /docs/assets/splashIcon.svg -b "#E6E6E6"
 ```
 
-#### Ejemplo 3
+```sh[package.json]
+"scripts": {
+  ...
+  "docs:pwa": "didor pwa /docs/assets/icon.svg /docs/img --splashIcon /docs/assets/splashIcon.svg -b '#E6E6E6'",
+}
+```
+
+:::
+
+:::remark
+Aprende más sobre npx [aquí](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner).
+:::
+
+#### Fondo personalizado
 
 ![](/assets/pwa3.png){{.no-style}}
 
@@ -89,10 +115,25 @@ npx didor pwa /docs/img/icon.svg /docs/img --splashIcon /docs/img/splashIcon.svg
 - Define un padding personalizado para los iconos.
 - Define un padding personalizado para las splash screen.
 
-```sh
-npx didor pwa /docs/img/splashIcon_white.svg /docs/img --splashIcon /docs/img/splashIcon.svg -b "#E6E6E6" -c "linear-gradient(135deg, #F2385D 0%, #760630 100%)" -p "25%" -s "20% 30%"
+::: codegroup
+
+```sh[npx]
+npx didor pwa /docs/assets/splashIcon_white.svg /docs/img --splashIcon /docs/assets/splashIcon.svg -b "#E6E6E6" -c "linear-gradient(135deg, #F2385D 0%, #760630 100%)" -p "25%" -s "20% 30%"
 ```
 
+```sh[package.json]
+"scripts": {
+  ...
+  "docs:pwa": "didor pwa /docs/assets/splashIcon_white.svg /docs/img --splashIcon /docs/assets/splashIcon.svg -b '#E6E6E6' -c 'linear-gradient(135deg, #F2385D 0%, #760630 100%)' -p '25%' -s '20% 30%'",
+}
+```
+
+:::
+
+:::remark
+Aprende más sobre npx [aquí](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner).
+:::
+
 ::: tip
-Obtendrás un mejor resultado, si la imagen ocupa todo el archivo y no dejas espacios internos.
+Obtendrás un mejor resultado al generar los recursos, si tu imagen de partida no tiene margenes internos y ocupa todo el archivo.
 :::

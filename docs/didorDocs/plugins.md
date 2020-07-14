@@ -35,4 +35,4 @@ Si quieres asegurarte de no cometer errores ortográficos en tus documentos, te 
 
 Te recomiendo que desactives todos los lenguajes de programación menos `markdown` y que actives tanto el inglés como el español, sino quieres que tener tu código lleno de notificaciones de error.
 
-![Code Spell Checker - Configuración](/img/codeSpellChecker.png)
+![Code Spell Checker - Configuración](/assets/codeSpellChecker.png)

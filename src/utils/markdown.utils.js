@@ -282,7 +282,6 @@ md.renderer.rules.fence = (tokens, idx) => {
   const info = token.info ? md.utils.unescapeAll(token.info).trim() : '';
   const lang = info ? info.split(/\s+/g)[0] : '';
   const getLanguage = /(\w+)/.exec(lang);
-  console.log(lang);
 
   // Tengo que codificar el código para que no me dé problemas cuando tengo código Vue
   // ya que intenta interpretar el código

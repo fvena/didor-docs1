@@ -16,17 +16,6 @@ Para configurar **Didor Docs** debes crear el archivo **\didor.config.js** en el
 
 :::
 
-También puedes modificar su nombre y ubicación al ejecutar los scripts:
-
-```json[package.json]
-{
-  "scripts": {
-    "docs:serve": "didor serve /docs/config.js",
-    "docs:build": "didor build /docs/config.js",
-  }
-}
-```
-
 El archivo de configuración debe exportar un objeto javascript:
 
 ```js[didor.config.js]
@@ -35,8 +24,19 @@ module.exports = {
   logo: '/didorLogo.svg',
   title: 'Didor Docs',
   description: 'Herramienta para documentar tus proyectos',
-  }
+}
 
+```
+
+También puedes modificar el nombre y la ubicación del archivo de configuración al declarar los scripts:
+
+```json[package.json]
+{
+  "scripts": {
+    "docs:serve": "didor serve /docs/config.js",
+    "docs:build": "didor build /docs/config.js",
+  }
+}
 ```
 
 ## Servidor Desarrollo

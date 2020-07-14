@@ -149,7 +149,7 @@ Para añadir código debes añadir 8 espacios delante de tu código y una línea
 1. Primer punto.
 2. Segundo punto.
 3. Tercer punto.
-  ![Pie de foto](/img/lion1.jpg)
+  ![Pie de foto](/assets/lion1.jpg)
 4. Cuarto punto.
 
 ```
@@ -159,7 +159,7 @@ Para añadir código debes añadir 8 espacios delante de tu código y una línea
 1. Primer punto.
 2. Segundo punto.
 3. Tercer punto.
-  ![alt text](/img/lion1.jpg)
+  ![alt text](/assets/lion1.jpg)
 4. Cuarto punto.
 
 ```
