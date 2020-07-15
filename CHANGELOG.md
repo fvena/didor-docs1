@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/fvena/didor-docs/compare/v0.1.1...v0.1.2) (2020-07-15)
+
+
+### Bug Fixes
+
+* **serve:** error al añadir una librería de estilos a la demo ([09543b4](https://github.com/fvena/didor-docs/commit/09543b4a5575985ac34e69172f1fe1f40180d421))
+
 ### [0.1.1](https://github.com/fvena/didor-docs/compare/v0.1.0...v0.1.1) (2020-07-14)
 
 
