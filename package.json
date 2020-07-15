@@ -11,6 +11,11 @@
   "bin": {
     "didor": "bin/docs"
   },
+  "files": [
+    "dist/*",
+    "docs/*",
+    "lib/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fvena/didor-docs.git"
