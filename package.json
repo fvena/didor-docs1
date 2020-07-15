@@ -3,12 +3,25 @@
   "version": "0.1.1",
   "description": "Herramienta para documentar tus proyectos",
   "author": "Francisco Vena <fvena32@gmail.com> (http://www.fvena.com/)",
-  "homepage": "https://github.com/fvena/didor-docs#readme",
+  "homepage": "https://didor-docs.netlify.app/home",
   "private": false,
   "license": "MIT",
   "main": "bin/docs",
+  "preferGlobal": true,
   "bin": {
     "didor": "bin/docs"
+  },
+  "files": [
+    "dist/*",
+    "docs/*",
+    "lib/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fvena/didor-docs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fvena/didor-docs/issues"
   },
   "scripts": {
     "serve": "vue-cli-service serve",

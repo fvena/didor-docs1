@@ -21,9 +21,14 @@ El archivo de configuración debe exportar un objeto javascript:
 ```js[didor.config.js]
 
 module.exports = {
-  logo: '/didorLogo.svg',
-  title: 'Didor Docs',
-  description: 'Herramienta para documentar tus proyectos',
+  devServer: {
+    port: 3001,
+    open: true,
+  },
+  content: {
+    folders: ['/docs'],
+    defaultPath: '/home.md',
+  },
 }
 
 ```
@@ -33,7 +38,7 @@ También puedes modificar el nombre y la ubicación del archivo de configuració
 ```json[package.json]
 {
   "scripts": {
-    "docs:serve": "didor serve /docs/config.js",
+    "docs:serve": "didor serve /docs/config.js",ç
     "docs:build": "didor build /docs/config.js",
   }
 }
@@ -110,7 +115,7 @@ Especifica los directorios que contendrán la documentación. La ruta se especif
 ```js[didor.config.js]
 
 module.exports = {
-  devServer: {
+  content: {
     folders: ['/docs'],
   }
 }
@@ -120,7 +125,7 @@ module.exports = {
 ```js[didor.config.js]
 
 module.exports = {
-  devServer: {
+  content: {
     folders: ['/docs', '/src/components'],
   }
 }
@@ -137,7 +142,7 @@ Permite modificar el nombre del archivo utilizado para generar la barra de naveg
 ```js[didor.config.js]
 
 module.exports = {
-  devServer: {
+  content: {
     navbar: 'myNavbar.md',
   }
 }
@@ -154,7 +159,7 @@ Permite modificar el nombre del archivo utilizado para generar la barra de naveg
 ```js[didor.config.js]
 
 module.exports = {
-  devServer: {
+  content: {
     sidebar: 'mySidebar.md',
   }
 }
@@ -171,7 +176,7 @@ Permite modificar la ruta del archivo utilizado para generar la página de inici
 ```js[didor.config.js]
 
 module.exports = {
-  devServer: {
+  content: {
     defaultPath: '/inicio.md',
   }
 }
@@ -188,7 +193,7 @@ Permite añadir la sección **markdown** de didorDocs en tu propia documentació
 ```js[didor.config.js]
 
 module.exports = {
-  devServer: {
+  content: {
     didorDocs: false,
   }
 }
@@ -212,7 +217,7 @@ Permite añadir la sección **estilos** de didor-Styles en tu propia documentaci
 ```js[didor.config.js]
 
 module.exports = {
-  devServer: {
+  content: {
     didorStyles: false,
   }
 }
