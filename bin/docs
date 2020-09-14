@@ -32,6 +32,7 @@ log.brand('  #########################      88  88  88  88  88         88b');
 log.brand(' ########################        88888P  Y8888P  Y88888  88888P');
 log.brand('######################');
 log.brand('\n\n');
+log.brand(`version ${pkg.version}`);
 
 /*
  * Configuración del CLI

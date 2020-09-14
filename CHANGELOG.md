@@ -9,13 +9,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **serve:** los loaders no se añaden al paquete ([68eabe2](https://github.com/fvena/didor-docs/commit/68eabe25586386d29c3382ef2ac261e887a5c157))
 
-### [0.1.3](https://github.com/fvena/didor-docs/compare/v0.1.2...v0.1.3) (2020-07-15)
-
-
-### Bug Fixes
-
-* **serve:** los loaders no se añaden al paquete ([68eabe2](https://github.com/fvena/didor-docs/commit/68eabe25586386d29c3382ef2ac261e887a5c157))
-
 ### [0.1.2](https://github.com/fvena/didor-docs/compare/v0.1.1...v0.1.2) (2020-07-15)
 
 

@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   configureWebpack: {
     devServer: {
-      contentBase: [path.join(process.cwd(), './public'), path.join(process.cwd(), './docs')],
+      contentBase: [path.join(process.cwd(), './public'), path.join(process.cwd(), './docs'), path.join(process.cwd(), './node_modules/@didor/styles/src')],
     },
   },
   runtimeCompiler: true,
@@ -19,7 +19,7 @@ module.exports = {
     loaderOptions: {
       sass: {
         prependData: `
-          @import "./node_modules/@didor/styles/src/_didor-share.scss";
+          @import "./node_modules/@didor/styles/src/didor-share.scss";
           @import "./src/design/_var.scss";
         `,
       },

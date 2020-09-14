@@ -16,6 +16,7 @@ window.$didor = {
   demo: {
     jsLib: [],
     cssLib: ['https://cdn.jsdelivr.net/npm/@didor/framework@0.1.0/dist/didor.min.css'],
+    shareStyles: '/src/design/main.scss',
   },
   build: {
     path: '',
