@@ -1,6 +1,7 @@
 - [Home](/home.md)
 - [Comenzar](/getStarted)
 - [Markdown](/didorDocs)
+- [Estilos](/didorStyles)
 - [Didor]
   - [Didor Estilos](https://github.com/fvena/didor-styles)
   - [Didor Componentes](https://github.com/fvena/didor-components)

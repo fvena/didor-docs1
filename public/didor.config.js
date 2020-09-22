@@ -3,6 +3,7 @@ window.$didor = {
     navbar: '_navbar.md',
     sidebar: '_sidebar.md',
     defaultPath: '/home',
+    didorStyles: true,
   },
   customize: {
     logo: '/img/didorLogo.svg',

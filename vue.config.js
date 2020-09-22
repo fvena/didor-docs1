@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   configureWebpack: {
     devServer: {
-      contentBase: [path.join(process.cwd(), './public'), path.join(process.cwd(), './docs'), path.join(process.cwd(), './node_modules/@didor/styles/src')],
+      contentBase: [path.join(process.cwd(), './public'), path.join(process.cwd(), './docs'), path.join(process.cwd(), './node_modules/@didor/styles/src'), path.join(process.cwd(), './node_modules/@didor/styles/docs')],
     },
   },
   runtimeCompiler: true,

@@ -148,6 +148,13 @@ export default {
                 justify-content: center;
                 padding: 3.2rem 1.6rem;
               }
+
+              .blockDemo {
+                background: var(--color-brand);
+                padding: 1.6rem 3.2rem;
+                color: var(--color-white);
+                text-align: center;
+              }
             </style>
           </head>
 
