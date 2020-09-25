@@ -154,6 +154,7 @@ export default {
                 padding: 1.6rem 3.2rem;
                 color: var(--color-white);
                 text-align: center;
+                width: auto;
               }
             </style>
           </head>
