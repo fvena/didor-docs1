@@ -21,12 +21,28 @@
     font-size: 2.4rem;
   }
 
+  // ul {
+  //   list-style: none; /* Remove default bullets */
+  // }
+
+  // ul li::before {
+  //   content: '\2022';
+  //   font-weight: bold;
+  //   display: inline-block;
+  //   width: 1em;
+  //   margin-left: -1em;
+  // }
+
   &--tip {
     color: color(success-darker);
     background-color: color(success-lighter);
 
     code {
       color: color(success-dark);
+    }
+
+    ul li::before {
+      background-color: color(success-darker);
     }
   }
 
@@ -37,6 +53,10 @@
     code {
       color: color(brand-dark);
     }
+
+    ul li::before {
+      background-color: color(brand-darker);
+    }
   }
 
   &--warn {
@@ -45,6 +65,10 @@
 
     code {
       color: color(danger-dark);
+    }
+
+    ul li::before {
+      background-color: color(danger-darker);
     }
   }
 }

@@ -30,17 +30,89 @@
   flex-wrap: wrap;
 }
 
-.page--border .page-block {
-  color: color(gray3);
-  background-color: color(gray7);
-  border-color: color(gray5);
-  border-width: 2px !important;
-  border-radius: 0;
+/**
+ * Página blockout
+ */
+.page--blockout {
+  blockquote {
+    padding-right: inherit;
+    padding-left: inherit;
+    margin: double() 0;
+    color: $blockquote-color;
+    background-color: inherit;
+    border-right: inherit;
+    border-left: inherit;
+  }
+
+  .blockquote--bordered {
+    padding-left: simple();
+    border-left: 0.25rem solid $blockquote-border-color;
+  }
+
+  .blockquote--right.blockquote--bordered {
+    padding-right: simple();
+    padding-left: 0;
+    border-right: 0.25rem solid $blockquote-border-color;
+    border-left: 0;
+  }
 }
 
-.page--color .page-block {
+/**
+ * Pagína bordes
+ */
+.page--border {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: double() simple();
+}
+
+.block-border {
+  position: relative;
   width: 100%;
-  height: 50px;
+  height: quadruple();
+  background-color: color(gray7);
+  border-color: color(gray5);
+  border-width: 2px;
+
+  &::after {
+    position: absolute;
+    top: calc(100% + #{quarter()});
+    display: block;
+    width: 100%;
+    font-size: font-size(small1);
+    text-align: center;
+    white-space: nowrap;
+    content: attr(data-name);
+  }
+}
+
+/**
+ * Pagína colores
+ */
+.page--color {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: double() simple();
+}
+
+.page--color .block--color {
+  @include shadow(3);
+
+  position: relative;
+  width: 100%;
+  height: quadruple();
+  border-radius: 5px;
+
+  &::after {
+    position: absolute;
+    top: calc(100% + #{quarter()});
+    display: block;
+    width: 100%;
+    font-size: font-size(small1);
+    text-align: center;
+    white-space: nowrap;
+    content: attr(data-name);
+  }
 }
 
 .page--text .page-block {
