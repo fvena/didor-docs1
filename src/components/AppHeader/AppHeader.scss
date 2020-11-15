@@ -182,3 +182,12 @@
     }
   }
 }
+
+@include theme(dark) {
+  .appHeader {
+    &__bar {
+      background-color: rgba(43, 50, 54, 0.8);
+      box-shadow: 0 2px 3px rgba(43, 50, 54, 0.8);
+    }
+  }
+}

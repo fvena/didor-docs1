@@ -1,5 +1,5 @@
 .article {
-  img {
+  :not(.page--image) > img {
     @include shadow(3);
 
     margin: double() 0;
@@ -8,6 +8,7 @@
 
     &.no-style {
       border: none;
+      border-radius: 0;
       box-shadow: none;
     }
   }
@@ -16,7 +17,7 @@
     margin: double() 0;
 
     img {
-      margin: 0;
+      margin: 0 !important;
     }
 
     .link::after {
@@ -153,14 +154,6 @@
     border-top: none;
   }
 
-  blockquote {
-    padding-left: simple();
-    margin: double() 0;
-    color: color(gray4);
-    background-color: #ffffff;
-    border-left: 4px solid color(brand);
-  }
-
   hr {
     padding: simple() 0;
     margin: simple() 0;
@@ -168,31 +161,13 @@
   }
 
   table {
-    th {
-      font-size: font-size(small2);
-      font-weight: font-weight(bold);
-      color: color(gray2);
-      text-transform: uppercase;
-      background-color: color(gray7);
-    }
-
     td {
-      font-size: font-size(small1);
-      line-height: 1.4rem;
-      color: color(gray2);
-      border-bottom: 1px solid color(border);
-
       code {
         padding: 0.2rem 0.4rem;
         font-family: font-family(base);
         font-size: 0.95em;
         font-weight: 400;
         color: color(gray2);
-      }
-
-      &:first-of-type {
-        font-weight: font-weight(bold);
-        white-space: nowrap;
       }
     }
   }
@@ -206,58 +181,6 @@
       font-size: font-size(small2);
       line-height: 1.2rem;
       color: color(brand);
-    }
-  }
-
-  ol {
-    list-style: none;
-    counter-reset: b;
-
-    li {
-      position: relative;
-      padding-left: simple();
-      margin-bottom: quarter();
-      margin-left: 0;
-
-      &::before {
-        position: absolute;
-        left: quarter('-');
-        width: simple();
-        color: color(gray4);
-        text-align: right;
-        content: counters(b, '.') ' ';
-        counter-increment: b;
-      }
-
-      img {
-        display: block;
-        max-width: calc(100% - #{simple()});
-        margin: simple() auto;
-      }
-    }
-  }
-
-  ul {
-    list-style: none;
-
-    li {
-      position: relative;
-      padding-left: simple();
-      margin-bottom: quarter();
-      margin-left: 0;
-
-      &::before {
-        position: absolute;
-        top: 11px;
-        left: 14px;
-        display: block;
-        width: 6px;
-        height: 6px;
-        text-align: right;
-        content: '';
-        background-color: color(gray4);
-        border-radius: 3px;
-      }
     }
   }
 

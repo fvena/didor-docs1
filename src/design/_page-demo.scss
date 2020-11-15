@@ -1,5 +1,8 @@
-.page-demo {
-  .page-demo__block {
+/**
+ * Página Layout
+ */
+.page--layout {
+  .page--layout__block {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,51 +13,27 @@
     border-radius: 3px;
   }
 
-  .page-demo__main {
+  .page--layout__main {
     height: 300px;
   }
 
-  .page-demo__aside {
+  .page--layout__aside {
     width: 150px;
   }
 
   @include media(palm) {
-    .page-demo__aside {
+    .page--layout__aside {
       width: 100%;
     }
   }
 }
 
+/**
+ * Página Flex
+ */
 .page--flex {
   display: flex;
   flex-wrap: wrap;
-}
-
-/**
- * Página blockout
- */
-.page--blockout {
-  blockquote {
-    padding-right: inherit;
-    padding-left: inherit;
-    margin: double() 0;
-    color: $blockquote-color;
-    background-color: inherit;
-    border-right: inherit;
-    border-left: inherit;
-  }
-
-  .blockquote--bordered {
-    padding-left: simple();
-    border-left: 0.25rem solid $blockquote-border-color;
-  }
-
-  .blockquote--right.blockquote--bordered {
-    padding-right: simple();
-    padding-left: 0;
-    border-right: 0.25rem solid $blockquote-border-color;
-    border-left: 0;
-  }
 }
 
 /**
@@ -64,6 +43,7 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: double() simple();
+  margin-bottom: double();
 }
 
 .block-border {
@@ -83,6 +63,20 @@
     text-align: center;
     white-space: nowrap;
     content: attr(data-name);
+  }
+}
+
+/**
+ * Página código
+ */
+.page--code {
+  padding: $space;
+  background-color: color(gray7);
+  border: $border;
+  border-radius: $border-radius;
+
+  p:last-of-type {
+    margin-bottom: 0;
   }
 }
 
@@ -123,21 +117,82 @@
   background-color: transparent;
 }
 
-.page--float .page-block {
-  width: auto;
-  height: double();
+/**
+ * Página float
+ */
+.page--float {
+  .page-block {
+    width: auto;
+    height: double();
+    white-space: nowrap;
+  }
 }
 
+/**
+ * Página imágenes
+ */
+// .page--image {}
+
+/**
+ * Página listados
+ */
+// .page--list {}
+
+/**
+ * Página multimedia
+ */
+.page--media {
+  .media img {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+/**
+ * Página overflow
+ */
 .page--overflow {
   display: flex;
 
   .page-block {
     display: block;
     width: auto;
+    font-size: font-size(small1);
     color: color(gray2);
     background-color: color(gray6);
   }
 }
+
+/**
+ * Página posicionamiento
+ */
+.block-position {
+  @include shadow(3);
+
+  z-index: 10000;
+  height: double();
+  margin: double() 0;
+  line-height: double();
+  color: color(white);
+  text-align: center;
+  background-color: color(brand);
+  border-radius: $border-radius;
+
+  &--top {
+    top: triple();
+  }
+
+  &--bottom {
+    background-color: color(warning);
+  }
+}
+
+/**
+ * Página tablas
+ */
+// .page--table {}
 
 .page-size .page-block {
   display: inline-block;

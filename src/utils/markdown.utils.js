@@ -29,6 +29,12 @@ const md = require('markdown-it')({
 });
 
 /**
+ * Añado una clase por defecto a todos los blockquote
+ */
+md.renderer.rules.blockquote_open = () => '<blockquote class="blockquote--bordered">';
+md.renderer.rules.blockquote_close = () => '</blockquote>';
+
+/**
  * Plugin FrontMatter
  * Permite leer datos del archivo markdown
  */

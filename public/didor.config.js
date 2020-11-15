@@ -7,8 +7,10 @@ window.$didor = {
   },
   customize: {
     logo: '/img/didorLogo.svg',
+    logoDark: '/img/didorLogoDark.svg',
     title: 'Didor Docs',
     description: 'Herramienta para documentar tus proyectos',
+    toggleMode: true,
     social: {
       twitter: 'https://twitter.com/fvena',
       github: 'https://github.com/fvena/didor-docs',

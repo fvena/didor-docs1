@@ -36,12 +36,12 @@
   &__main {
     position: relative;
     width: 100%;
-    height: 100%;
+    // height: 100%;
     padding-top: triple();
     padding-right: 10rem;
     padding-bottom: simple();
     padding-left: $sidebar-width;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     scroll-behavior: smooth;
     overscroll-behavior: contain;
   }
@@ -52,7 +52,6 @@
     width: $sidebar-width;
     height: 100%;
     padding-top: $header-height;
-    background: color(gray7);
     transition: $transition;
 
     &::before {
@@ -63,7 +62,6 @@
       width: 50vw;
       height: 100%;
       content: '';
-      background: color(gray7);
     }
   }
 
@@ -71,8 +69,6 @@
     position: relative;
     width: 100%;
     height: 100%;
-    // overflow-y: scroll;
-    // background: linear-gradient(to left top, color(gray7), color('white'));
     transition: $transition;
   }
 
@@ -96,7 +92,6 @@
     padding: quadruple() 0 simple();
     overflow-x: hidden;
     overflow-y: scroll;
-    background-color: color(gray7);
 
     &::v-deep {
       .appMenu {

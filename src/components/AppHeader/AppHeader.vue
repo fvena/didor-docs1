@@ -6,9 +6,8 @@
     span(v-else) {{ title }}
 
   .appHeader__bar
-
     //- Buscador
-    Search.appHeader__search
+    slot(name="headerSearch")
 
     //- Menú Principal
     .appHeader__nav
@@ -26,12 +25,10 @@
 
 <script>
 import AppSocialLinks from '@/components/AppSocialLinks';
-import Search from '@/components/Search.component.vue';
 
 export default {
   components: {
     AppSocialLinks,
-    Search,
   },
 
   props: {
@@ -39,23 +36,35 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    mode: {
+      type: String,
+      default: 'light',
+    },
+
+    title: {
+      type: String,
+      default: '',
+    },
   },
 
-  data() {
-    return {
-      logo: '',
-    };
+  computed: {
+    logo() {
+      const lightLogo = window.$didor.customize.logo;
+      const darkLogo = window.$didor.customize.logoDark;
+
+      if (lightLogo && !darkLogo) return lightLogo;
+      if (darkLogo && !lightLogo) return darkLogo;
+      if (lightLogo && darkLogo) return this.mode === 'light' ? lightLogo : darkLogo;
+
+      return null;
+    },
   },
 
   methods: {
     toggleMenu() {
       this.$emit('toggleMenu');
     },
-  },
-
-  created() {
-    this.logo = window.$didor.customize.logo;
-    this.title = window.$didor.customize.title;
   },
 };
 </script>

@@ -1,4 +1,10 @@
 .sidebar {
+  background: color(gray7);
+
+  &::before {
+    background: color(gray7);
+  }
+
   &__wrapper {
     position: relative;
     height: calc(100vh - #{$header-height});
@@ -9,5 +15,15 @@
   &__navbar {
     padding: double() 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+@include theme(dark) {
+  .sidebar {
+    background: color(gray7);
+
+    &::before {
+      background: color(gray7);
+    }
   }
 }

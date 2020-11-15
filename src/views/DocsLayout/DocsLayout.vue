@@ -2,7 +2,20 @@
 .docsLayout(:class="{ 'docsLayout--header-hidden': !showHeader, 'docsLayout--sidebar-hidden': !sidebarLinks.length, 'docsLayout--device-menu-visible': showDeviceMenu }")
 
   //- Header Area
-  AppHeader.docsLayout__header#header(@toggleMenu="toggleMenu" :showMenu="showDeviceMenu")
+  AppHeader.docsLayout__header#header(
+    @toggleMenu="toggleMenu"
+    :showMenu="showDeviceMenu"
+    :mode="mode"
+    :title="title")
+    template(slot="headerSearch")
+      //- Dark/Light Mode
+      AppThemeMode(
+        v-if="showToggleMode"
+        :mode="mode"
+        @toggleMode="setMode")
+
+      //- Buscador
+      Search.appHeader__search
     template(slot="headerMenu")
       AppMenu(
         ref="headerMenu"
@@ -50,6 +63,8 @@ import AppSocialLinks from '@/components/AppSocialLinks';
 import AppArticle from '@/components/AppArticle';
 import AppPagination from '@/components/AppPagination';
 import AppNotFound from '@/components/AppNotFound';
+import AppThemeMode from '@/components/AppThemeMode';
+import Search from '@/components/Search.component.vue';
 import ScrollTracking from '@/components/ScrollTracking';
 import { ObserveVisibility } from 'vue-observe-visibility';
 import FileService from '@/services/file.service';
@@ -68,11 +83,14 @@ export default {
     AppArticle,
     AppPagination,
     AppNotFound,
+    AppThemeMode,
+    Search,
     ScrollTracking,
   },
   data() {
     return {
       logo: '',
+      title: '',
       social: '',
       defaultPath: '',
       notFound: false,
@@ -87,6 +105,8 @@ export default {
       sidebarLinks: [],
       content: '',
       toc: [],
+      mode: 'light',
+      showToggleMode: false,
     };
   },
   methods: {
@@ -252,6 +272,37 @@ export default {
     },
 
     /**
+     * Obtiene el modo de la aplicación
+     */
+    getMode() {
+      //
+      // Obtengo el modo definido en los ajustes y almacenado en local
+      //
+      const settingMode = window.$didor.customize.mode;
+      const localMode = localStorage.getItem('didor-theme');
+      const systemMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+      //
+      // Asigno el modo dando preferencia al local,
+      // después al de los ajustes de la documentación
+      // luego al del sistema
+      // y si no obtengo ninguno, utilizo el 'light' por defecto
+      //
+      const mode = localMode || settingMode || systemMode || 'light';
+
+      this.setMode(mode);
+    },
+
+    /**
+     * Actualiza el modo de la aplicación
+     */
+    setMode(mode) {
+      this.mode = mode;
+      document.getElementsByTagName('html')[0].setAttribute('data-theme', mode);
+      localStorage.setItem('didor-theme', mode);
+    },
+
+    /**
      * Hace scroll hasta el hash seleccionado.
      */
     scrollToHash(hash) {
@@ -285,6 +336,12 @@ export default {
     this.buildPath = config.build.path;
     this.showDidorDocs = config.content.didorDocs;
     this.showDidorStyles = config.content.didorStyles;
+    this.showToggleMode = window.$didor.customize.toggleMode;
+
+    /**
+     * Obtengo y aplico el modo de visualización de la app: 'light' o 'dark'
+     */
+    this.getMode();
 
     /**
      * Actualizo el título de la página con el nombre del proyecto
