@@ -171,3 +171,80 @@
     }
   }
 }
+
+.dark-mode,
+[data-theme='dark'] {
+  .appCode {
+    &::v-deep .CodeMirror {
+      color: color(gray1) !important;
+
+      .cm-def,
+      .cm-header,
+      .cm-link {
+        color: #bb1642;
+      }
+
+      .cm-comment {
+        color: color(gray3);
+      }
+      .cm-keyword,
+      .cm-property,
+      .cm-builtin {
+        color: #6699cc;
+      }
+      .cm-atom,
+      .cm-number {
+        color: #c594c5;
+      }
+      .cm-node,
+      .cm-tag {
+        color: #eb606b;
+      }
+      .cm-string {
+        color: #f99157;
+      }
+      .cm-variable,
+      .cm-qualifier,
+      .cm-attribute {
+        color: #5fb3b3;
+      }
+
+      .cm-test-highlight {
+        background-color: color(gray6);
+      }
+
+      .CodeMirror-matchingbracket {
+        color: #2e383c;
+        background-color: lightgrey;
+      }
+
+      /* Editor styling */
+      .CodeMirror-gutters {
+        background-color: color(gray7);
+      }
+
+      .CodeMirror-linenumber {
+        color: color(gray4);
+      }
+
+      .CodeMirror-guttermarker {
+        color: #6699cc;
+      }
+      .CodeMirror-guttermarker-subtle {
+        color: color(gray4);
+      }
+
+      .CodeMirror-cursor {
+        border-color: rgba(155, 157, 162, 0.8);
+      }
+
+      div.CodeMirror-lint-tooltip {
+        border: 2px solid #fac863;
+      }
+
+      .cm-matchhighlight {
+        background-color: #d8dee9;
+      }
+    }
+  }
+}

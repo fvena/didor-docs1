@@ -81,6 +81,7 @@ Pulsa sobre un icono para copiar su valor.
 <copy value=":crosshair:" title="crosshair"><dd-icon name="crosshair" scale="0.8"/></copy>
 <copy value=":database:" title="database"><dd-icon name="database" scale="0.8"/></copy>
 <copy value=":delete:" title="delete"><dd-icon name="delete" scale="0.8"/></copy>
+<copy value=":desktop:" title="desktop"><dd-icon name="desktop" scale="0.8"/></copy>
 <copy value=":disc:" title="disc"><dd-icon name="disc" scale="0.8"/></copy>
 <copy value=":dollar-sign:" title="dollar-sign"><dd-icon name="dollar-sign" scale="0.8"/></copy>
 <copy value=":download-cloud:" title="download-cloud"><dd-icon name="download-cloud" scale="0.8"/></copy>
@@ -216,6 +217,7 @@ Pulsa sobre un icono para copiar su valor.
 <copy value=":slack:" title="slack"><dd-icon name="slack" scale="0.8"/></copy>
 <copy value=":slash:" title="slash"><dd-icon name="slash" scale="0.8"/></copy>
 <copy value=":sliders:" title="sliders"><dd-icon name="sliders" scale="0.8"/></copy>
+<copy value=":small:" title="small"><dd-icon name="small" scale="0.8"/></copy>
 <copy value=":smartphone:" title="smartphone"><dd-icon name="smartphone" scale="0.8"/></copy>
 <copy value=":smile:" title="smile"><dd-icon name="smile" scale="0.8"/></copy>
 <copy value=":speaker:" title="speaker"><dd-icon name="speaker" scale="0.8"/></copy>
