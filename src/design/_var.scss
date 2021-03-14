@@ -1,3 +1,36 @@
+// Import fonts
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@100..600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kadwa&display=swap');
+
+:root {
+  //
+  // Familias tipográficas
+  //
+  --font-family-base: 'Saira', courier, helvetica neue, arial, sans-serif;
+  --font-family-heading: 'kadwa', courier, helvetica neue, arial, sans-serif;
+  --font-family-monospace: 'Fira Code', 'Courier New', courier, monospace;
+
+  //
+  // Tamaños de fuente por tamaño de pantalla en px
+  // Importante: No poner las unidades (px)
+  //
+  --font-size-palm: 17;
+  --font-size-lap: 18;
+  --font-size-small: 18;
+  --font-size-desk: 19;
+  --font-size-large: 19;
+
+  //
+  // Pesos tipográficos
+  //
+  --font-weight-normal: 400;
+  --font-weight-bold: 500;
+  --font-weight-heading: 400;
+
+  // Colores personalizados
+  //
+}
+
 $modular-scale: 1.15;
 
 $desk: 1700px;
